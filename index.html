@@ -894,7 +894,7 @@
         // PIXEL EVENT 3: Purchase – user confirmed the order
         const confirmedPrice   = Number(pendingData.get('total'));
         const confirmedBottles = Number((document.querySelector('.popup-pkg-option.selected') || {}).getAttribute('data-bottles') || 1);
-        trackPixel('Purchase', {
+        trackPixel('Ordered', {
             content_name: 'Herbal Piles Spray 60ml',
             content_ids: ['herbal-piles-spray-60ml'],
             content_type: 'product',
