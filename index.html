@@ -5,21 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Herbal Relief Spray – प्राकृतिक आरामको लागि</title>
     <style>html, body { overflow-x: hidden; }</style>
-    <link rel="preload" as="image" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTznesVzl8X48HchEiht7ukNimrzf_GBgTKFKmHmzffhpbDqb7zftPVJx9VKdF1vwr-AI-2P3tfH5Sbr7RC2PJ3TQ" />
+    <link rel="preload" as="image" href="Images/hero.webp" fetchpriority="high" />
     <link rel="icon" type="image/png" href="/Images/favicon.png">
 
 <!-- Meta Pixel Code -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1648482576291803');
-fbq('track', 'PageView');
+/* Performance: queue Meta Pixel events immediately, but load the external script after first interaction or after page load. */
+(function(){
+    if (window.fbq) return;
+    var fbq = window.fbq = function(){ fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments); };
+    if (!window._fbq) window._fbq = fbq;
+    fbq.push = fbq;
+    fbq.loaded = false;
+    fbq.version = '2.0';
+    fbq.queue = [];
+    fbq('init', '1648482576291803');
+    fbq('track', 'PageView');
+
+    function loadMetaPixel(){
+        if (window.__metaPixelLoaded) return;
+        window.__metaPixelLoaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+    }
+
+    window.addEventListener('load', function(){ setTimeout(loadMetaPixel, 2500); }, { once:true });
+    ['click','scroll','touchstart','keydown'].forEach(function(evt){
+        window.addEventListener(evt, loadMetaPixel, { once:true, passive:true });
+    });
+})();
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
@@ -78,7 +95,7 @@ src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
 
 <!-- Floating WhatsApp Button -->
 <a href="https://wa.me/9779764379199?text=Hello!" class="whatsapp-float-img" target="_blank" aria-label="Chat on WhatsApp">
-    <img src="Images/whatsapp.webp" alt="WhatsApp Chat" />
+    <img src="Images/whatsapp.webp" alt="WhatsApp Chat" width="60" height="60" / decoding="async">
 </a>
 <style>
     .whatsapp-float-img { position: fixed; bottom: 0px; right: 20px; z-index: 9999; }
@@ -91,7 +108,7 @@ src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
 <section id="epsHeroPro" class="eps-hero" role="region" aria-labelledby="epsHero-title">
     <div class="eps-hero__wrap">
         <div class="eps-hero__left">
-            <img src="Images/hero.webp" alt="Herbal Relief Spray 60ml" class="eps-hero__img" loading="lazy" />
+            <img src="Images/hero.webp" alt="Herbal Relief Spray 60ml" class="eps-hero__img" width="400" height="400" loading="eager" fetchpriority="high" decoding="async" />
         </div>
         <div class="eps-hero__right">
             <h1 id="epsHero-title" class="eps-hero__title">HERBAL RELIEF SPRAY</h1>
@@ -161,9 +178,9 @@ src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
 <!-- TRUST ROW -->
 <section id="epsTrustRow" class="eps-trust-row" aria-label="Delivery and product benefits">
     <div class="eps-trust-row__wrap">
-        <div class="eps-trust-row__item"><img src="Images/freedelivery.webp" alt="Free Shipping" class="eps-trust-row__icon" loading="lazy" /><p class="eps-trust-row__text">Free Delivery All Over Nepal</p></div>
-        <div class="eps-trust-row__item"><img src="Images/natural.webp" alt="100% Natural" class="eps-trust-row__icon" loading="lazy" /><p class="eps-trust-row__text">100% Natural</p></div>
-        <div class="eps-trust-row__item"><img src="Images/cash on delivery.webp" alt="Cash on Delivery" class="eps-trust-row__icon" loading="lazy" /><p class="eps-trust-row__text">Cash on Delivery</p></div>
+        <div class="eps-trust-row__item"><img src="Images/freedelivery.webp" alt="Free Shipping" width="110" height="110" class="eps-trust-row__icon" loading="lazy" / decoding="async"><p class="eps-trust-row__text">Free Delivery All Over Nepal</p></div>
+        <div class="eps-trust-row__item"><img src="Images/natural.webp" alt="100% Natural" width="110" height="110" class="eps-trust-row__icon" loading="lazy" / decoding="async"><p class="eps-trust-row__text">100% Natural</p></div>
+        <div class="eps-trust-row__item"><img src="Images/cash on delivery.webp" alt="Cash on Delivery" width="110" height="110" class="eps-trust-row__icon" loading="lazy" / decoding="async"><p class="eps-trust-row__text">Cash on Delivery</p></div>
     </div>
 </section>
 <style>
@@ -183,10 +200,10 @@ src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
             यदि तपाईंलाई यस्ता असहजताहरू महसुस हुन्छन् भने <span>बेवास्ता नगर्नुहोस्</span>
         </h2>
         <div class="eps-symptoms__grid">
-            <article class="eps-symptom"><div class="eps-symptom__img"><img src="Images/p01.jpg.webp" alt="मलद्वार वरिपरि असहजता"></div><p class="eps-symptom__text">मलद्वार वरिपरि बारम्बार <br>चिलाउने वा असहज हुने</p></article>
-            <article class="eps-symptom"><div class="eps-symptom__img"><img src="Images/p02.jpg.webp" alt="बस्दा वा हिँड्दा असहजता"></div><p class="eps-symptom__text">दिसा गर्दा वा हिड्दा–बस्दा <br>मलद्वारमा असहजता वा पोल्ने</p></article>
-            <article class="eps-symptom"><div class="eps-symptom__img"><img src="Images/p03.jpg.webp" alt="मलद्वार भित्र असहजता"></div><p class="eps-symptom__text">मलद्वार भित्र <br>सुन्निएको वा थिचिएको जस्तो महसुस हुनु</p></article>
-            <article class="eps-symptom"><div class="eps-symptom__img"><img src="Images/p04.webp" alt="लामो समय बस्दा असहजता"></div><p class="eps-symptom__text">लामो समय बस्दा <br>चसक्क दुख्ने वा जल्ने महसुस हुनु</p></article>
+            <article class="eps-symptom"><div class="eps-symptom__img"><img src="Images/p01.jpg.webp" alt="मलद्वार वरिपरि असहजता" decoding="async"></div><p class="eps-symptom__text">मलद्वार वरिपरि बारम्बार <br>चिलाउने वा असहज हुने</p></article>
+            <article class="eps-symptom"><div class="eps-symptom__img"><img src="Images/p02.jpg.webp" alt="बस्दा वा हिँड्दा असहजता" decoding="async"></div><p class="eps-symptom__text">दिसा गर्दा वा हिड्दा–बस्दा <br>मलद्वारमा असहजता वा पोल्ने</p></article>
+            <article class="eps-symptom"><div class="eps-symptom__img"><img src="Images/p03.jpg.webp" alt="मलद्वार भित्र असहजता" decoding="async"></div><p class="eps-symptom__text">मलद्वार भित्र <br>सुन्निएको वा थिचिएको जस्तो महसुस हुनु</p></article>
+            <article class="eps-symptom"><div class="eps-symptom__img"><img src="Images/p04.webp" alt="लामो समय बस्दा असहजता" decoding="async"></div><p class="eps-symptom__text">लामो समय बस्दा <br>चसक्क दुख्ने वा जल्ने महसुस हुनु</p></article>
         </div>
     </div>
 </section>
@@ -210,11 +227,11 @@ src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
     <div class="eps-benefits__wrap">
         <h2 id="eps-benefits-title" class="eps-benefits__title"><span class="t-green">Herbal Relief Spray</span> का मुख्य फाइदाहरू</h2>
         <div class="eps-benefits__grid">
-            <div class="eps-benefit eps-benefit--1"><figure class="eps-benefit__figure"><img src="Images/1s80q9i-4_10ci0ci000000000000028.webp" alt="असहज लक्षणहरूबाट राहत" loading="lazy" width="160" height="160" /></figure><p class="eps-benefit__caption">असहज लक्षणहरू कम गरी <span class="hl">दीर्घकालीन राहत</span> दिन मद्दत गर्छ</p></div>
-            <div class="eps-benefit eps-benefit--2"><figure class="eps-benefit__figure"><img src="Images/h7qnt3-7_10ci0ci000000000000028.webp" alt="सुन्निएको भाग" loading="lazy" width="160" height="160" /></figure><p class="eps-benefit__caption">सुन्निएको भाग बिस्तारै <span class="hl">सामान्य अवस्थामा</span> फर्किन मद्दत गर्छ</p></div>
-            <div class="eps-benefits__media"><video class="eps-benefits__video" src="Videos/EPS-1.mp4" autoplay muted loop playsinline preload="metadata" poster="Images/EPS-poster.jpg"></video></div>
-            <div class="eps-benefit eps-benefit--3"><figure class="eps-benefit__figure"><img src="Videos/p9sip5-6_10ci0ci000000000000028.png" alt="आराम र सहजता" loading="lazy" width="160" height="160" /></figure><p class="eps-benefit__caption">बस्दा वा हिँड्दा हुने <span class="hl">असहजता र तनाव</span> कम गर्न मद्दत गर्छ</p></div>
-            <div class="eps-benefit eps-benefit--4"><figure class="eps-benefit__figure"><img src="Videos/gtdgrc-5_10ci0ci000000000000028.png" alt="छाला आराम" loading="lazy" width="160" height="160" /></figure><p class="eps-benefit__caption">मलद्वार वरिपरि <span class="hl">चिलाउने, पोल्ने र जलन</span> हुनेबाट राहत दिई छाला सहज राख्छ</p></div>
+            <div class="eps-benefit eps-benefit--1"><figure class="eps-benefit__figure"><img src="Images/1s80q9i-4_10ci0ci000000000000028.webp" alt="असहज लक्षणहरूबाट राहत" loading="lazy" width="160" height="160" / decoding="async"></figure><p class="eps-benefit__caption">असहज लक्षणहरू कम गरी <span class="hl">दीर्घकालीन राहत</span> दिन मद्दत गर्छ</p></div>
+            <div class="eps-benefit eps-benefit--2"><figure class="eps-benefit__figure"><img src="Images/h7qnt3-7_10ci0ci000000000000028.webp" alt="सुन्निएको भाग" loading="lazy" width="160" height="160" / decoding="async"></figure><p class="eps-benefit__caption">सुन्निएको भाग बिस्तारै <span class="hl">सामान्य अवस्थामा</span> फर्किन मद्दत गर्छ</p></div>
+            <div class="eps-benefits__media"><video class="eps-benefits__video" src="Videos/EPS-1.mp4" autoplay muted loop playsinline preload="metadata" poster="Images/EPS-poster.webp"></video></div>
+            <div class="eps-benefit eps-benefit--3"><figure class="eps-benefit__figure"><img src="Videos/p9sip5-6_10ci0ci000000000000028.png" alt="आराम र सहजता" loading="lazy" width="160" height="160" / decoding="async"></figure><p class="eps-benefit__caption">बस्दा वा हिँड्दा हुने <span class="hl">असहजता र तनाव</span> कम गर्न मद्दत गर्छ</p></div>
+            <div class="eps-benefit eps-benefit--4"><figure class="eps-benefit__figure"><img src="Videos/gtdgrc-5_10ci0ci000000000000028.png" alt="छाला आराम" loading="lazy" width="160" height="160" / decoding="async"></figure><p class="eps-benefit__caption">मलद्वार वरिपरि <span class="hl">चिलाउने, पोल्ने र जलन</span> हुनेबाट राहत दिई छाला सहज राख्छ</p></div>
             <h3 class="eps-benefits__subhead-mobile">Herbal Relief Spray को प्रयोग गर्दा प्रभावित भागलाई हातले छुइराख्न पर्दैन</h3>
         </div>
     </div>
@@ -240,7 +257,11 @@ src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
     @media (max-width:640px){#eps-benefits.eps-benefits{padding-inline:16px;}#eps-benefits .eps-benefits__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;grid-template-areas:"video video" "subhead subhead" "b1 b2" "b3 b4";}#eps-benefits .eps-benefits__media{grid-area:video;}#eps-benefits .eps-benefits__subhead-mobile{display:block;grid-area:subhead;font-size:14px;}#eps-benefits .eps-benefit__caption{font-size:13.5px;}}
 </style>
 <script>
-    document.addEventListener('DOMContentLoaded',function(){var nodes=Array.prototype.slice.call(document.querySelectorAll('#eps-benefits .eps-benefit,#eps-benefits .eps-benefits__media,#eps-benefits .eps-benefits__cta'));if(!nodes.length)return;if(!('IntersectionObserver' in window)){nodes.forEach(function(el,i){el.classList.add('is-visible');el.style.transitionDelay=(i*.12)+'s';});return;}var io=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){var el=entry.target;el.classList.add('is-visible');el.style.transitionDelay=(nodes.indexOf(el)*.12)+'s';io.unobserve(el);}});},{threshold:0.2});nodes.forEach(function(el){io.observe(el);});});
+    /* Performance: no scroll observers/transition delays; content is visible immediately. */
+    document.addEventListener('DOMContentLoaded',function(){
+        document.querySelectorAll('#eps-benefits .eps-benefit,#eps-benefits .eps-benefits__media,#eps-benefits .eps-benefits__cta')
+            .forEach(function(el){ el.classList.add('is-visible'); el.style.transitionDelay='0s'; });
+    });
 </script>
 
 
@@ -249,9 +270,9 @@ src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
     <div class="eps-conditions__wrap">
         <h2 class="eps-conditions__title">तीन प्रकारका मलद्वार असहजताको लागि <span class="highlight">Herbal Relief Spray</span> — एउटै प्राकृतिक समाधान</h2>
         <div class="eps-conditions__grid">
-            <div class="eps-condition"><img src="Images/piles.webp" alt="आन्तरिक सुन्निने समस्या" loading="lazy" /><h3>आन्तरिक सुन्निने <span>(Internal Swelling)</span></h3></div>
-            <div class="eps-condition"><img src="Images/fissure.webp" alt="मलद्वारमा दरार" loading="lazy" /><h3>मलद्वारमा दरार <span>(Anal Fissure)</span></h3></div>
-            <div class="eps-condition"><img src="Images/fistula.webp" alt="मलद्वार नलीको समस्या" loading="lazy" /><h3>नली समस्या <span>(Anal Fistula)</span></h3></div>
+            <div class="eps-condition"><img src="Images/piles.webp" alt="आन्तरिक सुन्निने समस्या" loading="lazy" / decoding="async"><h3>आन्तरिक सुन्निने <span>(Internal Swelling)</span></h3></div>
+            <div class="eps-condition"><img src="Images/fissure.webp" alt="मलद्वारमा दरार" loading="lazy" / decoding="async"><h3>मलद्वारमा दरार <span>(Anal Fissure)</span></h3></div>
+            <div class="eps-condition"><img src="Images/fistula.webp" alt="मलद्वार नलीको समस्या" loading="lazy" / decoding="async"><h3>नली समस्या <span>(Anal Fistula)</span></h3></div>
         </div>
     </div>
 </section>
@@ -271,7 +292,11 @@ src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
     @media (max-width:480px){.eps-condition{flex:0 0 82%;}}
 </style>
 <script>
-    document.addEventListener('DOMContentLoaded',function(){var cards=Array.prototype.slice.call(document.querySelectorAll('.eps-conditions .eps-condition'));if(!cards.length)return;if(window.innerWidth<=768||!('IntersectionObserver' in window)){cards.forEach(function(c){c.classList.add('is-visible');c.style.opacity='1';c.style.transform='none';});return;}var io=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){var el=entry.target;el.classList.add('is-visible');el.style.transitionDelay=(cards.indexOf(el)*.12)+'s';io.unobserve(el);}});},{threshold:0.25});cards.forEach(function(c){io.observe(c);});});
+    /* Performance: no scroll observers/transition delays; cards are visible immediately. */
+    document.addEventListener('DOMContentLoaded',function(){
+        document.querySelectorAll('.eps-conditions .eps-condition')
+            .forEach(function(c){ c.classList.add('is-visible'); c.style.opacity='1'; c.style.transform='none'; c.style.transitionDelay='0s'; });
+    });
 </script>
 
 
@@ -308,7 +333,7 @@ src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
                 </ol>
             </div>
         </div>
-        <div class="bottle-area"><img src="Images/img.webp" alt="Herbal Relief Spray Bottle" class="bottle-image"></div>
+        <div class="bottle-area"><img src="Images/img.webp" alt="Herbal Relief Spray Bottle" width="180" height="240" class="bottle-image" decoding="async"></div>
     </div>
 </section>
 
@@ -316,7 +341,7 @@ src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
 <!-- ✅ STORY SECTION — disease name removed from heading, transformation framing softened -->
 <section class="spray-story">
     <div class="spray-story__wrap">
-        <div class="spray-story__image"><img src="Images/70.webp" alt="Herbal Relief Spray प्रयोग गरेपछि सन्तुष्ट ग्राहक"></div>
+        <div class="spray-story__image"><img src="Images/70.webp" alt="Herbal Relief Spray प्रयोग गरेपछि सन्तुष्ट ग्राहक" width="600" height="380" decoding="async"></div>
         <div class="spray-story__content">
             <p class="spray-story__label">तपाईंको यात्रा</p>
             <h2 class="spray-story__title">असहज दिनहरूबाट<br><span>आरामदायक जीवनतर्फ</span></h2>
@@ -562,10 +587,35 @@ src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
     @media (min-width:1200px){.eps-review-card{flex:0 0 30%;}}
 </style>
 <script>
-    (function(){document.querySelectorAll('.eps-proof-img[data-src]').forEach(n=>{const url=n.getAttribute('data-src');if(url){n.style.backgroundImage=`url("${url}")`;n.removeAttribute('data-src');}});})();
-    (function(){const carousel=document.getElementById('epsCarousel'),prev=document.getElementById('epsPrev'),next=document.getElementById('epsNext');if(!carousel)return;let cards=Array.from(carousel.querySelectorAll('.eps-review-card')),positions=[],i=0,timer=null,paused=false;const INTERVAL=3500;function computePositions(){cards=Array.from(carousel.querySelectorAll('.eps-review-card'));const pl=parseInt(getComputedStyle(carousel).paddingLeft||"0",10);positions=cards.map(c=>c.offsetLeft-pl);}function goTo(idx,b='smooth'){if(!positions.length)return;i=(idx+positions.length)%positions.length;carousel.scrollTo({left:positions[i],behavior:b});}function start(){stop();timer=setInterval(()=>{if(!paused)goTo(i+1);},INTERVAL);}function stop(){if(timer)clearInterval(timer);timer=null;}carousel.addEventListener('mouseenter',()=>paused=true);carousel.addEventListener('mouseleave',()=>paused=false);carousel.addEventListener('touchstart',()=>{paused=true;},{passive:true});carousel.addEventListener('touchend',()=>{paused=false;},{passive:true});if(prev)prev.addEventListener('click',()=>{paused=true;goTo(i-1);});if(next)next.addEventListener('click',()=>{paused=true;goTo(i+1);});window.addEventListener('resize',()=>{computePositions();goTo(i,'auto');});window.addEventListener('load',()=>{computePositions();goTo(0,'auto');start();});computePositions();goTo(0,'auto');start();document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start();});})();
-    (function(){const section=document.querySelector('.eps-reviews-section');if(!section||!('IntersectionObserver' in window))return;const cards=Array.from(section.querySelectorAll('.eps-review-card')),cta=section.querySelector('.eps-cta-btn');const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){section.classList.add('is-visible');cards.forEach((c,idx)=>{setTimeout(()=>c.classList.add('is-visible'),idx*120);});if(cta)setTimeout(()=>cta.classList.add('is-visible'),cards.length*120+200);observer.disconnect();}});},{threshold:0.25});observer.observe(section);})();
-    (function(){const s=document.querySelector('.eps-reviews-section');if(!s)return;s.addEventListener('contextmenu',e=>e.preventDefault(),{capture:true});s.addEventListener('dragstart',e=>e.preventDefault(),{capture:true});})();
+    /* Performance: set review images and keep carousel manual only. No auto-scroll timer, no extra observers. */
+    document.addEventListener('DOMContentLoaded',function(){
+        document.querySelectorAll('.eps-proof-img[data-src]').forEach(function(n){
+            var url=n.getAttribute('data-src');
+            if(url){ n.style.backgroundImage='url("'+url+'")'; n.removeAttribute('data-src'); }
+        });
+
+        var section=document.querySelector('.eps-reviews-section');
+        if(section){
+            section.classList.add('is-visible');
+            section.querySelectorAll('.eps-review-card').forEach(function(c){ c.classList.add('is-visible'); c.style.transitionDelay='0s'; });
+            var cta=section.querySelector('.eps-cta-btn');
+            if(cta){ cta.classList.add('is-visible'); cta.style.transitionDelay='0s'; }
+        }
+
+        var carousel=document.getElementById('epsCarousel');
+        var prev=document.getElementById('epsPrev');
+        var next=document.getElementById('epsNext');
+        if(!carousel) return;
+
+        function getStep(){
+            var card=carousel.querySelector('.eps-review-card');
+            if(!card) return 320;
+            var gap=parseFloat(getComputedStyle(carousel).gap || '20') || 20;
+            return card.getBoundingClientRect().width + gap;
+        }
+        if(prev) prev.addEventListener('click',function(){ carousel.scrollBy({ left:-getStep(), behavior:'smooth' }); });
+        if(next) next.addEventListener('click',function(){ carousel.scrollBy({ left:getStep(), behavior:'smooth' }); });
+    });
 </script>
 
 
@@ -977,5 +1027,15 @@ src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
     });
 </script>
 
+
+<script>
+    /* Performance: pause autoplay video in background tabs, resume when visible. */
+    document.addEventListener('visibilitychange', function(){
+        document.querySelectorAll('video[autoplay]').forEach(function(v){
+            if(document.hidden){ v.pause(); }
+            else { v.play().catch(function(){}); }
+        });
+    });
+</script>
 </body>
 </html>
