@@ -275,6 +275,53 @@
     function ready(fn){document.readyState !== 'loading' ? fn() : document.addEventListener('DOMContentLoaded', fn)}
 
     ready(() => {
+      // Image fallback: keeps optimized .webp first, but shows original files if a .webp name does not exist yet.
+      const imageFallbacks = {
+        'Images/hero.webp':'Images/hero.png',
+        'Images/whatsapp.webp':'Images/whatsapp.png',
+        'Images/freedelivery.webp':'Images/freedelivery.png',
+        'Images/natural.webp':'Images/natural.png',
+        'Images/cash-on-delivery.webp':'Images/cash on delivery.png',
+        'Images/p01.webp':'Images/p01.jpg.jpeg',
+        'Images/p02.webp':'Images/p02.jpg.jpeg',
+        'Images/p03.webp':'Images/p03.jpg.jpeg',
+        'Images/p04.webp':'Images/p04.png',
+        'Images/benefit-1.webp':'Images/1s80q9i-4_10ci0ci000000000000028.png',
+        'Images/benefit-2.webp':'Images/h7qnt3-7_10ci0ci000000000000028.png',
+        'Images/benefit-3.webp':'Videos/p9sip5-6_10ci0ci000000000000028.png',
+        'Images/benefit-4.webp':'Videos/gtdgrc-5_10ci0ci000000000000028.png',
+        'Images/EPS-poster.webp':'Images/EPS-poster.jpg',
+        'Images/piles.webp':'Images/piles.png',
+        'Images/fissure.webp':'Images/fissure.png',
+        'Images/fistula.webp':'Images/fistula.png',
+        'Images/img.webp':'Images/img.png',
+        'Images/70.webp':'Images/70.png',
+        'Images/haritaki.webp':'Images/haritaki.png',
+        'Images/suran.webp':'Images/suran.png',
+        'Images/haridra.webp':'Images/haridra.jpeg',
+        'Images/lodhra.webp':'Images/lodhra.jpg',
+        'Images/yastimadhu-licorice.webp':'Images/Yastimadhu-Licorice.jpg',
+        'Images/daruharidra.webp':'Images/Daruharidra.jpg',
+        'Images/nirgundi.webp':'Images/Nirgundi.jpg',
+        'Images/manjistha.webp':'Images/Manjistha.png',
+        'Images/lajjawati.webp':'Images/Lajjawati-Jhar.png',
+        'Images/til-oil.webp':'Images/Til-oil-Sesame-oil.jpg',
+        'Images/59.webp':'Images/59.png',
+        'Images/60.webp':'Images/60.png',
+        'Images/61.webp':'Images/61.png',
+        'Images/63.webp':'Images/63.png',
+        'Images/64.webp':'Images/64.png'
+      };
+      document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', () => {
+          const current = img.getAttribute('src');
+          const fallback = imageFallbacks[current];
+          if (fallback && img.dataset.fallbackUsed !== '1') {
+            img.dataset.fallbackUsed = '1';
+            img.src = fallback;
+          }
+        }, { once: true });
+      });
       // Promo text rotation: text only, no layout shift.
       const promo = document.getElementById('promoText');
       const promoMessages = ['🎁 24% Discount','🚚 Free Cash on Delivery all over Nepal'];
