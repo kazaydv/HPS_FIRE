@@ -23,6 +23,13 @@
     fbq.queue = [];
     fbq('init', '1648482576291803');
     fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {
+        content_name: 'Herbal Relief Spray 60ml',
+        content_ids: ['herbal-relief-spray-60ml'],
+        content_type: 'product',
+        value: 1900,
+        currency: 'NPR'
+    });
 
     function loadMetaPixel(){
         if (window.__metaPixelLoaded) return;
@@ -1133,7 +1140,11 @@ src="https://www.facebook.com/tr?id=1648482576291803&ev=PageView&noscript=1"
             loaderLabel.innerHTML = 'अर्डर सफल भयो! 🎉<br/>Order Placed Successfully!';
             loaderSub.textContent = 'धन्यवाद! / Thank you!';
         }, 400);
-        setTimeout(() => { window.location.href = 'thankyou.html'; }, 1200);
+        // Pass customer data to thankyou page for Facebook Advanced Matching
+        const _ph = encodeURIComponent((pendingData.get('phone') || '').replace(/\D/g,''));
+        const _fn = encodeURIComponent((pendingData.get('name') || '').trim().split(' ')[0]);
+        const _ln = encodeURIComponent((pendingData.get('name') || '').trim().split(' ').slice(1).join(' '));
+        setTimeout(() => { window.location.href = 'thankyou.html?ph=' + _ph + '&fn=' + _fn + '&ln=' + _ln; }, 1200);
     });
 </script>
 
