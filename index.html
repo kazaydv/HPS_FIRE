@@ -1387,27 +1387,167 @@ document.addEventListener('visibilitychange',()=>{
 </script>
   <script>
 
-/* FORCE PAGE LOAD AT TOP */
+/* =========================================
+   FORCE PAGE TO LOAD FROM TOP
+========================================= */
 
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
+(function () {
+
+  // Disable browser scroll restoration
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  // Remove hash from URL
+  if (window.location.hash) {
+    history.replaceState(null, null, window.location.pathname);
+  }
+
+  // Instantly move to top before render
+  window.scrollTo(0, 0);
+
+  // Again after DOM loads
+  document.addEventListener('DOMContentLoaded', function () {
+    window.scrollTo(0, 0);
+  });
+
+  // Again after full page load
+  window.addEventListener('load', function () {
+
+    setTimeout(function () {
+
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant'
+      });
+
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+
+    }, 0);
+
+  });
+
+  // Prevent browser keeping previous scroll
+  window.addEventListener('beforeunload', function () {
+    window.scrollTo(0, 0);
+  });
+
+})();
+
+
+/* =========================================
+   REMOVE AUTO FOCUS CAUSING SCROLL
+========================================= */
+
+window.addEventListener('load', function () {
+
+  const active = document.activeElement;
+
+  if (
+    active &&
+    (
+      active.tagName === 'INPUT' ||
+      active.tagName === 'TEXTAREA' ||
+      active.tagName === 'BUTTON'
+    )
+  ) {
+    active.blur();
+  }
+
+});
+
+
+/* =========================================
+   SAFE REVEAL ANIMATION
+========================================= */
+
+const revealEls = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+
+  });
+
+}, {
+  threshold: 0.12
+});
+
+revealEls.forEach(el => {
+  revealObserver.observe(el);
+});
+
+
+/* =========================================
+   REVIEW CAROUSEL
+========================================= */
+
+const carousel = document.getElementById('reviewCarousel');
+const prevBtn = document.getElementById('revPrev');
+const nextBtn = document.getElementById('revNext');
+
+if (carousel && prevBtn && nextBtn) {
+
+  nextBtn.addEventListener('click', () => {
+    carousel.scrollBy({
+      left: 380,
+      behavior: 'smooth'
+    });
+  });
+
+  prevBtn.addEventListener('click', () => {
+    carousel.scrollBy({
+      left: -380,
+      behavior: 'smooth'
+    });
+  });
+
 }
 
-window.addEventListener('beforeunload', () => {
-  window.scrollTo(0, 0);
+
+/* =========================================
+   LAZY LOAD REVIEW IMAGES
+========================================= */
+
+document.querySelectorAll('.review-proof-img').forEach(el => {
+  const src = el.getAttribute('data-src');
+
+  if (src) {
+    el.style.backgroundImage = `url('${src}')`;
+  }
 });
 
-window.addEventListener('load', () => {
 
-  setTimeout(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'instant'
-    });
-  }, 0);
+/* =========================================
+   MOBILE BENEFITS LAYOUT SWITCH
+========================================= */
 
-});
+function handleBenefitsLayout() {
+
+  const desktop = document.getElementById('benefitsDesktop');
+  const mobile = document.getElementById('benefitsMobile');
+
+  if (!desktop || !mobile) return;
+
+  if (window.innerWidth <= 1024) {
+    desktop.style.display = 'none';
+    mobile.style.display = 'grid';
+  } else {
+    desktop.style.display = 'grid';
+    mobile.style.display = 'none';
+  }
+
+}
+
+handleBenefitsLayout();
+
+window.addEventListener('resize', handleBenefitsLayout);
 
 </script>
 </body>
