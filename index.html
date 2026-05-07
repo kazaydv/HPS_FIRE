@@ -257,7 +257,7 @@ body{padding-top:var(--promo-h);}
 }
 .symptom-card:hover .symptom-card__img{transform:scale(1.04);}
 .symptom-card__body{padding:18px 16px;}
-.symptom-card__text{font-size:14px;line-height:1.6;color:var(--c-muted);font-weight:500;}
+.symptom-card__text{font-size:16px;line-height:1.6;color:var(--c-muted);font-weight:800;}
 @media(max-width:900px){.symptoms__grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:480px){.symptoms__grid{grid-template-columns:1fr;gap:16px;}}
 
@@ -713,34 +713,7 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
   }
 
 
-  /* Trust badges */
-  .badges__grid {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-
-    gap: 14px;
-
-    padding-bottom: 10px;
-
-    scroll-snap-type: x mandatory;
-
-    scrollbar-width: none;
-
-    -webkit-overflow-scrolling: touch;
-
-    touch-action: pan-x pan-y;
-  }
-
-  .badges__grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .badge-item {
-    flex: 0 0 140px !important;
-    scroll-snap-align: start;
-  }
+ 
 
 }
 </style>
