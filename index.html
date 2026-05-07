@@ -717,6 +717,358 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
  
 
 }
+  /* =========================================
+   FINAL MOBILE SPACE OPTIMIZATION
+========================================= */
+
+@media (max-width: 768px) {
+
+  /* GLOBAL */
+
+  .section{
+    padding:42px 14px !important;
+  }
+
+  .container{
+    width:100%;
+  }
+
+  .s-header{
+    margin-bottom:26px !important;
+  }
+
+  .s-header__title{
+    line-height:1.22;
+  }
+
+  .s-header__line{
+    margin-top:14px;
+  }
+
+
+  /* HERO */
+
+  .hero{
+    min-height:auto !important;
+  }
+
+  .hero__media{
+    min-height:220px !important;
+    padding:14px 10px !important;
+  }
+
+  .hero__img{
+    max-width:190px !important;
+  }
+
+  .hero__content{
+    padding:
+      22px
+      16px
+      28px !important;
+  }
+
+  .hero__eyebrow{
+    margin-bottom:12px !important;
+  }
+
+  .hero__title{
+    margin-bottom:12px !important;
+  }
+
+  .hero__sub{
+    margin-bottom:16px !important;
+    line-height:1.6 !important;
+  }
+
+  .hero__price{
+    margin-bottom:16px !important;
+    padding:14px 14px !important;
+  }
+
+  .hero__list{
+    margin-bottom:18px !important;
+  }
+
+  .hero__list li{
+    padding:8px 0 !important;
+    font-size:14px !important;
+  }
+
+  .btn-cta,
+  .btn-cta--light{
+    padding:14px 18px !important;
+    font-size:13px !important;
+  }
+
+
+  /* TRUST */
+
+  .trust__item{
+    padding:14px 8px !important;
+    gap:6px !important;
+  }
+
+  .trust__icon{
+    width:30px !important;
+    height:30px !important;
+  }
+
+  .trust__label{
+    font-size:9px !important;
+    line-height:1.35;
+  }
+
+
+  /* SYMPTOMS */
+
+  .symptoms__grid{
+    gap:12px !important;
+  }
+
+  .symptom-card{
+    min-width:240px !important;
+  }
+
+  .symptom-card__body{
+    padding:14px !important;
+  }
+
+  .symptom-card__text{
+    font-size:14px !important;
+    line-height:1.45 !important;
+  }
+
+
+  /* BENEFITS */
+
+  .benefits__layout{
+    gap:14px !important;
+  }
+
+  .benefits__video{
+    border-radius:14px !important;
+  }
+
+  .benefit-card{
+    padding:14px !important;
+    gap:12px !important;
+  }
+
+  .benefit-card__text{
+    font-size:13px !important;
+    line-height:1.5 !important;
+  }
+
+  #benefitsMobile .benefit-card{
+    min-width:240px !important;
+  }
+
+
+  /* CONDITIONS */
+
+  .conditions__grid{
+    gap:12px !important;
+    padding-bottom:4px !important;
+  }
+
+  .condition-card{
+    min-width:240px !important;
+  }
+
+  .condition-card__body{
+    padding:14px !important;
+  }
+
+  .condition-card__title{
+    font-size:16px !important;
+  }
+
+
+  /* HOW TO */
+
+  .howto__wrap{
+    gap:20px !important;
+  }
+
+  .step{
+    gap:12px !important;
+    padding:14px 0 !important;
+  }
+
+  .step__num{
+    width:32px !important;
+    height:32px !important;
+    font-size:14px !important;
+  }
+
+  .step__title{
+    font-size:14px !important;
+  }
+
+  .step__desc{
+    font-size:13px !important;
+  }
+
+
+  /* STORY */
+
+  .story__img{
+    height:220px !important;
+  }
+
+  .story__content{
+    padding:
+      28px
+      16px
+      34px !important;
+  }
+
+  .story__title{
+    margin-bottom:14px !important;
+  }
+
+  .story__text{
+    margin-bottom:18px !important;
+    font-size:14px !important;
+    line-height:1.7 !important;
+  }
+
+
+  /* BADGES */
+
+  .badges{
+    padding:26px 12px !important;
+  }
+
+  .badges__grid{
+    gap:14px !important;
+  }
+
+  .badge-item{
+    flex:0 0 90px !important;
+    gap:6px !important;
+  }
+
+  .badge-item img{
+    width:48px !important;
+    height:48px !important;
+  }
+
+  .badge-item span{
+    font-size:10px !important;
+    line-height:1.35;
+  }
+
+
+  /* INGREDIENTS */
+
+  .ingredients__layout{
+    border-radius:14px !important;
+  }
+
+  .ing-list{
+    padding:8px !important;
+    gap:6px !important;
+  }
+
+  .ing-item{
+    padding:7px 14px !important;
+    font-size:12px !important;
+  }
+
+  .ing-detail{
+    padding:16px 14px !important;
+    gap:10px !important;
+  }
+
+  .ing-detail h3{
+    font-size:18px !important;
+  }
+
+  .ing-detail p{
+    font-size:13px !important;
+    line-height:1.6 !important;
+  }
+
+
+  /* REVIEWS */
+
+  .reviews__carousel{
+    gap:12px !important;
+    padding:
+      4px
+      2px
+      10px !important;
+  }
+
+  .review-card{
+    flex:0 0 86% !important;
+    padding:16px !important;
+    gap:12px !important;
+  }
+
+  .review-text{
+    font-size:13px !important;
+    line-height:1.6 !important;
+  }
+
+
+  /* ORDER MODAL */
+
+  #orderBox{
+    padding:
+      26px
+      18px
+      22px !important;
+  }
+
+  .pkg-grid{
+    gap:8px !important;
+  }
+
+  .pkg-card{
+    padding:14px !important;
+  }
+
+
+  /* POLICY */
+
+  #policyBox{
+    padding:
+      24px
+      18px
+      18px !important;
+  }
+
+
+  /* WHATSAPP */
+
+  .wa-float{
+    width:48px !important;
+    height:48px !important;
+
+    right:12px !important;
+    bottom:12px !important;
+  }
+
+
+  /* MOBILE CAROUSELS */
+
+  .mobile-carousel{
+    gap:12px !important;
+
+    padding:
+      2px
+      2px
+      10px !important;
+  }
+
+  .mobile-carousel > *{
+    flex:0 0 86% !important;
+  }
+
+}
 </style>
 </head>
 <body>
