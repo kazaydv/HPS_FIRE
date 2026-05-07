@@ -640,6 +640,109 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
   display:none;margin-top:12px;padding:12px 16px;border-radius:10px;
   background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;font-size:13px;font-weight:600;text-align:center;
 }
+  /* =========================================
+   MOBILE HORIZONTAL CAROUSELS
+========================================= */
+
+@media (max-width: 768px) {
+
+  /* Shared carousel behavior */
+  .mobile-carousel {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    gap: 16px;
+
+    padding:
+      4px
+      16px
+      18px;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+
+    touch-action: pan-x pan-y;
+
+    overscroll-behavior-x: contain;
+  }
+
+  .mobile-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-carousel > * {
+    flex: 0 0 84%;
+    scroll-snap-align: start;
+  }
+
+
+  /* Symptoms */
+  .symptoms__grid {
+    grid-template-columns: unset !important;
+  }
+
+  .symptom-card {
+    min-width: 280px;
+  }
+
+
+  /* Benefits */
+  #benefitsMobile {
+    display: flex !important;
+  }
+
+  #benefitsMobile .benefit-card {
+    min-width: 280px;
+  }
+
+
+  /* Conditions */
+  .conditions__grid .condition-card {
+    min-width: 280px;
+  }
+
+
+  /* Reviews */
+  .reviews__carousel .review-card {
+    flex: 0 0 88% !important;
+  }
+
+
+  /* Trust badges */
+  .badges__grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    gap: 14px;
+
+    padding-bottom: 10px;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
+    touch-action: pan-x pan-y;
+  }
+
+  .badges__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .badge-item {
+    flex: 0 0 140px !important;
+    scroll-snap-align: start;
+  }
+
+}
 </style>
 </head>
 <body>
@@ -1548,6 +1651,93 @@ function handleBenefitsLayout() {
 handleBenefitsLayout();
 
 window.addEventListener('resize', handleBenefitsLayout);
+
+</script>
+  <script>
+
+/* =========================================
+   SAFE MOBILE CAROUSEL SYSTEM
+========================================= */
+
+(function () {
+
+  const carousels = [
+
+    document.querySelector('.symptoms__grid'),
+    document.querySelector('#benefitsMobile'),
+    document.querySelector('.conditions__grid'),
+    document.querySelector('.reviews__carousel'),
+    document.querySelector('.badges__grid')
+
+  ];
+
+  carousels.forEach((carousel) => {
+
+    if (!carousel) return;
+
+    carousel.classList.add('mobile-carousel');
+
+    let startX = 0;
+    let startY = 0;
+
+    let isDragging = false;
+    let isHorizontal = false;
+
+    carousel.addEventListener('touchstart', (e) => {
+
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+
+      isDragging = true;
+      isHorizontal = false;
+
+    }, { passive: true });
+
+
+
+
+    carousel.addEventListener('touchmove', (e) => {
+
+      if (!isDragging) return;
+
+      const deltaX =
+        Math.abs(e.touches[0].clientX - startX);
+
+      const deltaY =
+        Math.abs(e.touches[0].clientY - startY);
+
+
+      /* detect horizontal intent */
+      if (deltaX > 10 && deltaX > deltaY) {
+        isHorizontal = true;
+      }
+
+
+      /*
+        ONLY stop page scroll
+        when clearly horizontal swipe
+      */
+      if (isHorizontal) {
+
+        e.stopPropagation();
+
+      }
+
+    }, { passive: true });
+
+
+
+
+    carousel.addEventListener('touchend', () => {
+
+      isDragging = false;
+      isHorizontal = false;
+
+    });
+
+  });
+
+})();
 
 </script>
 </body>
