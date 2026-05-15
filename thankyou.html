@@ -22,7 +22,7 @@
         var ph = params.get('ph') || '';  // phone number
         var fn = params.get('fn') || '';  // first name
         var ln = params.get('ln') || '';  // last name
-
+        
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -31,15 +31,15 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-
+        
         // Advanced Matching — passes phone + name to Facebook
         // Facebook hashes these automatically using SHA-256
         var matchData = {};
         if (ph) matchData.ph = ph;
         if (fn) matchData.fn = fn;
         if (ln) matchData.ln = ln;
-
-        fbq('init', '1648482576291803', matchData);
+        
+        fbq('init', '1361139429191442', matchData);
         fbq('track', 'Purchase', {
             value: 1900,
             currency: 'NPR',
@@ -51,7 +51,7 @@
 </script>
 <noscript>
     <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1648482576291803&ev=Purchase&noscript=1"/>
+    src="https://www.facebook.com/tr?id=1361139429191442&ev=Purchase&noscript=1"/>
 </noscript>
 <!-- End Meta Pixel Code -->
 
