@@ -14,32 +14,70 @@
   Paste this in the <head> section.
 -->
 
-<!-- Meta Pixel Code with Advanced Matching -->
+```html
+<!-- Meta Pixel Purchase Event (EU Blocked) -->
 <script>
-    // Read customer data passed from order form
-    (function() {
+(function () {
+
+    const blockedRegions = [
+        "AT","BE","BG","HR","CY","CZ","DE","DK","EE","ES","FI","FR",
+        "GR","HU","IE","IT","LT","LU","LV","MT","NL","PL","PT","RO",
+        "SE","SI","SK","IS","LI","NO"
+    ];
+
+    fetch("https://ipapi.co/json/")
+    .then(response => response.json())
+    .then(data => {
+
+        const country = data.country_code;
+
+        // Stop Purchase Pixel for EU/EEA visitors
+        if (blockedRegions.includes(country)) {
+            console.log("EU visitor detected - Purchase Pixel blocked");
+            return;
+        }
+
+        // Read customer data from URL
         var params = new URLSearchParams(window.location.search);
-        var ph = params.get('ph') || '';  // phone number
-        var fn = params.get('fn') || '';  // first name
-        var ln = params.get('ln') || '';  // last name
-        
+        var ph = params.get('ph') || '';
+        var fn = params.get('fn') || '';
+        var ln = params.get('ln') || '';
+
+        // Load Meta Pixel
         !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        {
+            if(f.fbq)return;
+
+            n=f.fbq=function(){n.callMethod ?
+            n.callMethod.apply(n,arguments) : n.queue.push(arguments)};
+
+            if(!f._fbq)f._fbq=n;
+
+            n.push=n;
+            n.loaded=!0;
+            n.version='2.0';
+            n.queue=[];
+
+            t=b.createElement(e);
+            t.async=!0;
+            t.src=v;
+
+            s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s);
+
+        }(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        
-        // Advanced Matching — passes phone + name to Facebook
-        // Facebook hashes these automatically using SHA-256
+
+        // Advanced Matching
         var matchData = {};
+
         if (ph) matchData.ph = ph;
         if (fn) matchData.fn = fn;
         if (ln) matchData.ln = ln;
-        
+
         fbq('init', '1361139429191442', matchData);
+
+        // Purchase Event
         fbq('track', 'Purchase', {
             value: 1900,
             currency: 'NPR',
@@ -47,13 +85,22 @@
             content_ids: ['herbal-relief-spray-60ml'],
             content_type: 'product'
         });
-    })();
+
+    })
+    .catch(error => {
+        console.log("Country detection failed:", error);
+    });
+
+})();
 </script>
+
 <noscript>
-    <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1361139429191442&ev=Purchase&noscript=1"/>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1361139429191442&ev=Purchase&noscript=1"/>
 </noscript>
 <!-- End Meta Pixel Code -->
+```
+
 
 
     <style>
