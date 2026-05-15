@@ -10,23 +10,69 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Meta Pixel Code -->
+```html
+<!-- Meta Pixel Code (EU Visitors Blocked) -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1361139429191442');
-fbq('track', 'PageView');
+(function () {
+
+  const blockedRegions = [
+    "AT","BE","BG","HR","CY","CZ","DE","DK","EE","ES","FI","FR",
+    "GR","HU","IE","IT","LT","LU","LV","MT","NL","PL","PT","RO",
+    "SE","SI","SK","IS","LI","NO"
+  ];
+
+  fetch("https://ipapi.co/json/")
+    .then(response => response.json())
+    .then(data => {
+
+      const country = data.country_code;
+
+      // Block Meta Pixel in EU/EEA
+      if (blockedRegions.includes(country)) {
+        console.log("EU visitor detected - Pixel blocked");
+        return;
+      }
+
+      // Load Meta Pixel normally
+      !function(f,b,e,v,n,t,s)
+      {
+        if(f.fbq)return;
+        n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;
+        n.push=n;
+        n.loaded=!0;
+        n.version='2.0';
+        n.queue=[];
+
+        t=b.createElement(e);
+        t.async=!0;
+        t.src=v;
+
+        s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s);
+
+      }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '1361139429191442');
+      fbq('track', 'PageView');
+
+    })
+    .catch(error => {
+      console.log("Country detection failed:", error);
+    });
+
+})();
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1361139429191442&ev=PageView&noscript=1"
-/></noscript>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1361139429191442&ev=PageView&noscript=1"/>
+</noscript>
 <!-- End Meta Pixel Code -->
+```
+
 <style>
 /* ===== RESET & TOKENS ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
