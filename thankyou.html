@@ -5,19 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>अर्डर प्राप्त भयो – धन्यवाद</title>
     <link rel="icon" type="image/png" href="/Images/favicon.png">
-    <!-- Meta Pixel Code -->
-   <!-- Meta Pixel Code -->
-<!-- Meta Pixel Code -->
-<!-- Meta Pixel Code -->
-<!-- 
-  REPLACE your existing Meta Pixel Code block on thankyou.html with this.
-  Paste this in the <head> section.
--->
 
+<!-- Meta Pixel Code with Advanced Matching -->
+<script>
+(function() {
 
-<!-- Meta Pixel Code with Advanced Matching --> <script> // Read customer data passed from order form (function() { var params = new URLSearchParams(window.location.search); var ph = params.get('ph') || ''; // phone number var fn = params.get('fn') || ''; // first name var ln = params.get('ln') || ''; // last name !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); // Advanced Matching — passes phone + name to Facebook // Facebook hashes these automatically using SHA-256 var matchData = {}; if (ph) matchData.ph = ph; if (fn) matchData.fn = fn; if (ln) matchData.ln = ln; fbq('init', '1361139429191442', matchData); fbq('track', 'Purchase', { value: 1900, currency: 'NPR', content_name: 'Herbal Relief Spray 60ml', content_ids: ['herbal-relief-spray-60ml'], content_type: 'product' }); })(); </script> <noscript> <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1361139429191442&ev=Purchase&noscript=1"/> </noscript> <!-- End Meta Pixel Code -->
+    // Read customer data passed from order form
+    var params = new URLSearchParams(window.location.search);
 
+    var ph = params.get('ph') || '';
+    var fn = params.get('fn') || '';
+    var ln = params.get('ln') || '';
 
+    !function(f,b,e,v,n,t,s)
+    {
+        if(f.fbq)return;
+
+        n=f.fbq=function(){n.callMethod ?
+        n.callMethod.apply(n,arguments) : n.queue.push(arguments)};
+
+        if(!f._fbq)f._fbq=n;
+
+        n.push=n;
+        n.loaded=!0;
+        n.version='2.0';
+        n.queue=[];
+
+        t=b.createElement(e);
+        t.async=!0;
+        t.src=v;
+
+        s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s);
+
+    }(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    // Advanced Matching
+    var matchData = {};
+
+    if (ph) matchData.ph = ph;
+    if (fn) matchData.fn = fn;
+    if (ln) matchData.ln = ln;
+
+    fbq('init', '1361139429191442', matchData);
+
+    // Purchase Event
+    fbq('track', 'Purchase', {
+        value: 1900,
+        currency: 'NPR',
+        content_name: 'Herbal Relief Spray 60ml',
+        content_ids: ['herbal-relief-spray-60ml'],
+        content_type: 'product'
+    });
+
+})();
+</script>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1361139429191442&ev=Purchase&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
 
 
     <style>
