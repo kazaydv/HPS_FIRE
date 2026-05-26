@@ -28,8 +28,6 @@ src="https://www.facebook.com/tr?id=1361139429191442&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
-
-
 <style>
 /* ===== RESET & TOKENS ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -79,12 +77,116 @@ button{font-family:var(--ff-body);cursor:pointer;}
 body{padding-top:var(--promo-h);}
 @media(max-width:600px){#promoBar{font-size:11px;}--promo-h:38px;}
 
+/* ===== STICKY CTA BAR ===== */
+#stickyCta{
+  position:fixed;
+  bottom:0;left:0;right:0;
+  z-index:9990;
+  background:var(--c-white);
+  border-top:1px solid var(--c-border);
+  box-shadow:0 -8px 32px rgba(26,74,46,.14);
+  padding:12px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  transform:translateY(100%);
+  transition:transform .4s var(--ease);
+  will-change:transform;
+}
+#stickyCta.visible{
+  transform:translateY(0);
+}
+.sticky-cta__info{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  flex-shrink:0;
+}
+.sticky-cta__label{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--c-muted);
+}
+.sticky-cta__price{
+  display:flex;
+  align-items:baseline;
+  gap:7px;
+}
+.sticky-cta__price-old{
+  font-size:13px;
+  text-decoration:line-through;
+  color:#aaa;
+  font-weight:500;
+}
+.sticky-cta__price-main{
+  font-family:var(--ff-head);
+  font-size:22px;
+  font-weight:800;
+  color:var(--c-forest);
+  line-height:1;
+}
+.sticky-cta__btn{
+  flex:1;
+  max-width:340px;
+  padding:14px 20px;
+  border-radius:999px;
+  border:none;
+  background:linear-gradient(135deg,var(--c-cta),var(--c-cta-dark));
+  color:#fff;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  box-shadow:0 8px 24px rgba(212,85,10,.35);
+  position:relative;
+  overflow:hidden;
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  white-space:nowrap;
+}
+.sticky-cta__btn::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.3) 50%,transparent 70%);
+  transform:translateX(-100%);
+  animation:shine 3.5s ease-in-out infinite;
+}
+.sticky-cta__btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 36px rgba(212,85,10,.45);
+}
+.sticky-cta__btn:active{
+  transform:translateY(0);
+}
+/* Push WA float up when sticky bar is visible */
+body.sticky-visible .wa-float{
+  bottom:88px;
+}
+@media(max-width:600px){
+  #stickyCta{padding:10px 14px;gap:10px;}
+  .sticky-cta__label{font-size:10px;}
+  .sticky-cta__price-main{font-size:19px;}
+  .sticky-cta__price-old{font-size:12px;}
+  .sticky-cta__btn{font-size:12px;padding:12px 14px;max-width:none;}
+  body.sticky-visible .wa-float{bottom:82px;}
+}
+@media(max-width:380px){
+  .sticky-cta__info{display:none;}
+  .sticky-cta__btn{max-width:100%;}
+}
+
 /* ===== WHATSAPP FLOAT ===== */
 .wa-float{
   position:fixed;bottom:24px;right:20px;z-index:9998;
   width:54px;height:54px;border-radius:50%;overflow:hidden;
   box-shadow:0 4px 20px rgba(0,0,0,.25);
-  transition:transform .25s var(--ease),box-shadow .25s var(--ease);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),bottom .4s var(--ease);
 }
 .wa-float:hover{transform:scale(1.08) translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.3);}
 .wa-float img{width:100%;height:100%;object-fit:cover;}
@@ -441,196 +543,79 @@ body{padding-top:var(--promo-h);}
 }
 
 /* ===== REVIEWS ===== */
-/* ===== REVIEWS ===== */
-
 .reviews__carousel{
   display:flex;
-
   gap:20px;
-
   overflow-x:auto;
   overflow-y:hidden;
-
   scroll-snap-type:x mandatory;
-
   padding:8px 4px 20px;
-
   scrollbar-width:none;
-
   -webkit-overflow-scrolling:touch;
-
   overscroll-behavior-x:contain;
-
   touch-action:pan-x;
-
   align-items:stretch;
 }
-
-.reviews__carousel::-webkit-scrollbar{
-  display:none;
-}
-
+.reviews__carousel::-webkit-scrollbar{display:none;}
 .review-card{
   flex:0 0 340px;
-
   scroll-snap-align:start;
-
   background:var(--c-white);
-
   border:1px solid var(--c-border);
-
   border-radius:20px;
-
   padding:24px;
-
   display:flex;
   flex-direction:column;
-
   gap:16px;
-
   box-shadow:var(--shadow-sm);
-
   transition:box-shadow .25s;
-
   overflow:hidden;
-
   height:auto;
-
   min-height:100%;
-
   touch-action:auto;
 }
-
-.review-card:hover{
-  box-shadow:var(--shadow-md);
-}
-
+.review-card:hover{box-shadow:var(--shadow-md);}
 .review-proof{
   width:100%;
-
   aspect-ratio:16/9;
-
   border-radius:10px;
-
   overflow:hidden;
-
   background:#f3f5f7;
-
   flex-shrink:0;
 }
-
 .review-proof-img{
   width:100%;
   height:100%;
-
   background-size:cover;
   background-position:center;
 }
-
-.review-stars{
-  color:#f4a820;
-
-  font-size:16px;
-
-  letter-spacing:2px;
-
-  flex-shrink:0;
-}
-
+.review-stars{color:#f4a820;font-size:16px;letter-spacing:2px;flex-shrink:0;}
 .review-text{
   font-size:14px;
-
   line-height:1.7;
-
   color:var(--c-muted);
-
   font-style:italic;
-
   overflow:visible;
 }
-
-.review-author{
-  font-size:13px;
-
-  font-weight:700;
-
-  color:var(--c-forest);
-
-  margin-top:auto;
-}
-
+.review-author{font-size:13px;font-weight:700;color:var(--c-forest);margin-top:auto;}
 .reviews__controls{
-  display:flex;
-
-  gap:10px;
-
-  justify-content:center;
-
-  margin-top:12px;
+  display:flex;gap:10px;justify-content:center;margin-top:12px;
 }
-
 .reviews__controls button{
-  width:40px;
-  height:40px;
-
-  border-radius:50%;
-
-  border:1px solid var(--c-border);
-
-  background:var(--c-white);
-
-  font-size:18px;
-
-  color:var(--c-forest);
-
-  transition:
-    background .2s,
-    border-color .2s,
-    transform .2s;
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid var(--c-border);background:var(--c-white);
+  font-size:18px;color:var(--c-forest);
+  transition:background .2s,border-color .2s,transform .2s;
 }
-
 .reviews__controls button:hover{
-  background:var(--c-forest);
-
-  color:var(--c-cream);
-
-  border-color:var(--c-forest);
-
-  transform:scale(1.05);
+  background:var(--c-forest);color:var(--c-cream);
+  border-color:var(--c-forest);transform:scale(1.05);
 }
-
-@media(min-width:900px){
-  .review-card{
-    flex:0 0 360px;
-  }
-}
-
+@media(min-width:900px){.review-card{flex:0 0 360px;}}
 @media(max-width:768px){
-
-  .reviews__carousel{
-    gap:12px !important;
-
-    padding:
-      4px
-      2px
-      10px !important;
-
-    touch-action:pan-x;
-  }
-
-  .review-card{
-    flex:0 0 86% !important;
-
-    padding:16px !important;
-
-    gap:12px !important;
-  }
-
-  .review-text{
-    font-size:13px !important;
-
-    line-height:1.6 !important;
-  }
+  .reviews__carousel{gap:12px !important;padding:4px 2px 10px !important;touch-action:pan-x;}
+  .review-card{flex:0 0 86% !important;padding:16px !important;gap:12px !important;}
+  .review-text{font-size:13px !important;line-height:1.6 !important;}
 }
 
 /* ===== POLICY POPUP ===== */
@@ -805,433 +790,100 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
   display:none;margin-top:12px;padding:12px 16px;border-radius:10px;
   background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;font-size:13px;font-weight:600;text-align:center;
 }
-  /* =========================================
+
+/* =========================================
    MOBILE HORIZONTAL CAROUSELS
 ========================================= */
-
 @media (max-width: 768px) {
-
-  /* Shared carousel behavior */
   .mobile-carousel {
     display: flex !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
-
     gap: 16px;
-
-    padding:
-      4px
-      16px
-      18px;
-
+    padding: 4px 16px 18px;
     scroll-snap-type: x mandatory;
-
     -webkit-overflow-scrolling: touch;
-
     scrollbar-width: none;
-
     touch-action: pan-x pan-y;
-
     overscroll-behavior-x: contain;
   }
-
-  .mobile-carousel::-webkit-scrollbar {
-    display: none;
-  }
-
-  .mobile-carousel > * {
-    flex: 0 0 84%;
-    scroll-snap-align: start;
-  }
-
-
-  /* Symptoms */
-  .symptoms__grid {
-    grid-template-columns: unset !important;
-  }
-
-  .symptom-card {
-    min-width: 280px;
-  }
-
-
-  /* Benefits */
-  #benefitsMobile {
-    display: flex !important;
-  }
-
-  #benefitsMobile .benefit-card {
-    min-width: 280px;
-  }
-
-
-  /* Conditions */
-  .conditions__grid .condition-card {
-    min-width: 280px;
-  }
-
-
-  /* Reviews */
-  .reviews__carousel .review-card {
-    flex: 0 0 88% !important;
-  }
-
-
- 
-
+  .mobile-carousel::-webkit-scrollbar { display: none; }
+  .mobile-carousel > * { flex: 0 0 84%; scroll-snap-align: start; }
+  .symptoms__grid { grid-template-columns: unset !important; }
+  .symptom-card { min-width: 280px; }
+  #benefitsMobile { display: flex !important; }
+  #benefitsMobile .benefit-card { min-width: 280px; }
+  .conditions__grid .condition-card { min-width: 280px; }
+  .reviews__carousel .review-card { flex: 0 0 88% !important; }
 }
-  /* =========================================
+
+/* =========================================
    FINAL MOBILE SPACE OPTIMIZATION
 ========================================= */
-
 @media (max-width: 768px) {
-
-  /* GLOBAL */
-
-  .section{
-    padding:42px 14px !important;
-  }
-
-  .container{
-    width:100%;
-  }
-
-  .s-header{
-    margin-bottom:26px !important;
-  }
-
-  .s-header__title{
-    line-height:1.22;
-  }
-
-  .s-header__line{
-    margin-top:14px;
-  }
-
-
-  /* HERO */
-
-  .hero{
-    min-height:auto !important;
-  }
-
-  .hero__media{
-    min-height:220px !important;
-    padding:14px 10px !important;
-  }
-
-  .hero__img{
-    max-width:190px !important;
-  }
-
-  .hero__content{
-    padding:
-      22px
-      16px
-      28px !important;
-  }
-
-  .hero__eyebrow{
-    margin-bottom:12px !important;
-  }
-
-  .hero__title{
-    margin-bottom:12px !important;
-  }
-
-  .hero__sub{
-    margin-bottom:16px !important;
-    line-height:1.6 !important;
-  }
-
-  .hero__price{
-    margin-bottom:16px !important;
-    padding:14px 14px !important;
-  }
-
-  .hero__list{
-    margin-bottom:18px !important;
-  }
-
-  .hero__list li{
-    padding:8px 0 !important;
-    font-size:14px !important;
-  }
-
-  .btn-cta,
-  .btn-cta--light{
-    padding:14px 18px !important;
-    font-size:13px !important;
-  }
-
-
-  /* TRUST */
-
-  .trust__item{
-    padding:14px 8px !important;
-    gap:6px !important;
-  }
-
-  .trust__icon{
-    width:30px !important;
-    height:30px !important;
-  }
-
-  .trust__label{
-    font-size:9px !important;
-    line-height:1.35;
-  }
-
-
-  /* SYMPTOMS */
-
-  .symptoms__grid{
-    gap:12px !important;
-  }
-
-  .symptom-card{
-    min-width:240px !important;
-  }
-
-  .symptom-card__body{
-    padding:14px !important;
-  }
-
-  .symptom-card__text{
-    font-size:14px !important;
-    line-height:1.45 !important;
-  }
-
-
-  /* BENEFITS */
-
-  .benefits__layout{
-    gap:14px !important;
-  }
-
-  .benefits__video{
-    border-radius:14px !important;
-  }
-
-  .benefit-card{
-    padding:14px !important;
-    gap:12px !important;
-  }
-
-  .benefit-card__text{
-    font-size:13px !important;
-    line-height:1.5 !important;
-  }
-
-  #benefitsMobile .benefit-card{
-    min-width:240px !important;
-  }
-
-
-  /* CONDITIONS */
-
-  .conditions__grid{
-    gap:12px !important;
-    padding-bottom:4px !important;
-  }
-
-  .condition-card{
-    min-width:240px !important;
-  }
-
-  .condition-card__body{
-    padding:14px !important;
-  }
-
-  .condition-card__title{
-    font-size:16px !important;
-  }
-
-
-  /* HOW TO */
-
-  .howto__wrap{
-    gap:20px !important;
-  }
-
-  .step{
-    gap:12px !important;
-    padding:14px 0 !important;
-  }
-
-  .step__num{
-    width:32px !important;
-    height:32px !important;
-    font-size:14px !important;
-  }
-
-  .step__title{
-    font-size:14px !important;
-  }
-
-  .step__desc{
-    font-size:13px !important;
-  }
-
-
-  /* STORY */
-
-  .story__img{
-    height:220px !important;
-  }
-
-  .story__content{
-    padding:
-      28px
-      16px
-      34px !important;
-  }
-
-  .story__title{
-    margin-bottom:14px !important;
-  }
-
-  .story__text{
-    margin-bottom:18px !important;
-    font-size:14px !important;
-    line-height:1.7 !important;
-  }
-
-
-  /* BADGES */
-
-  .badges{
-    padding:26px 12px !important;
-  }
-
-  .badges__grid{
-    gap:14px !important;
-  }
-
-  .badge-item{
-    flex:0 0 90px !important;
-    gap:6px !important;
-  }
-
-  .badge-item img{
-    width:48px !important;
-    height:48px !important;
-  }
-
-  .badge-item span{
-    font-size:10px !important;
-    line-height:1.35;
-  }
-
-
-  /* INGREDIENTS */
-
-  .ingredients__layout{
-    border-radius:14px !important;
-  }
-
-  .ing-list{
-    padding:8px !important;
-    gap:6px !important;
-  }
-
-  .ing-item{
-    padding:7px 14px !important;
-    font-size:12px !important;
-  }
-
-  .ing-detail{
-    padding:16px 14px !important;
-    gap:10px !important;
-  }
-
-  .ing-detail h3{
-    font-size:18px !important;
-  }
-
-  .ing-detail p{
-    font-size:13px !important;
-    line-height:1.6 !important;
-  }
-
-
-  /* REVIEWS */
-
-  .reviews__carousel{
-    gap:12px !important;
-    padding:
-      4px
-      2px
-      10px !important;
-  }
-
-  .review-card{
-    flex:0 0 86% !important;
-    padding:16px !important;
-    gap:12px !important;
-  }
-
-  .review-text{
-    font-size:13px !important;
-    line-height:1.6 !important;
-  }
-
-
-  /* ORDER MODAL */
-
-  #orderBox{
-    padding:
-      26px
-      18px
-      22px !important;
-  }
-
-  .pkg-grid{
-    gap:8px !important;
-  }
-
-  .pkg-card{
-    padding:14px !important;
-  }
-
-
-  /* POLICY */
-
-  #policyBox{
-    padding:
-      24px
-      18px
-      18px !important;
-  }
-
-
-  /* WHATSAPP */
-
-  .wa-float{
-    width:48px !important;
-    height:48px !important;
-
-    right:12px !important;
-    bottom:12px !important;
-  }
-
-
-  /* MOBILE CAROUSELS */
-
-  .mobile-carousel{
-    gap:12px !important;
-
-    padding:
-      2px
-      2px
-      10px !important;
-  }
-
-  .mobile-carousel > *{
-    flex:0 0 86% !important;
-  }
-
+  .section { padding: 42px 14px !important; }
+  .container { width: 100%; }
+  .s-header { margin-bottom: 26px !important; }
+  .s-header__title { line-height: 1.22; }
+  .s-header__line { margin-top: 14px; }
+  .hero { min-height: auto !important; }
+  .hero__media { min-height: 220px !important; padding: 14px 10px !important; }
+  .hero__img { max-width: 190px !important; }
+  .hero__content { padding: 22px 16px 28px !important; }
+  .hero__eyebrow { margin-bottom: 12px !important; }
+  .hero__title { margin-bottom: 12px !important; }
+  .hero__sub { margin-bottom: 16px !important; line-height: 1.6 !important; }
+  .hero__price { margin-bottom: 16px !important; padding: 14px 14px !important; }
+  .hero__list { margin-bottom: 18px !important; }
+  .hero__list li { padding: 8px 0 !important; font-size: 14px !important; }
+  .btn-cta, .btn-cta--light { padding: 14px 18px !important; font-size: 13px !important; }
+  .trust__item { padding: 14px 8px !important; gap: 6px !important; }
+  .trust__icon { width: 30px !important; height: 30px !important; }
+  .trust__label { font-size: 9px !important; line-height: 1.35; }
+  .symptoms__grid { gap: 12px !important; }
+  .symptom-card { min-width: 240px !important; }
+  .symptom-card__body { padding: 14px !important; }
+  .symptom-card__text { font-size: 14px !important; line-height: 1.45 !important; }
+  .benefits__layout { gap: 14px !important; }
+  .benefits__video { border-radius: 14px !important; }
+  .benefit-card { padding: 14px !important; gap: 12px !important; }
+  .benefit-card__text { font-size: 13px !important; line-height: 1.5 !important; }
+  #benefitsMobile .benefit-card { min-width: 240px !important; }
+  .conditions__grid { gap: 12px !important; padding-bottom: 4px !important; }
+  .condition-card { min-width: 240px !important; }
+  .condition-card__body { padding: 14px !important; }
+  .condition-card__title { font-size: 16px !important; }
+  .howto__wrap { gap: 20px !important; }
+  .step { gap: 12px !important; padding: 14px 0 !important; }
+  .step__num { width: 32px !important; height: 32px !important; font-size: 14px !important; }
+  .step__title { font-size: 14px !important; }
+  .step__desc { font-size: 13px !important; }
+  .story__img { height: 220px !important; }
+  .story__content { padding: 28px 16px 34px !important; }
+  .story__title { margin-bottom: 14px !important; }
+  .story__text { margin-bottom: 18px !important; font-size: 14px !important; line-height: 1.7 !important; }
+  .badges { padding: 26px 12px !important; }
+  .badges__grid { gap: 14px !important; }
+  .badge-item { flex: 0 0 90px !important; gap: 6px !important; }
+  .badge-item img { width: 48px !important; height: 48px !important; }
+  .badge-item span { font-size: 10px !important; line-height: 1.35; }
+  .ingredients__layout { border-radius: 14px !important; }
+  .ing-list { padding: 8px !important; gap: 6px !important; }
+  .ing-item { padding: 7px 14px !important; font-size: 12px !important; }
+  .ing-detail { padding: 16px 14px !important; gap: 10px !important; }
+  .ing-detail h3 { font-size: 18px !important; }
+  .ing-detail p { font-size: 13px !important; line-height: 1.6 !important; }
+  .reviews__carousel { gap: 12px !important; padding: 4px 2px 10px !important; }
+  .review-card { flex: 0 0 86% !important; padding: 16px !important; gap: 12px !important; }
+  .review-text { font-size: 13px !important; line-height: 1.6 !important; }
+  #orderBox { padding: 26px 18px 22px !important; }
+  .pkg-grid { gap: 8px !important; }
+  .pkg-card { padding: 14px !important; }
+  #policyBox { padding: 24px 18px 18px !important; }
+  .wa-float { width: 48px !important; height: 48px !important; right: 12px !important; bottom: 12px !important; }
+  .mobile-carousel { gap: 12px !important; padding: 2px 2px 10px !important; }
+  .mobile-carousel > * { flex: 0 0 86% !important; }
 }
 </style>
 </head>
@@ -1250,10 +902,23 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
   <img src="Images/whatsapp.webp" alt="WhatsApp" width="54" height="54" loading="lazy"/>
 </a>
 
+<!-- ==================== STICKY CTA BAR ==================== -->
+<div id="stickyCta" aria-label="Quick Order">
+  <div class="sticky-cta__info">
+    <span class="sticky-cta__label">Herbal Relief Spray</span>
+    <div class="sticky-cta__price">
+      <span class="sticky-cta__price-old">Rs 2,500</span>
+      <span class="sticky-cta__price-main">Rs 1,900</span>
+    </div>
+  </div>
+  <button class="sticky-cta__btn open-order" aria-label="Order Now">
+    🌿 अहिले नै अर्डर गर्नुहोस् <span style="font-size:16px;">→</span>
+  </button>
+</div>
+
 <!-- ==================== HERO ==================== -->
 <section class="hero" id="home">
   <div class="hero__media">
-    <!-- Leaf SVG decorations -->
     <svg class="hero__leaf hero__leaf--1" viewBox="0 0 120 160" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M60 0 C20 40, 0 80, 20 130 C40 160, 80 150, 100 110 C120 70, 100 20, 60 0Z" fill="#1a4a2e"/>
       <line x1="60" y1="10" x2="60" y2="150" stroke="#fff" stroke-width="1.5" opacity=".4"/>
@@ -1513,7 +1178,6 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
 <!-- ==================== TRUST BADGES ==================== -->
 <div class="badges">
   <div class="badges__grid">
-    
     <div class="badge-item reveal reveal-d2">
       <img src="https://cdn.shopify.com/s/files/1/0602/2440/5694/files/Instant-relief.jpg?v=1727688883" alt="Instant Relief" loading="lazy"/>
       <span>Instant Relief</span>
@@ -1526,7 +1190,6 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
       <img src="https://cdn.shopify.com/s/files/1/0602/2440/5694/files/Rapid-cooling.jpg?v=1727688883" alt="Rapid Cooling" loading="lazy"/>
       <span>Rapid Cooling</span>
     </div>
-    
   </div>
 </div>
 
@@ -1775,6 +1438,40 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
   }, 3200);
 })();
 
+/* ===== STICKY CTA — show after hero scrolled past ===== */
+(function(){
+  const stickyCta = document.getElementById('stickyCta');
+  const hero = document.getElementById('home');
+  if(!stickyCta || !hero) return;
+
+  function updateSticky(){
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    // Show once the bottom of the hero goes above the viewport
+    if(heroBottom <= 0){
+      stickyCta.classList.add('visible');
+      document.body.classList.add('sticky-visible');
+    } else {
+      stickyCta.classList.remove('visible');
+      document.body.classList.remove('sticky-visible');
+    }
+  }
+
+  // Throttle with rAF for performance
+  let ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateSticky();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive: true});
+
+  // Initial check (in case page reloads mid-scroll)
+  updateSticky();
+})();
+
 /* ===== REVEAL ON SCROLL ===== */
 const revObs = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); revObs.unobserve(e.target); }});
@@ -1823,7 +1520,6 @@ const ingredients=[
     document.querySelectorAll('.ing-item').forEach((el,j)=>el.classList.toggle('active',j===i));
     img.src=ingredients[i].image;img.alt=ingredients[i].name;
     name.textContent=ingredients[i].name;desc.textContent=ingredients[i].desc;
-    // mobile scroll
     const el = list.querySelectorAll('.ing-item')[i];
     if(el) el.scrollIntoView({block:'nearest',inline:'center'});
   }
@@ -1968,257 +1664,104 @@ document.addEventListener('visibilitychange',()=>{
   document.querySelectorAll('video[autoplay]').forEach(v=>document.hidden?v.pause():v.play().catch(()=>{}));
 });
 </script>
-  <script>
 
+<script>
 /* =========================================
    FORCE PAGE TO LOAD FROM TOP
 ========================================= */
-
 (function () {
-
-  // Disable browser scroll restoration
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
-
-  // Remove hash from URL
-  if (window.location.hash) {
-    history.replaceState(null, null, window.location.pathname);
-  }
-
-  // Instantly move to top before render
+  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+  if (window.location.hash) { history.replaceState(null, null, window.location.pathname); }
   window.scrollTo(0, 0);
-
-  // Again after DOM loads
-  document.addEventListener('DOMContentLoaded', function () {
-    window.scrollTo(0, 0);
-  });
-
-  // Again after full page load
+  document.addEventListener('DOMContentLoaded', function () { window.scrollTo(0, 0); });
   window.addEventListener('load', function () {
-
     setTimeout(function () {
-
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'instant'
-      });
-
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
-
     }, 0);
-
   });
-
-  // Prevent browser keeping previous scroll
-  window.addEventListener('beforeunload', function () {
-    window.scrollTo(0, 0);
-  });
-
+  window.addEventListener('beforeunload', function () { window.scrollTo(0, 0); });
 })();
 
-
-/* =========================================
-   REMOVE AUTO FOCUS CAUSING SCROLL
-========================================= */
-
 window.addEventListener('load', function () {
-
   const active = document.activeElement;
-
-  if (
-    active &&
-    (
-      active.tagName === 'INPUT' ||
-      active.tagName === 'TEXTAREA' ||
-      active.tagName === 'BUTTON'
-    )
-  ) {
+  if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'BUTTON')) {
     active.blur();
   }
-
 });
-
 
 /* =========================================
    SAFE REVEAL ANIMATION
 ========================================= */
-
 const revealEls = document.querySelectorAll('.reveal');
-
 const revealObserver = new IntersectionObserver((entries) => {
-
-  entries.forEach(entry => {
-
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-
-  });
-
-}, {
-  threshold: 0.12
-});
-
-revealEls.forEach(el => {
-  revealObserver.observe(el);
-});
-
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => { revealObserver.observe(el); });
 
 /* =========================================
    REVIEW CAROUSEL
 ========================================= */
-
 const carousel = document.getElementById('reviewCarousel');
 const prevBtn = document.getElementById('revPrev');
 const nextBtn = document.getElementById('revNext');
-
 if (carousel && prevBtn && nextBtn) {
-
-  nextBtn.addEventListener('click', () => {
-    carousel.scrollBy({
-      left: 380,
-      behavior: 'smooth'
-    });
-  });
-
-  prevBtn.addEventListener('click', () => {
-    carousel.scrollBy({
-      left: -380,
-      behavior: 'smooth'
-    });
-  });
-
+  nextBtn.addEventListener('click', () => { carousel.scrollBy({ left: 380, behavior: 'smooth' }); });
+  prevBtn.addEventListener('click', () => { carousel.scrollBy({ left: -380, behavior: 'smooth' }); });
 }
-
 
 /* =========================================
    LAZY LOAD REVIEW IMAGES
 ========================================= */
-
 document.querySelectorAll('.review-proof-img').forEach(el => {
   const src = el.getAttribute('data-src');
-
-  if (src) {
-    el.style.backgroundImage = `url('${src}')`;
-  }
+  if (src) { el.style.backgroundImage = `url('${src}')`; }
 });
-
 
 /* =========================================
    MOBILE BENEFITS LAYOUT SWITCH
 ========================================= */
-
 function handleBenefitsLayout() {
-
   const desktop = document.getElementById('benefitsDesktop');
   const mobile = document.getElementById('benefitsMobile');
-
   if (!desktop || !mobile) return;
-
-  if (window.innerWidth <= 1024) {
-    desktop.style.display = 'none';
-    mobile.style.display = 'grid';
-  } else {
-    desktop.style.display = 'grid';
-    mobile.style.display = 'none';
-  }
-
+  if (window.innerWidth <= 1024) { desktop.style.display = 'none'; mobile.style.display = 'grid'; }
+  else { desktop.style.display = 'grid'; mobile.style.display = 'none'; }
 }
-
 handleBenefitsLayout();
-
 window.addEventListener('resize', handleBenefitsLayout);
-
 </script>
-  <script>
 
+<script>
 /* =========================================
    SAFE MOBILE CAROUSEL SYSTEM
 ========================================= */
-
 (function () {
-
   const carousels = [
-
     document.querySelector('.symptoms__grid'),
     document.querySelector('#benefitsMobile'),
     document.querySelector('.conditions__grid'),
     document.querySelector('.reviews__carousel'),
-   
-
   ];
-
   carousels.forEach((carousel) => {
-
     if (!carousel) return;
-
     carousel.classList.add('mobile-carousel');
-
-    let startX = 0;
-    let startY = 0;
-
-    let isDragging = false;
-    let isHorizontal = false;
-
+    let startX = 0, startY = 0, isDragging = false, isHorizontal = false;
     carousel.addEventListener('touchstart', (e) => {
-
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-
-      isDragging = true;
-      isHorizontal = false;
-
+      startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+      isDragging = true; isHorizontal = false;
     }, { passive: true });
-
-
-
-
     carousel.addEventListener('touchmove', (e) => {
-
       if (!isDragging) return;
-
-      const deltaX =
-        Math.abs(e.touches[0].clientX - startX);
-
-      const deltaY =
-        Math.abs(e.touches[0].clientY - startY);
-
-
-      /* detect horizontal intent */
-      if (deltaX > 10 && deltaX > deltaY) {
-        isHorizontal = true;
-      }
-
-
-      /*
-        ONLY stop page scroll
-        when clearly horizontal swipe
-      */
-      if (isHorizontal) {
-
-        e.stopPropagation();
-
-      }
-
+      const deltaX = Math.abs(e.touches[0].clientX - startX);
+      const deltaY = Math.abs(e.touches[0].clientY - startY);
+      if (deltaX > 10 && deltaX > deltaY) { isHorizontal = true; }
+      if (isHorizontal) { e.stopPropagation(); }
     }, { passive: true });
-
-
-
-
-    carousel.addEventListener('touchend', () => {
-
-      isDragging = false;
-      isHorizontal = false;
-
-    });
-
+    carousel.addEventListener('touchend', () => { isDragging = false; isHorizontal = false; });
   });
-
 })();
-
 </script>
 </body>
 </html>
