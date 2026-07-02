@@ -449,7 +449,7 @@ body.sticky-visible .wa-float{bottom:88px;}
   #orderBox {
     border-radius: 24px;
     height: auto;
-    max-height: calc(80dvh - 40px);
+    max-height: calc(100dvh - 40px);
     box-shadow: 0 32px 80px rgba(0,0,0,.24);
   }
 }
@@ -1387,11 +1387,35 @@ function trackPx(event,params){if(typeof fbq==='function')fbq('track',event,para
 function openOrder(){
   orderOverlay.classList.add('open');
   document.body.style.overflow='hidden';
-  // Reset scroll to top of scroll area
   document.querySelector('.order-scroll').scrollTop=0;
   trackPx('AddToCart',{content_name:'Herbal Relief Spray 60ml',content_ids:['herbal-relief-spray-60ml'],content_type:'product',currency:'NPR',value:1900});
+  // Push a history entry so the back button closes the modal instead of leaving the page
+  if(!window.location.hash.includes('order')){
+    history.pushState({orderOpen:true},'','#order');
+  }
 }
-function closeOrder(){orderOverlay.classList.remove('open');document.body.style.overflow='';}
+function closeOrder(){
+  orderOverlay.classList.remove('open');
+  document.body.style.overflow='';
+  confirmStep.style.display='none';
+  orderForm.style.display='block';
+  orderFormFooter.style.display='block';
+  // If the #order hash is still in the URL, go back silently
+  if(window.location.hash==='#order'){
+    history.back();
+  }
+}
+// Handle the hardware/browser back button
+window.addEventListener('popstate',function(e){
+  // If modal is open and we just popped back from #order, close it
+  if(orderOverlay.classList.contains('open')){
+    orderOverlay.classList.remove('open');
+    document.body.style.overflow='';
+    confirmStep.style.display='none';
+    orderForm.style.display='block';
+    orderFormFooter.style.display='block';
+  }
+});
 
 document.querySelectorAll('.open-order').forEach(b=>b.addEventListener('click',openOrder));
 document.getElementById('orderClose').onclick=closeOrder;
