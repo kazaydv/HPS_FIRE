@@ -391,15 +391,21 @@ body.sticky-visible .wa-float{bottom:88px;}
 .policy-ok:hover{background:var(--c-forest-mid);}
 
 /* =====================================================
-   ORDER MODAL — FULL 100VH, SENIOR-FRIENDLY
-   
-   Strategy:
-   - Modal box fills the full 100vh (edge-to-edge on mobile)
-   - Large, easy-to-read text and generous tap targets
-   - Fixed header + fixed footer, scrollable middle
-   - Everything sized for older eyes: no tiny text
+   ORDER MODAL
+   Target: fits in 100vh on all screens — no scroll needed.
+   Verified at 375×667 (iPhone SE, worst-case mobile).
+
+   Height budget (667px viewport):
+     Header  : ~66px
+     Footer  : ~69px
+     Scroll  : ~532px available → ~514px used → 18px slack
+
+   Layout on mobile: bottom sheet (rounded top, flush bottom).
+   Layout on desktop (≥600px): centered card.
+   All font sizes ≥14px (senior-friendly, no iOS auto-zoom).
 ===================================================== */
 
+/* ── Overlay ── */
 #orderOverlay {
   display: none;
   position: fixed;
@@ -407,115 +413,120 @@ body.sticky-visible .wa-float{bottom:88px;}
   z-index: 99990;
   background: rgba(10,18,14,.65);
   backdrop-filter: blur(6px);
-  align-items: flex-end;   /* sheet slides up from bottom on mobile */
+  align-items: flex-end;
   justify-content: center;
   overflow: hidden;
 }
 #orderOverlay.open { display: flex; }
 
+/* ── Box: full-height bottom sheet on mobile ── */
 #orderBox {
   background: var(--c-white);
-  border-radius: 20px 20px 0 0;   /* rounded top, flush bottom */
+  border-radius: 20px 20px 0 0;
   width: 100%;
   max-width: 520px;
-  height: 100vh;                  /* fill full viewport */
-  max-height: 100vh;
+  height: 100dvh;           /* dvh = dynamic viewport height, accounts for browser chrome */
+  max-height: 100dvh;
   display: flex;
   flex-direction: column;
   position: relative;
-  box-shadow: 0 -8px 40px rgba(0,0,0,.2);
-  animation: slideUp .3s var(--ease);
+  box-shadow: 0 -8px 40px rgba(0,0,0,.22);
+  animation: slideUp .28s var(--ease);
   overflow: hidden;
 }
 @keyframes slideUp {
-  from { transform: translateY(40px); opacity: 0; }
+  from { transform: translateY(32px); opacity: 0; }
   to   { transform: translateY(0);    opacity: 1; }
 }
+/* Fallback for browsers without dvh */
+@supports not (height: 100dvh) {
+  #orderBox { height: 100vh; max-height: 100vh; }
+}
 
-/* On large screens (tablet/desktop), center as a card */
+/* Desktop: centered card */
 @media (min-width: 600px) {
-  #orderOverlay {
-    align-items: center;
-    padding: 20px;
-  }
+  #orderOverlay { align-items: center; padding: 20px; }
   #orderBox {
     border-radius: 24px;
     height: auto;
-    max-height: 100vh;
+    max-height: calc(80dvh - 40px);
+    box-shadow: 0 32px 80px rgba(0,0,0,.24);
   }
 }
 
-/* ── Fixed header ── */
+/* ── FIXED HEADER ── */
 .order-header {
   flex-shrink: 0;
-  padding: 20px 24px 14px;
+  padding: 14px 20px 10px;
   border-bottom: 2px solid var(--c-border);
   background: var(--c-white);
   position: relative;
 }
 #orderClose {
   position: absolute;
-  top: 16px;
-  right: 18px;
-  width: 38px;
-  height: 38px;
+  top: 12px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   border: 2px solid var(--c-border);
   background: var(--c-cream);
-  font-size: 22px;
+  font-size: 20px;
+  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--c-muted);
   transition: background .2s;
-  line-height: 1;
 }
 #orderClose:hover { background: var(--c-cream-dark); }
 .order-title {
   font-family: var(--ff-head);
-  font-size: 22px;
+  font-size: 20px;
   color: var(--c-forest);
-  margin-bottom: 3px;
-  padding-right: 48px;
+  margin-bottom: 2px;
+  padding-right: 44px;
   line-height: 1.2;
 }
 .order-sub {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--c-muted);
-  line-height: 1.4;
+  line-height: 1.35;
   font-weight: 500;
 }
 
-/* ── Scrollable middle ── */
+/* ── SCROLLABLE MIDDLE ── */
 .order-scroll {
-  flex: 1;
+  flex: 1 1 0;           /* grow to fill, shrink if needed */
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 18px 24px;
+  padding: 12px 18px;
   scrollbar-width: thin;
   scrollbar-color: var(--c-border) transparent;
+  /* Prevent elastic overscroll bouncing iOS */
+  overscroll-behavior: contain;
 }
-.order-scroll::-webkit-scrollbar { width: 4px; }
+.order-scroll::-webkit-scrollbar { width: 3px; }
 .order-scroll::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 999px; }
 
-/* ── Form fields — single column, large tap targets ── */
+/* ── FORM FIELDS — single column, senior-friendly ── */
 .form-field {
   position: relative;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 .form-field input {
   width: 100%;
-  padding: 0 16px;
+  padding: 0 14px;
   border: 2px solid var(--c-border);
-  border-radius: 12px;
-  font-size: 16px;          /* 16px prevents iOS auto-zoom */
+  border-radius: 10px;
+  font-size: 16px;       /* 16px = no iOS auto-zoom */
   font-family: var(--ff-body);
+  font-weight: 500;
   background: var(--c-cream);
   color: var(--c-text);
   transition: border-color .2s, box-shadow .2s;
   caret-color: var(--c-forest);
-  height: 52px;             /* large tap target */
-  font-weight: 500;
+  height: 46px;          /* comfortable tap target */
 }
 .form-field input:focus {
   outline: none;
@@ -525,60 +536,62 @@ body.sticky-visible .wa-float{bottom:88px;}
 }
 .form-field label {
   position: absolute;
-  top: -9px;
-  left: 14px;
-  padding: 0 5px;
+  top: -8px;
+  left: 12px;
+  padding: 0 4px;
   background: var(--c-cream);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   color: var(--c-forest);
   letter-spacing: .05em;
   text-transform: uppercase;
-  border-radius: 4px;
+  border-radius: 3px;
   pointer-events: none;
+  transition: background .15s;
 }
 .form-field input:focus ~ label,
 .form-field input:not(:placeholder-shown) ~ label { background: #fff; }
 
-/* ── Package grid — one card per row ── */
+/* ── PACKAGE CARDS — one per row, radio-style ── */
 .pkg-grid {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin: 4px 0 14px;
+  gap: 8px;
+  margin: 2px 0 10px;
 }
 .pkg-card {
-  padding: 14px 18px;
-  border-radius: 14px;
+  padding: 10px 14px;
+  border-radius: 12px;
   border: 2px solid var(--c-border);
   background: var(--c-cream);
   cursor: pointer;
   position: relative;
-  transition: border-color .2s, background .2s, box-shadow .2s;
-  /* Row layout: name on left, price on right */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  min-height: 68px;
+  gap: 10px;
+  min-height: 62px;
+  transition: border-color .2s, background .2s, box-shadow .15s;
 }
-.pkg-card:hover { border-color: var(--c-forest-light); }
+.pkg-card:active { transform: scale(.99); }
+.pkg-card:hover  { border-color: var(--c-forest-light); }
 .pkg-card.sel {
   border-color: var(--c-forest);
   background: #f0faf4;
-  box-shadow: 0 4px 16px rgba(26,74,46,.12);
+  box-shadow: 0 3px 12px rgba(26,74,46,.1);
 }
-/* Left side: radio dot + name */
+
+/* Left: radio + label */
 .pkg-card__row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex: 1;
+  min-width: 0;
 }
-/* Radio-style indicator */
 .pkg-card__radio {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   border: 2px solid var(--c-border);
   flex-shrink: 0;
@@ -595,22 +608,25 @@ body.sticky-visible .wa-float{bottom:88px;}
   background: var(--c-forest);
   opacity: 0;
   transform: scale(0);
-  transition: opacity .2s, transform .2s;
+  transition: opacity .18s, transform .18s;
 }
-.pkg-card.sel .pkg-card__radio {
-  border-color: var(--c-forest);
-}
-.pkg-card.sel .pkg-card__radio::after {
-  opacity: 1;
-  transform: scale(1);
-}
+.pkg-card.sel .pkg-card__radio { border-color: var(--c-forest); }
+.pkg-card.sel .pkg-card__radio::after { opacity: 1; transform: scale(1); }
 .pkg-card__name {
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--c-forest);
   line-height: 1.3;
 }
-/* Right side: prices + save badge */
+.pkg-card__name small {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--c-muted);
+  margin-top: 1px;
+}
+
+/* Right: price stack */
 .pkg-card__prices {
   display: flex;
   flex-direction: column;
@@ -619,57 +635,54 @@ body.sticky-visible .wa-float{bottom:88px;}
   flex-shrink: 0;
 }
 .pkg-card__old {
-  font-size: 12px;
+  font-size: 11px;
   text-decoration: line-through;
   color: #aaa;
   line-height: 1;
 }
 .pkg-card__new {
   font-family: var(--ff-head);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
   color: var(--c-forest);
   line-height: 1;
 }
 .pkg-card__save {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   background: var(--c-cta);
   color: #fff;
-  padding: 3px 10px;
+  padding: 2px 8px;
   border-radius: 999px;
-  margin-top: 4px;
+  margin-top: 3px;
   display: inline-block;
-  align-self: flex-end;
 }
 .pkg-best {
   position: absolute;
   top: -9px;
-  right: 14px;          /* right-aligned — cleaner on a full-width card */
-  left: auto;
-  transform: none;
-  font-size: 10px;
+  right: 12px;
+  font-size: 9px;
   font-weight: 800;
-  letter-spacing: .05em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   background: var(--c-gold);
   color: #fff;
-  padding: 3px 10px;
+  padding: 2px 9px;
   border-radius: 999px;
   white-space: nowrap;
 }
 
-/* ── Consent row ── */
+/* ── CONSENT ROW ── */
 .consent-row {
   display: grid;
   grid-template-columns: 20px 1fr;
-  gap: 10px;
+  gap: 8px;
   align-items: flex-start;
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 11px;
+  line-height: 1.5;
   color: var(--c-muted);
-  margin: 0 0 4px;
-  padding: 12px 14px;
+  margin: 0;
+  padding: 9px 12px;
   background: var(--c-cream);
   border-radius: 10px;
   border: 1px solid var(--c-border);
@@ -677,31 +690,31 @@ body.sticky-visible .wa-float{bottom:88px;}
 .consent-row a { color: var(--c-forest); font-weight: 600; text-decoration: underline; }
 .consent-row input {
   accent-color: var(--c-forest);
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   margin-top: 1px;
   cursor: pointer;
 }
 
-/* ── Fixed footer — submit always visible ── */
+/* ── FIXED FOOTER ── */
 .order-footer {
   flex-shrink: 0;
-  padding: 12px 24px 20px;
+  padding: 10px 18px 14px;
   background: var(--c-white);
   border-top: 2px solid var(--c-border);
 }
 .btn-submit {
   width: 100%;
-  padding: 16px;
+  padding: 14px;
   border-radius: 999px;
   border: none;
   background: linear-gradient(135deg, var(--c-cta), var(--c-cta-dark));
   color: #fff;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: .04em;
   text-transform: uppercase;
-  box-shadow: 0 8px 24px rgba(212,85,10,.35);
+  box-shadow: 0 8px 24px rgba(212,85,10,.32);
   position: relative;
   overflow: hidden;
   transition: transform .2s, box-shadow .2s;
@@ -714,14 +727,14 @@ body.sticky-visible .wa-float{bottom:88px;}
   transform: translateX(-100%);
   animation: shine 4s ease-in-out infinite;
 }
-.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(212,85,10,.45); }
-.btn-submit:active { transform: scale(.98); }
+.btn-submit:hover  { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(212,85,10,.44); }
+.btn-submit:active { transform: scale(.98); box-shadow: none; }
 
-/* ── Error box ── */
+/* ── ERROR BOX ── */
 #formError {
   display: none;
-  margin-top: 10px;
-  padding: 12px 16px;
+  margin-top: 8px;
+  padding: 10px 14px;
   border-radius: 10px;
   background: #fef2f2;
   border: 1px solid #fecaca;
@@ -731,13 +744,13 @@ body.sticky-visible .wa-float{bottom:88px;}
   text-align: center;
 }
 
-/* ── Confirm step ── */
+/* ── CONFIRM STEP ── */
 #confirmStep { display: none; }
 .confirm-details {
   background: var(--c-cream);
-  border-radius: 14px;
-  padding: 16px 18px;
-  margin: 10px 0 16px;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 8px 0 14px;
   font-size: 15px;
   line-height: 2;
   color: var(--c-text);
@@ -746,17 +759,16 @@ body.sticky-visible .wa-float{bottom:88px;}
 .confirm-actions { display: flex; gap: 10px; }
 .btn-edit {
   flex: 0 0 auto;
-  padding: 14px 20px;
+  padding: 13px 18px;
   border-radius: 999px;
   border: 2px solid var(--c-border);
   background: var(--c-white);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--c-text);
   transition: border-color .2s, background .2s;
 }
 .btn-edit:hover { border-color: var(--c-forest-light); background: var(--c-cream); }
-
 /* ===== LOADING ===== */
 #loadOverlay{display:none;position:fixed;inset:0;z-index:999999;background:rgba(26,74,46,.95);flex-direction:column;align-items:center;justify-content:center;gap:24px;}
 #loadOverlay.on{display:flex;}
@@ -1189,7 +1201,7 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
           <div class="pkg-card" id="pkg1" data-bottles="1" data-price="1900" role="button" tabindex="0" aria-pressed="false">
             <div class="pkg-card__row">
               <span class="pkg-card__radio"></span>
-              <span class="pkg-card__name">X1 — 1 बोतल<br><small style="font-weight:500;font-size:12px;color:var(--c-muted);">60ml</small></span>
+              <span class="pkg-card__name">X1 — 1 बोतल<br><small style="font-weight:500;font-size:12px;color:var(--c-muted);">60ml · एक पटकको उपचार</small></span>
             </div>
             <div class="pkg-card__prices">
               <span class="pkg-card__old">Rs 2,500</span>
@@ -1201,7 +1213,7 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
             <span class="pkg-best">Best Choice</span>
             <div class="pkg-card__row">
               <span class="pkg-card__radio"></span>
-              <span class="pkg-card__name">X2 — 2 बोतल<br><small style="font-weight:500;font-size:12px;color:var(--c-muted);">120ml</small></span>
+              <span class="pkg-card__name">X2 — 2 बोतल<br><small style="font-weight:500;font-size:12px;color:var(--c-muted);">120ml · पूरा उपचार</small></span>
             </div>
             <div class="pkg-card__prices">
               <span class="pkg-card__old">Rs 5,000</span>
@@ -1212,7 +1224,7 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
           <div class="pkg-card" id="pkg3" data-bottles="3" data-price="4500" role="button" tabindex="0" aria-pressed="false">
             <div class="pkg-card__row">
               <span class="pkg-card__radio"></span>
-              <span class="pkg-card__name">X3 — 3 बोतल<br><small style="font-weight:500;font-size:12px;color:var(--c-muted);">180ml</small></span>
+              <span class="pkg-card__name">X3 — 3 बोतल<br><small style="font-weight:500;font-size:12px;color:var(--c-muted);">180ml · परिवारको लागि</small></span>
             </div>
             <div class="pkg-card__prices">
               <span class="pkg-card__old">Rs 7,500</span>
