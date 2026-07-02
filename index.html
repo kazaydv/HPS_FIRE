@@ -79,95 +79,35 @@ body{padding-top:var(--promo-h);}
 
 /* ===== STICKY CTA BAR ===== */
 #stickyCta{
-  position:fixed;
-  bottom:0;left:0;right:0;
-  z-index:9990;
-  background:var(--c-white);
-  border-top:1px solid var(--c-border);
+  position:fixed;bottom:0;left:0;right:0;z-index:9990;
+  background:var(--c-white);border-top:1px solid var(--c-border);
   box-shadow:0 -8px 32px rgba(26,74,46,.14);
   padding:12px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  transform:translateY(100%);
-  transition:transform .4s var(--ease);
-  will-change:transform;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  transform:translateY(100%);transition:transform .4s var(--ease);will-change:transform;
 }
-#stickyCta.visible{
-  transform:translateY(0);
-}
-.sticky-cta__info{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-  flex-shrink:0;
-}
-.sticky-cta__label{
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  color:var(--c-muted);
-}
-.sticky-cta__price{
-  display:flex;
-  align-items:baseline;
-  gap:7px;
-}
-.sticky-cta__price-old{
-  font-size:13px;
-  text-decoration:line-through;
-  color:#aaa;
-  font-weight:500;
-}
-.sticky-cta__price-main{
-  font-family:var(--ff-head);
-  font-size:22px;
-  font-weight:800;
-  color:var(--c-forest);
-  line-height:1;
-}
+#stickyCta.visible{transform:translateY(0);}
+.sticky-cta__info{display:flex;flex-direction:column;gap:2px;flex-shrink:0;}
+.sticky-cta__label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c-muted);}
+.sticky-cta__price{display:flex;align-items:baseline;gap:7px;}
+.sticky-cta__price-old{font-size:13px;text-decoration:line-through;color:#aaa;font-weight:500;}
+.sticky-cta__price-main{font-family:var(--ff-head);font-size:22px;font-weight:800;color:var(--c-forest);line-height:1;}
 .sticky-cta__btn{
-  flex:1;
-  max-width:340px;
-  padding:14px 20px;
-  border-radius:999px;
-  border:none;
+  flex:1;max-width:340px;padding:14px 20px;border-radius:999px;border:none;
   background:linear-gradient(135deg,var(--c-cta),var(--c-cta-dark));
-  color:#fff;
-  font-size:14px;
-  font-weight:700;
-  letter-spacing:.05em;
-  text-transform:uppercase;
-  box-shadow:0 8px 24px rgba(212,85,10,.35);
-  position:relative;
-  overflow:hidden;
+  color:#fff;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  box-shadow:0 8px 24px rgba(212,85,10,.35);position:relative;overflow:hidden;
   transition:transform .2s var(--ease),box-shadow .2s var(--ease);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  white-space:nowrap;
+  display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;
 }
 .sticky-cta__btn::after{
-  content:'';
-  position:absolute;inset:0;
+  content:'';position:absolute;inset:0;
   background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.3) 50%,transparent 70%);
-  transform:translateX(-100%);
-  animation:shine 3.5s ease-in-out infinite;
+  transform:translateX(-100%);animation:shine 3.5s ease-in-out infinite;
 }
-.sticky-cta__btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 14px 36px rgba(212,85,10,.45);
-}
-.sticky-cta__btn:active{
-  transform:translateY(0);
-}
-/* Push WA float up when sticky bar is visible */
-body.sticky-visible .wa-float{
-  bottom:88px;
-}
+.sticky-cta__btn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(212,85,10,.45);}
+.sticky-cta__btn:active{transform:translateY(0);}
+body.sticky-visible .wa-float{bottom:88px;}
 @media(max-width:600px){
   #stickyCta{padding:10px 14px;gap:10px;}
   .sticky-cta__label{font-size:10px;}
@@ -176,10 +116,7 @@ body.sticky-visible .wa-float{
   .sticky-cta__btn{font-size:12px;padding:12px 14px;max-width:none;}
   body.sticky-visible .wa-float{bottom:82px;}
 }
-@media(max-width:380px){
-  .sticky-cta__info{display:none;}
-  .sticky-cta__btn{max-width:100%;}
-}
+@media(max-width:380px){.sticky-cta__info{display:none;}.sticky-cta__btn{max-width:100%;}}
 
 /* ===== WHATSAPP FLOAT ===== */
 .wa-float{
@@ -203,12 +140,10 @@ body.sticky-visible .wa-float{
 .hero{
   background:var(--c-white);
   min-height:calc(100vh - var(--promo-h));
-  display:grid;grid-template-columns:1fr 1fr;align-items:center;
-  gap:0;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;overflow:hidden;
 }
 .hero__media{
-  background:transparent;
-  position:relative;height:100%;min-height:560px;
+  background:transparent;position:relative;height:100%;min-height:560px;
   display:flex;align-items:center;justify-content:center;padding:48px 32px;
 }
 .hero__media::before{
@@ -221,12 +156,9 @@ body.sticky-visible .wa-float{
   animation:floatImg 5s ease-in-out infinite;
 }
 @keyframes floatImg{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
-.hero__leaf{
-  position:absolute;pointer-events:none;opacity:.18;
-}
+.hero__leaf{position:absolute;pointer-events:none;opacity:.18;}
 .hero__leaf--1{top:10%;left:8%;width:120px;transform:rotate(-20deg);}
 .hero__leaf--2{bottom:12%;right:6%;width:90px;transform:rotate(30deg);}
-
 .hero__content{padding:60px 56px 60px 48px;}
 .hero__eyebrow{
   display:inline-flex;align-items:center;gap:8px;
@@ -234,28 +166,18 @@ body.sticky-visible .wa-float{
   color:var(--c-gold);margin-bottom:20px;
 }
 .hero__eyebrow::before{content:'';width:28px;height:1px;background:var(--c-gold);}
-.hero__title{
-  font-family:var(--ff-head);font-size:clamp(36px,4vw,56px);
-  line-height:1.1;color:var(--c-forest);margin-bottom:16px;
-}
+.hero__title{font-family:var(--ff-head);font-size:clamp(36px,4vw,56px);line-height:1.1;color:var(--c-forest);margin-bottom:16px;}
 .hero__title em{font-style:italic;color:var(--c-gold);}
-.hero__sub{
-  font-size:17px;line-height:1.7;color:var(--c-muted);
-  margin-bottom:28px;max-width:420px;
-}
+.hero__sub{font-size:17px;line-height:1.7;color:var(--c-muted);margin-bottom:28px;max-width:420px;}
 .hero__sub strong{color:var(--c-forest);font-weight:600;}
 .hero__price{
   display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
   margin-bottom:28px;padding:20px 24px;
-  background:var(--c-cream);border-radius:var(--radius);
-  border:1px solid var(--c-border);
+  background:var(--c-cream);border-radius:var(--radius);border:1px solid var(--c-border);
 }
 .hero__price-old{font-size:18px;text-decoration:line-through;color:black;font-weight:500;}
 .hero__price-main{font-family:var(--ff-head);font-size:36px;font-weight:800;color:var(--c-forest);}
-.hero__price-save{
-  font-size:12px;font-weight:700;letter-spacing:.04em;
-  background:var(--c-cta);color:#fff;padding:4px 12px;border-radius:999px;
-}
+.hero__price-save{font-size:12px;font-weight:700;letter-spacing:.04em;background:var(--c-cta);color:#fff;padding:4px 12px;border-radius:999px;}
 .hero__list{list-style:none;margin-bottom:32px;}
 .hero__list li{
   display:flex;align-items:flex-start;gap:10px;
@@ -264,19 +186,16 @@ body.sticky-visible .wa-float{
 }
 .hero__list li:last-child{border-bottom:none;}
 .hero__list li::before{
-  content:'';width:20px;height:20px;border-radius:50%;
-  background:var(--c-forest);flex-shrink:0;margin-top:1px;
+  content:'';width:20px;height:20px;border-radius:50%;background:var(--c-forest);flex-shrink:0;margin-top:1px;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
   background-size:12px;background-position:center;background-repeat:no-repeat;
 }
 .btn-cta{
   display:flex;align-items:center;justify-content:center;gap:8px;
-  width:100%;max-width:380px;padding:16px 28px;
-  border-radius:999px;border:none;
+  width:100%;max-width:380px;padding:16px 28px;border-radius:999px;border:none;
   background:linear-gradient(135deg,var(--c-cta),var(--c-cta-dark));
   color:#fff;font-size:15px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  box-shadow:0 12px 32px rgba(212,85,10,.35);
-  position:relative;overflow:hidden;
+  box-shadow:0 12px 32px rgba(212,85,10,.35);position:relative;overflow:hidden;
   transition:transform .2s var(--ease),box-shadow .2s var(--ease);
 }
 .btn-cta::after{
@@ -289,7 +208,6 @@ body.sticky-visible .wa-float{
 .btn-cta:active{transform:translateY(-1px);}
 .btn-cta .arrow{transition:transform .2s var(--ease);}
 .btn-cta:hover .arrow{transform:translateX(4px);}
-
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;}
   .hero__media{min-height:290px;padding:20px 20px;}
@@ -305,14 +223,10 @@ body.sticky-visible .wa-float{
 
 /* ===== TRUST STRIP ===== */
 .trust{background:var(--c-cream-dark);padding:0;}
-.trust__inner{
-  max-width:1100px;margin:0 auto;
-  display:flex;align-items:stretch;
-}
+.trust__inner{max-width:1100px;margin:0 auto;display:flex;align-items:stretch;}
 .trust__item{
   flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:10px;padding:28px 16px;text-align:center;
-  border-right:1px solid rgba(255,255,255,.1);
+  gap:10px;padding:28px 16px;text-align:center;border-right:1px solid rgba(255,255,255,.1);
 }
 .trust__item:last-child{border-right:none;}
 .trust__icon{width:48px;height:48px;object-fit:contain;}
@@ -327,19 +241,10 @@ body.sticky-visible .wa-float{
 
 /* ===== SECTION HEADER ===== */
 .s-header{text-align:center;margin-bottom:56px;}
-.s-header__eyebrow{
-  display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--c-gold);margin-bottom:14px;
-}
-.s-header__title{
-  font-family:var(--ff-head);font-size:clamp(26px,3.5vw,42px);
-  line-height:1.25;color:var(--c-forest);
-}
+.s-header__eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--c-gold);margin-bottom:14px;}
+.s-header__title{font-family:var(--ff-head);font-size:clamp(26px,3.5vw,42px);line-height:1.25;color:var(--c-forest);}
 .s-header__title em{font-style:italic;color:var(--c-gold);}
-.s-header__line{
-  width:48px;height:2px;background:var(--c-gold);
-  margin:20px auto 0;border-radius:999px;
-}
+.s-header__line{width:48px;height:2px;background:var(--c-gold);margin:20px auto 0;border-radius:999px;}
 
 /* ===== SECTION WRAP ===== */
 .section{padding:80px 24px;}
@@ -347,19 +252,13 @@ body.sticky-visible .wa-float{
 .container{max-width:1120px;margin:0 auto;}
 
 /* ===== SYMPTOMS ===== */
-.symptoms__grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
-}
+.symptoms__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
 .symptom-card{
   background:var(--c-white);border-radius:var(--radius);overflow:hidden;
-  border:1px solid var(--c-border);
-  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+  border:1px solid var(--c-border);transition:transform .3s var(--ease),box-shadow .3s var(--ease);
 }
 .symptom-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
-.symptom-card__img{
-  width:100%;aspect-ratio:4/3;object-fit:cover;
-  transition:transform .5s var(--ease);
-}
+.symptom-card__img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .5s var(--ease);}
 .symptom-card:hover .symptom-card__img{transform:scale(1.04);}
 .symptom-card__body{padding:18px 16px;}
 .symptom-card__text{font-size:16px;line-height:1.6;color:var(--c-muted);font-weight:800;}
@@ -367,121 +266,62 @@ body.sticky-visible .wa-float{
 @media(max-width:480px){.symptoms__grid{grid-template-columns:1fr;gap:16px;}}
 
 /* ===== BENEFITS ===== */
-.benefits__layout{
-  display:grid;grid-template-columns:1fr 480px 1fr;
-  grid-template-rows:auto auto;
-  gap:32px;align-items:center;
-}
-.benefit-b1{grid-area:1/1/2/2;}
-.benefit-b2{grid-area:2/1/3/2;}
-.benefit-video{grid-area:1/2/3/3;}
-.benefit-b3{grid-area:1/3/2/4;}
-.benefit-b4{grid-area:2/3/3/4;}
-
-.benefit-card{
-  display:flex;gap:16px;align-items:flex-start;
-  background:var(--c-white);padding:20px;border-radius:var(--radius);
-  border:1px solid var(--c-border);
-  transition:border-color .25s,box-shadow .25s;
-}
+.benefits__layout{display:grid;grid-template-columns:1fr 480px 1fr;grid-template-rows:auto auto;gap:32px;align-items:center;}
+.benefit-b1{grid-area:1/1/2/2;}.benefit-b2{grid-area:2/1/3/2;}.benefit-video{grid-area:1/2/3/3;}.benefit-b3{grid-area:1/3/2/4;}.benefit-b4{grid-area:2/3/3/4;}
+.benefit-card{display:flex;gap:16px;align-items:flex-start;background:var(--c-white);padding:20px;border-radius:var(--radius);border:1px solid var(--c-border);transition:border-color .25s,box-shadow .25s;}
 .benefit-card:hover{border-color:var(--c-forest-light);box-shadow:var(--shadow-sm);}
-.benefit-card__icon{
-  width:60px;height:60px;border-radius:50%;overflow:hidden;flex-shrink:0;
-  border:2px solid var(--c-cream-dark);
-}
+.benefit-card__icon{width:60px;height:60px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--c-cream-dark);}
 .benefit-card__icon img{width:100%;height:100%;object-fit:cover;}
 .benefit-card__text{font-size:14px;line-height:1.65;color:var(--c-muted);}
 .benefit-card__text strong{display:block;font-size:15px;color:var(--c-forest);margin-bottom:4px;font-weight:700;}
-
-.benefits__video{
-  border-radius:20px;overflow:hidden;box-shadow:var(--shadow-lg);
-  border:1px solid var(--c-border);aspect-ratio:4/3;
-}
+.benefits__video{border-radius:20px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--c-border);aspect-ratio:4/3;}
 .benefits__video video{width:100%;height:100%;object-fit:cover;}
-
 @media(max-width:1024px){
-  .benefits__layout{
-    grid-template-columns:1fr;grid-template-rows:unset;
-    grid-template-areas:none;
-  }
+  .benefits__layout{grid-template-columns:1fr;grid-template-rows:unset;grid-template-areas:none;}
   .benefit-b1,.benefit-b2,.benefit-b3,.benefit-b4,.benefit-video{grid-area:unset;}
   .benefit-video{order:-1;}
   .benefits__grid-mobile{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 }
-@media(max-width:600px){
-  .benefit-card{flex-direction:column;}
-  .benefit-card__icon{width:44px;height:44px;}
-  .benefits__grid-mobile{grid-template-columns:1fr;}
-}
+@media(max-width:600px){.benefit-card{flex-direction:column;}.benefit-card__icon{width:44px;height:44px;}.benefits__grid-mobile{grid-template-columns:1fr;}}
 
 /* ===== CONDITIONS ===== */
 .conditions__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
-.condition-card{
-  background:var(--c-white);border-radius:20px;overflow:hidden;
-  border:1px solid var(--c-border);text-align:center;
-  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
-}
+.condition-card{background:var(--c-white);border-radius:20px;overflow:hidden;border:1px solid var(--c-border);text-align:center;transition:transform .3s var(--ease),box-shadow .3s var(--ease);}
 .condition-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
 .condition-card img{width:100%;aspect-ratio:4/3;object-fit:cover;}
 .condition-card__body{padding:20px 16px;}
 .condition-card__title{font-family:var(--ff-head);font-size:18px;color:var(--c-forest);margin-bottom:4px;}
 .condition-card__sub{font-size:13px;color:var(--c-gold);font-weight:600;letter-spacing:.04em;}
-@media(max-width:700px){
-  .conditions__grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding-bottom:8px;}
-  .condition-card{flex:0 0 78%;scroll-snap-align:start;}
-}
+@media(max-width:700px){.conditions__grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding-bottom:8px;}.condition-card{flex:0 0 78%;scroll-snap-align:start;}}
 
 /* ===== HOW TO USE ===== */
-.howto__wrap{
-  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
-}
+.howto__wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
 .howto__img{border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);}
 .howto__img img{width:100%;max-width:320px;margin:0 auto;}
 .howto__steps{display:flex;flex-direction:column;gap:4px;}
 .step{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--c-border);}
 .step:last-child{border-bottom:none;}
-.step__num{
-  width:40px;height:40px;border-radius:50%;background:var(--c-forest);
-  color:var(--c-cream);font-family:var(--ff-head);font-size:18px;font-weight:800;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;
-}
+.step__num{width:40px;height:40px;border-radius:50%;background:var(--c-forest);color:var(--c-cream);font-family:var(--ff-head);font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
 .step__title{font-size:16px;font-weight:700;color:var(--c-forest);margin-bottom:4px;}
 .step__desc{font-size:14px;color:var(--c-muted);line-height:1.6;}
-@media(max-width:800px){
-  .howto__wrap{grid-template-columns:1fr;}
-  .howto__img{max-width:240px;margin:0 auto;}
-}
+@media(max-width:800px){.howto__wrap{grid-template-columns:1fr;}.howto__img{max-width:240px;margin:0 auto;}}
 
 /* ===== STORY ===== */
-.story{
-  background:var(--c-forest);
-  display:grid;grid-template-columns:1fr 1fr;overflow:hidden;
-}
+.story{background:var(--c-forest);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
 .story__img{position:relative;}
 .story__img img{width:100%;height:100%;object-fit:cover;opacity:.85;}
-.story__img::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to right,transparent 60%,var(--c-forest) 100%);
-}
+.story__img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--c-forest) 100%);}
 .story__content{padding:72px 64px;display:flex;flex-direction:column;justify-content:center;}
-.story__eyebrow{
-  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--c-gold);margin-bottom:16px;
-}
-.story__title{
-  font-family:var(--ff-head);font-size:clamp(28px,3.5vw,44px);
-  line-height:1.2;color:var(--c-cream);margin-bottom:20px;
-}
+.story__eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--c-gold);margin-bottom:16px;}
+.story__title{font-family:var(--ff-head);font-size:clamp(28px,3.5vw,44px);line-height:1.2;color:var(--c-cream);margin-bottom:20px;}
 .story__title em{font-style:italic;color:var(--c-gold);}
 .story__text{font-size:16px;line-height:1.8;color:rgba(250,248,244,.75);margin-bottom:32px;}
 .btn-cta--light{
   display:flex;align-items:center;justify-content:center;gap:8px;
-  width:100%;max-width:340px;padding:16px 28px;
-  border-radius:999px;border:none;
-  background:linear-gradient(135deg,var(--c-cta),var(--c-cta-dark));
-  color:#fff;font-size:15px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  box-shadow:0 12px 32px rgba(212,85,10,.4);
-  position:relative;overflow:hidden;
+  width:100%;max-width:340px;padding:16px 28px;border-radius:999px;border:none;
+  background:linear-gradient(135deg,var(--c-cta),var(--c-cta-dark));color:#fff;
+  font-size:15px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  box-shadow:0 12px 32px rgba(212,85,10,.4);position:relative;overflow:hidden;
   transition:transform .2s var(--ease),box-shadow .2s var(--ease);
 }
 .btn-cta--light::after{
@@ -490,44 +330,21 @@ body.sticky-visible .wa-float{
   transform:translateX(-100%);animation:shine 3.5s ease-in-out infinite;
 }
 .btn-cta--light:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(212,85,10,.55);}
-@media(max-width:900px){
-  .story{grid-template-columns:1fr;}
-  .story__img{height:280px;}
-  .story__img::after{background:linear-gradient(to top,var(--c-forest) 0%,transparent 60%);}
-  .story__content{padding:40px 24px 48px;}
-  .btn-cta--light{max-width:100%;}
-}
+@media(max-width:900px){.story{grid-template-columns:1fr;}.story__img{height:280px;}.story__img::after{background:linear-gradient(to top,var(--c-forest) 0%,transparent 60%);}.story__content{padding:40px 24px 48px;}.btn-cta--light{max-width:100%;}}
 
 /* ===== TRUST BADGES ===== */
 .badges{background:var(--c-cream-dark);padding:52px 24px;}
-  .badges__grid{
-  max-width:1000px;margin:0 auto;
-  display:flex;flex-wrap:wrap;justify-content:center;gap:32px;
-}
-.badge-item{
-  display:flex;flex-direction:column;align-items:center;gap:10px;
-  flex:0 0 130px;text-align:center;
-}
+.badges__grid{max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:32px;}
+.badge-item{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 130px;text-align:center;}
 .badge-item img{width:72px;height:72px;object-fit:contain;}
 .badge-item span{font-size:12px;font-weight:700;color:var(--c-forest);letter-spacing:.03em;}
 
-
 /* ===== INGREDIENTS ===== */
-.ingredients__layout{
-  display:grid;grid-template-columns:220px 1fr;gap:0;
-  border:1px solid var(--c-border);border-radius:20px;overflow:hidden;
-  box-shadow:var(--shadow-sm);background:var(--c-white);
-}
-.ing-list{
-  background:var(--c-cream);border-right:1px solid var(--c-border);
-  overflow-y:auto;max-height:560px;padding:8px;
-}
+.ingredients__layout{display:grid;grid-template-columns:220px 1fr;gap:0;border:1px solid var(--c-border);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--c-white);}
+.ing-list{background:var(--c-cream);border-right:1px solid var(--c-border);overflow-y:auto;max-height:560px;padding:8px;}
 .ing-list::-webkit-scrollbar{width:4px;}
 .ing-list::-webkit-scrollbar-thumb{background:var(--c-border);border-radius:999px;}
-.ing-item{
-  padding:10px 14px;border-radius:10px;font-size:14px;font-weight:500;
-  color:var(--c-muted);cursor:pointer;transition:background .2s,color .2s;
-}
+.ing-item{padding:10px 14px;border-radius:10px;font-size:14px;font-weight:500;color:var(--c-muted);cursor:pointer;transition:background .2s,color .2s;}
 .ing-item:hover{background:var(--c-cream-dark);}
 .ing-item.active{background:var(--c-forest);color:var(--c-cream);font-weight:700;}
 .ing-detail{padding:28px 32px;display:flex;flex-direction:column;gap:16px;}
@@ -543,230 +360,410 @@ body.sticky-visible .wa-float{
 }
 
 /* ===== REVIEWS ===== */
-.reviews__carousel{
-  display:flex;
-  gap:20px;
-  overflow-x:auto;
-  overflow-y:hidden;
-  scroll-snap-type:x mandatory;
-  padding:8px 4px 20px;
-  scrollbar-width:none;
-  -webkit-overflow-scrolling:touch;
-  overscroll-behavior-x:contain;
-  touch-action:pan-x;
-  align-items:stretch;
-}
+.reviews__carousel{display:flex;gap:20px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding:8px 4px 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x;align-items:stretch;}
 .reviews__carousel::-webkit-scrollbar{display:none;}
-.review-card{
-  flex:0 0 340px;
-  scroll-snap-align:start;
-  background:var(--c-white);
-  border:1px solid var(--c-border);
-  border-radius:20px;
-  padding:24px;
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-  box-shadow:var(--shadow-sm);
-  transition:box-shadow .25s;
-  overflow:hidden;
-  height:auto;
-  min-height:100%;
-  touch-action:auto;
-}
+.review-card{flex:0 0 340px;scroll-snap-align:start;background:var(--c-white);border:1px solid var(--c-border);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow-sm);transition:box-shadow .25s;overflow:hidden;height:auto;min-height:100%;touch-action:auto;}
 .review-card:hover{box-shadow:var(--shadow-md);}
-.review-proof{
-  width:100%;
-  aspect-ratio:16/9;
-  border-radius:10px;
-  overflow:hidden;
-  background:#f3f5f7;
-  flex-shrink:0;
-}
-.review-proof-img{
-  width:100%;
-  height:100%;
-  background-size:cover;
-  background-position:center;
-}
+.review-proof{width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#f3f5f7;flex-shrink:0;}
+.review-proof-img{width:100%;height:100%;background-size:cover;background-position:center;}
 .review-stars{color:#f4a820;font-size:16px;letter-spacing:2px;flex-shrink:0;}
-.review-text{
-  font-size:14px;
-  line-height:1.7;
-  color:var(--c-muted);
-  font-style:italic;
-  overflow:visible;
-}
+.review-text{font-size:14px;line-height:1.7;color:var(--c-muted);font-style:italic;overflow:visible;}
 .review-author{font-size:13px;font-weight:700;color:var(--c-forest);margin-top:auto;}
-.reviews__controls{
-  display:flex;gap:10px;justify-content:center;margin-top:12px;
-}
-.reviews__controls button{
-  width:40px;height:40px;border-radius:50%;
-  border:1px solid var(--c-border);background:var(--c-white);
-  font-size:18px;color:var(--c-forest);
-  transition:background .2s,border-color .2s,transform .2s;
-}
-.reviews__controls button:hover{
-  background:var(--c-forest);color:var(--c-cream);
-  border-color:var(--c-forest);transform:scale(1.05);
-}
+.reviews__controls{display:flex;gap:10px;justify-content:center;margin-top:12px;}
+.reviews__controls button{width:40px;height:40px;border-radius:50%;border:1px solid var(--c-border);background:var(--c-white);font-size:18px;color:var(--c-forest);transition:background .2s,border-color .2s,transform .2s;}
+.reviews__controls button:hover{background:var(--c-forest);color:var(--c-cream);border-color:var(--c-forest);transform:scale(1.05);}
 @media(min-width:900px){.review-card{flex:0 0 360px;}}
-@media(max-width:768px){
-  .reviews__carousel{gap:12px !important;padding:4px 2px 10px !important;touch-action:pan-x;}
-  .review-card{flex:0 0 86% !important;padding:16px !important;gap:12px !important;}
-  .review-text{font-size:13px !important;line-height:1.6 !important;}
-}
+@media(max-width:768px){.reviews__carousel{gap:12px !important;padding:4px 2px 10px !important;touch-action:pan-x;}.review-card{flex:0 0 86% !important;padding:16px !important;gap:12px !important;}.review-text{font-size:13px !important;line-height:1.6 !important;}}
 
 /* ===== POLICY POPUP ===== */
-#policyOverlay{
-  display:none;position:fixed;inset:0;z-index:100000;
-  background:rgba(26,74,46,.4);backdrop-filter:blur(8px);
-  align-items:center;justify-content:center;padding:20px;
-}
+#policyOverlay{display:none;position:fixed;inset:0;z-index:100000;background:rgba(26,74,46,.4);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px;}
 #policyOverlay.open{display:flex;}
-#policyBox{
-  background:var(--c-white);border-radius:20px;padding:32px 28px 24px;
-  width:100%;max-width:640px;max-height:86vh;overflow-y:auto;position:relative;
-  box-shadow:var(--shadow-lg);animation:fadeInUp .2s var(--ease);
-}
+#policyBox{background:var(--c-white);border-radius:20px;padding:32px 28px 24px;width:100%;max-width:640px;max-height:86vh;overflow-y:auto;position:relative;box-shadow:var(--shadow-lg);animation:fadeInUp .2s var(--ease);}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-#policyClose{
-  position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;
-  border:1px solid var(--c-border);background:var(--c-cream);
-  font-size:18px;color:var(--c-muted);display:flex;align-items:center;justify-content:center;
-  transition:background .2s;
-}
+#policyClose{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;border:1px solid var(--c-border);background:var(--c-cream);font-size:18px;color:var(--c-muted);display:flex;align-items:center;justify-content:center;transition:background .2s;}
 #policyClose:hover{background:var(--c-cream-dark);}
 #policyTitle{font-family:var(--ff-head);font-size:24px;color:var(--c-forest);margin-bottom:16px;}
 #policyBody{font-size:14px;line-height:1.8;color:var(--c-muted);}
 #policyBody p{margin-bottom:10px;}
 #policyBody ul{padding-left:18px;}
 #policyBody li{margin-bottom:6px;}
-.policy-ok{
-  display:block;margin:20px auto 0;padding:10px 28px;border-radius:999px;
-  border:none;background:var(--c-forest);color:var(--c-cream);font-weight:700;font-size:14px;
-  transition:background .2s;
-}
+.policy-ok{display:block;margin:20px auto 0;padding:10px 28px;border-radius:999px;border:none;background:var(--c-forest);color:var(--c-cream);font-weight:700;font-size:14px;transition:background .2s;}
 .policy-ok:hover{background:var(--c-forest-mid);}
 
-/* ===== ORDER MODAL ===== */
-#orderOverlay{
-  display:none;position:fixed;inset:0;z-index:99990;
-  background:rgba(10,18,14,.6);backdrop-filter:blur(6px);
-  align-items:center;justify-content:center;padding:16px;overflow-y:auto;
-}
-#orderOverlay.open{display:flex;}
-#orderBox{
-  background:var(--c-white);border-radius:24px;padding:36px 32px 28px;
-  width:100%;max-width:500px;max-height:100vh;overflow-y:auto;position:relative;
-  box-shadow:0 32px 80px rgba(0,0,0,.24);animation:fadeInUp .25s var(--ease);
-  scrollbar-width:thin;
-}
-#orderBox::-webkit-scrollbar{width:4px;}
-#orderBox::-webkit-scrollbar-thumb{background:var(--c-border);border-radius:999px;}
-#orderClose{
-  position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;
-  border:1px solid var(--c-border);background:var(--c-cream);font-size:18px;
-  display:flex;align-items:center;justify-content:center;color:var(--c-muted);
-  transition:background .2s;
-}
-#orderClose:hover{background:var(--c-cream-dark);}
-.order-title{font-family:var(--ff-head);font-size:22px;color:var(--c-forest);text-align:center;margin-bottom:4px;}
-.order-sub{font-size:13px;color:var(--c-muted);text-align:center;margin-bottom:20px;}
-.form-field{position:relative;margin-bottom:16px;}
-.form-field input{
-  width:100%;padding:14px 16px;border:2px solid var(--c-border);border-radius:10px;
-  font-size:15px;font-family:var(--ff-body);background:var(--c-cream);
-  color:var(--c-text);transition:border-color .2s,box-shadow .2s;caret-color:var(--c-forest);
-}
-.form-field input:focus{outline:none;border-color:var(--c-forest-light);background:#fff;box-shadow:0 0 0 3px rgba(74,148,101,.12);}
-.form-field label{
-  position:absolute;top:-9px;left:12px;padding:0 6px;background:var(--c-cream);
-  font-size:11px;font-weight:700;color:var(--c-forest);letter-spacing:.04em;text-transform:uppercase;border-radius:4px;
-}
-.form-field input:focus~label,.form-field input:not(:placeholder-shown)~label{background:#fff;}
+/* =====================================================
+   ORDER MODAL — FULL 100VH, SENIOR-FRIENDLY
+   
+   Strategy:
+   - Modal box fills the full 100vh (edge-to-edge on mobile)
+   - Large, easy-to-read text and generous tap targets
+   - Fixed header + fixed footer, scrollable middle
+   - Everything sized for older eyes: no tiny text
+===================================================== */
 
-.pkg-grid{display:flex;flex-direction:column;gap:8px;margin:12px 0;}
-.pkg-card{
-  padding:16px;border-radius:14px;border:2px solid var(--c-border);
-  background:var(--c-cream);cursor:pointer;position:relative;
-  transition:border-color .2s,background .2s,transform .15s;
+#orderOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99990;
+  background: rgba(10,18,14,.65);
+  backdrop-filter: blur(6px);
+  align-items: flex-end;   /* sheet slides up from bottom on mobile */
+  justify-content: center;
+  overflow: hidden;
 }
-.pkg-card:hover{border-color:var(--c-forest-light);}
-.pkg-card.sel{border-color:var(--c-forest);background:var(--c-white);box-shadow:0 4px 20px rgba(26,74,46,.12);}
-.pkg-card__row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
-.pkg-card__name{font-weight:700;font-size:15px;color:var(--c-forest);}
-.pkg-card__prices{display:flex;align-items:baseline;gap:8px;}
-.pkg-card__old{font-size:12px;text-decoration:line-through;color:#999;}
-.pkg-card__new{font-family:var(--ff-head);font-size:20px;font-weight:800;color:var(--c-forest);}
-.pkg-card__save{font-size:11px;font-weight:700;background:var(--c-cta);color:#fff;padding:3px 10px;border-radius:999px;}
-.pkg-best{
-  position:absolute;top:-02px;right:12px;
-  font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
-  background:var(--c-gold);color:#fff;padding:3px 10px;border-radius:999px;
+#orderOverlay.open { display: flex; }
+
+#orderBox {
+  background: var(--c-white);
+  border-radius: 20px 20px 0 0;   /* rounded top, flush bottom */
+  width: 100%;
+  max-width: 520px;
+  height: 100vh;                  /* fill full viewport */
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 -8px 40px rgba(0,0,0,.2);
+  animation: slideUp .3s var(--ease);
+  overflow: hidden;
+}
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
 }
 
-.consent-row{
-  display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:flex-start;
-  font-size:12px;line-height:1.5;color:var(--c-muted);margin:12px 0 0;
-  padding:12px 14px;background:var(--c-cream);border-radius:10px;border:1px solid var(--c-border);
+/* On large screens (tablet/desktop), center as a card */
+@media (min-width: 600px) {
+  #orderOverlay {
+    align-items: center;
+    padding: 20px;
+  }
+  #orderBox {
+    border-radius: 24px;
+    height: auto;
+    max-height: 100vh;
+  }
 }
-.consent-row a{color:var(--c-forest);font-weight:600;}
-.consent-row input{accent-color:var(--c-forest);margin-top:2px;}
 
-.btn-submit{
-  width:100%;padding:15px;border-radius:999px;border:none;
-  background:linear-gradient(135deg,var(--c-cta),var(--c-cta-dark));
-  color:#fff;font-size:15px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  box-shadow:0 12px 30px rgba(212,85,10,.3);margin-top:20px;
-  position:relative;overflow:hidden;
-  transition:transform .2s,box-shadow .2s;
+/* ── Fixed header ── */
+.order-header {
+  flex-shrink: 0;
+  padding: 20px 24px 14px;
+  border-bottom: 2px solid var(--c-border);
+  background: var(--c-white);
+  position: relative;
 }
-.btn-submit::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.3) 50%,transparent 70%);
-  transform:translateX(-100%);animation:shine 4s ease-in-out infinite;
+#orderClose {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid var(--c-border);
+  background: var(--c-cream);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-muted);
+  transition: background .2s;
+  line-height: 1;
 }
-.btn-submit:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(212,85,10,.45);}
+#orderClose:hover { background: var(--c-cream-dark); }
+.order-title {
+  font-family: var(--ff-head);
+  font-size: 22px;
+  color: var(--c-forest);
+  margin-bottom: 3px;
+  padding-right: 48px;
+  line-height: 1.2;
+}
+.order-sub {
+  font-size: 13px;
+  color: var(--c-muted);
+  line-height: 1.4;
+  font-weight: 500;
+}
 
-#confirmStep{display:none;}
-.confirm-details{
-  background:var(--c-cream);border-radius:12px;padding:16px 18px;margin:12px 0 16px;
-  font-size:13px;line-height:2;color:var(--c-text);
+/* ── Scrollable middle ── */
+.order-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 18px 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-border) transparent;
 }
-.confirm-details b{color:var(--c-forest);}
-.confirm-actions{display:flex;gap:10px;}
-.btn-edit{
-  flex:1;padding:13px;border-radius:999px;border:2px solid var(--c-border);
-  background:var(--c-white);font-size:14px;font-weight:600;color:var(--c-text);
-  transition:border-color .2s,background .2s;
+.order-scroll::-webkit-scrollbar { width: 4px; }
+.order-scroll::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 999px; }
+
+/* ── Form fields — single column, large tap targets ── */
+.form-field {
+  position: relative;
+  margin-bottom: 14px;
 }
-.btn-edit:hover{border-color:var(--c-forest-light);background:var(--c-cream);}
+.form-field input {
+  width: 100%;
+  padding: 0 16px;
+  border: 2px solid var(--c-border);
+  border-radius: 12px;
+  font-size: 16px;          /* 16px prevents iOS auto-zoom */
+  font-family: var(--ff-body);
+  background: var(--c-cream);
+  color: var(--c-text);
+  transition: border-color .2s, box-shadow .2s;
+  caret-color: var(--c-forest);
+  height: 52px;             /* large tap target */
+  font-weight: 500;
+}
+.form-field input:focus {
+  outline: none;
+  border-color: var(--c-forest);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(26,74,46,.1);
+}
+.form-field label {
+  position: absolute;
+  top: -9px;
+  left: 14px;
+  padding: 0 5px;
+  background: var(--c-cream);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--c-forest);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  pointer-events: none;
+}
+.form-field input:focus ~ label,
+.form-field input:not(:placeholder-shown) ~ label { background: #fff; }
+
+/* ── Package grid — one card per row ── */
+.pkg-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 4px 0 14px;
+}
+.pkg-card {
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 2px solid var(--c-border);
+  background: var(--c-cream);
+  cursor: pointer;
+  position: relative;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+  /* Row layout: name on left, price on right */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 68px;
+}
+.pkg-card:hover { border-color: var(--c-forest-light); }
+.pkg-card.sel {
+  border-color: var(--c-forest);
+  background: #f0faf4;
+  box-shadow: 0 4px 16px rgba(26,74,46,.12);
+}
+/* Left side: radio dot + name */
+.pkg-card__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+/* Radio-style indicator */
+.pkg-card__radio {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--c-border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .2s;
+}
+.pkg-card__radio::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--c-forest);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity .2s, transform .2s;
+}
+.pkg-card.sel .pkg-card__radio {
+  border-color: var(--c-forest);
+}
+.pkg-card.sel .pkg-card__radio::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.pkg-card__name {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--c-forest);
+  line-height: 1.3;
+}
+/* Right side: prices + save badge */
+.pkg-card__prices {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  flex-shrink: 0;
+}
+.pkg-card__old {
+  font-size: 12px;
+  text-decoration: line-through;
+  color: #aaa;
+  line-height: 1;
+}
+.pkg-card__new {
+  font-family: var(--ff-head);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--c-forest);
+  line-height: 1;
+}
+.pkg-card__save {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--c-cta);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-top: 4px;
+  display: inline-block;
+  align-self: flex-end;
+}
+.pkg-best {
+  position: absolute;
+  top: -9px;
+  right: 14px;          /* right-aligned — cleaner on a full-width card */
+  left: auto;
+  transform: none;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  background: var(--c-gold);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* ── Consent row ── */
+.consent-row {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--c-muted);
+  margin: 0 0 4px;
+  padding: 12px 14px;
+  background: var(--c-cream);
+  border-radius: 10px;
+  border: 1px solid var(--c-border);
+}
+.consent-row a { color: var(--c-forest); font-weight: 600; text-decoration: underline; }
+.consent-row input {
+  accent-color: var(--c-forest);
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  cursor: pointer;
+}
+
+/* ── Fixed footer — submit always visible ── */
+.order-footer {
+  flex-shrink: 0;
+  padding: 12px 24px 20px;
+  background: var(--c-white);
+  border-top: 2px solid var(--c-border);
+}
+.btn-submit {
+  width: 100%;
+  padding: 16px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, var(--c-cta), var(--c-cta-dark));
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(212,85,10,.35);
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn-submit::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.3) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: shine 4s ease-in-out infinite;
+}
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(212,85,10,.45); }
+.btn-submit:active { transform: scale(.98); }
+
+/* ── Error box ── */
+#formError {
+  display: none;
+  margin-top: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ── Confirm step ── */
+#confirmStep { display: none; }
+.confirm-details {
+  background: var(--c-cream);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin: 10px 0 16px;
+  font-size: 15px;
+  line-height: 2;
+  color: var(--c-text);
+}
+.confirm-details b { color: var(--c-forest); }
+.confirm-actions { display: flex; gap: 10px; }
+.btn-edit {
+  flex: 0 0 auto;
+  padding: 14px 20px;
+  border-radius: 999px;
+  border: 2px solid var(--c-border);
+  background: var(--c-white);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-text);
+  transition: border-color .2s, background .2s;
+}
+.btn-edit:hover { border-color: var(--c-forest-light); background: var(--c-cream); }
 
 /* ===== LOADING ===== */
-#loadOverlay{
-  display:none;position:fixed;inset:0;z-index:999999;
-  background:rgba(26,74,46,.95);
-  flex-direction:column;align-items:center;justify-content:center;gap:24px;
-}
+#loadOverlay{display:none;position:fixed;inset:0;z-index:999999;background:rgba(26,74,46,.95);flex-direction:column;align-items:center;justify-content:center;gap:24px;}
 #loadOverlay.on{display:flex;}
-.load-box{
-  background:var(--c-white);border-radius:24px;padding:40px 36px;
-  display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;
-  min-width:280px;max-width:320px;box-shadow:var(--shadow-lg);
-}
-.spin{
-  width:64px;height:64px;border-radius:50%;
-  border:5px solid var(--c-cream-dark);border-top-color:var(--c-forest);
-  animation:spin .8s linear infinite;
-}
+.load-box{background:var(--c-white);border-radius:24px;padding:40px 36px;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;min-width:280px;max-width:320px;box-shadow:var(--shadow-lg);}
+.spin{width:64px;height:64px;border-radius:50%;border:5px solid var(--c-cream-dark);border-top-color:var(--c-forest);animation:spin .8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
-.check{
-  display:none;width:64px;height:64px;border-radius:50%;
-  background:var(--c-forest);align-items:center;justify-content:center;
-  animation:popIn .4s cubic-bezier(.34,1.56,.64,1) forwards;
-}
+.check{display:none;width:64px;height:64px;border-radius:50%;background:var(--c-forest);align-items:center;justify-content:center;animation:popIn .4s cubic-bezier(.34,1.56,.64,1) forwards;}
 .check svg{width:32px;height:32px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 @keyframes popIn{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
 .load-title{font-family:var(--ff-head);font-size:18px;color:var(--c-forest);line-height:1.4;}
@@ -785,106 +782,84 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
 .footer__support{font-size:13px;}
 .footer__support a{color:var(--c-gold);font-weight:700;}
 
-/* ===== ERR BOX ===== */
-#formError{
-  display:none;margin-top:12px;padding:12px 16px;border-radius:10px;
-  background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;font-size:13px;font-weight:600;text-align:center;
-}
-
 /* =========================================
    MOBILE HORIZONTAL CAROUSELS
 ========================================= */
 @media (max-width: 768px) {
-  .mobile-carousel {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    gap: 16px;
-    padding: 4px 16px 18px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    touch-action: pan-x pan-y;
-    overscroll-behavior-x: contain;
-  }
-  .mobile-carousel::-webkit-scrollbar { display: none; }
-  .mobile-carousel > * { flex: 0 0 84%; scroll-snap-align: start; }
-  .symptoms__grid { grid-template-columns: unset !important; }
-  .symptom-card { min-width: 280px; }
-  #benefitsMobile { display: flex !important; }
-  #benefitsMobile .benefit-card { min-width: 280px; }
-  .conditions__grid .condition-card { min-width: 280px; }
-  .reviews__carousel .review-card { flex: 0 0 88% !important; }
+  .mobile-carousel{display:flex !important;flex-wrap:nowrap !important;overflow-x:auto !important;overflow-y:hidden !important;gap:16px;padding:4px 16px 18px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;touch-action:pan-x pan-y;overscroll-behavior-x:contain;}
+  .mobile-carousel::-webkit-scrollbar{display:none;}
+  .mobile-carousel > *{flex:0 0 84%;scroll-snap-align:start;}
+  .symptoms__grid{grid-template-columns:unset !important;}
+  .symptom-card{min-width:280px;}
+  #benefitsMobile{display:flex !important;}
+  #benefitsMobile .benefit-card{min-width:280px;}
+  .conditions__grid .condition-card{min-width:280px;}
+  .reviews__carousel .review-card{flex:0 0 88% !important;}
 }
 
 /* =========================================
    FINAL MOBILE SPACE OPTIMIZATION
 ========================================= */
 @media (max-width: 768px) {
-  .section { padding: 42px 14px !important; }
-  .container { width: 100%; }
-  .s-header { margin-bottom: 26px !important; }
-  .s-header__title { line-height: 1.22; }
-  .s-header__line { margin-top: 14px; }
-  .hero { min-height: auto !important; }
-  .hero__media { min-height: 220px !important; padding: 14px 10px !important; }
-  .hero__img { max-width: 190px !important; }
-  .hero__content { padding: 22px 16px 28px !important; }
-  .hero__eyebrow { margin-bottom: 12px !important; }
-  .hero__title { margin-bottom: 12px !important; }
-  .hero__sub { margin-bottom: 16px !important; line-height: 1.6 !important; }
-  .hero__price { margin-bottom: 16px !important; padding: 14px 14px !important; }
-  .hero__list { margin-bottom: 18px !important; }
-  .hero__list li { padding: 8px 0 !important; font-size: 14px !important; }
-  .btn-cta, .btn-cta--light { padding: 14px 18px !important; font-size: 13px !important; }
-  .trust__item { padding: 14px 8px !important; gap: 6px !important; }
-  .trust__icon { width: 30px !important; height: 30px !important; }
-  .trust__label { font-size: 9px !important; line-height: 1.35; }
-  .symptoms__grid { gap: 12px !important; }
-  .symptom-card { min-width: 240px !important; }
-  .symptom-card__body { padding: 14px !important; }
-  .symptom-card__text { font-size: 14px !important; line-height: 1.45 !important; }
-  .benefits__layout { gap: 14px !important; }
-  .benefits__video { border-radius: 14px !important; }
-  .benefit-card { padding: 14px !important; gap: 12px !important; }
-  .benefit-card__text { font-size: 13px !important; line-height: 1.5 !important; }
-  #benefitsMobile .benefit-card { min-width: 240px !important; }
-  .conditions__grid { gap: 12px !important; padding-bottom: 4px !important; }
-  .condition-card { min-width: 240px !important; }
-  .condition-card__body { padding: 14px !important; }
-  .condition-card__title { font-size: 16px !important; }
-  .howto__wrap { gap: 20px !important; }
-  .step { gap: 12px !important; padding: 14px 0 !important; }
-  .step__num { width: 32px !important; height: 32px !important; font-size: 14px !important; }
-  .step__title { font-size: 14px !important; }
-  .step__desc { font-size: 13px !important; }
-  .story__img { height: 220px !important; }
-  .story__content { padding: 28px 16px 34px !important; }
-  .story__title { margin-bottom: 14px !important; }
-  .story__text { margin-bottom: 18px !important; font-size: 14px !important; line-height: 1.7 !important; }
-  .badges { padding: 26px 12px !important; }
-  .badges__grid { gap: 14px !important; }
-  .badge-item { flex: 0 0 90px !important; gap: 6px !important; }
-  .badge-item img { width: 48px !important; height: 48px !important; }
-  .badge-item span { font-size: 10px !important; line-height: 1.35; }
-  .ingredients__layout { border-radius: 14px !important; }
-  .ing-list { padding: 8px !important; gap: 6px !important; }
-  .ing-item { padding: 7px 14px !important; font-size: 12px !important; }
-  .ing-detail { padding: 16px 14px !important; gap: 10px !important; }
-  .ing-detail h3 { font-size: 18px !important; }
-  .ing-detail p { font-size: 13px !important; line-height: 1.6 !important; }
-  .reviews__carousel { gap: 12px !important; padding: 4px 2px 10px !important; }
-  .review-card { flex: 0 0 86% !important; padding: 16px !important; gap: 12px !important; }
-  .review-text { font-size: 13px !important; line-height: 1.6 !important; }
-  #orderBox { padding: 26px 18px 22px !important; }
-  .pkg-grid { gap: 8px !important; }
-  .pkg-card { padding: 14px !important; }
-  #policyBox { padding: 24px 18px 18px !important; }
-  /* wa-float mobile size — no bottom !important so sticky-visible can override */
-  .wa-float { width: 48px !important; height: 48px !important; right: 12px !important; bottom: 16px; }
-  .mobile-carousel { gap: 12px !important; padding: 2px 2px 10px !important; }
-  .mobile-carousel > * { flex: 0 0 86% !important; }
+  .section{padding:42px 14px !important;}
+  .container{width:100%;}
+  .s-header{margin-bottom:26px !important;}
+  .s-header__title{line-height:1.22;}
+  .s-header__line{margin-top:14px;}
+  .hero{min-height:auto !important;}
+  .hero__media{min-height:220px !important;padding:14px 10px !important;}
+  .hero__img{max-width:190px !important;}
+  .hero__content{padding:22px 16px 28px !important;}
+  .hero__eyebrow{margin-bottom:12px !important;}
+  .hero__title{margin-bottom:12px !important;}
+  .hero__sub{margin-bottom:16px !important;line-height:1.6 !important;}
+  .hero__price{margin-bottom:16px !important;padding:14px 14px !important;}
+  .hero__list{margin-bottom:18px !important;}
+  .hero__list li{padding:8px 0 !important;font-size:14px !important;}
+  .btn-cta,.btn-cta--light{padding:14px 18px !important;font-size:13px !important;}
+  .trust__item{padding:14px 8px !important;gap:6px !important;}
+  .trust__icon{width:30px !important;height:30px !important;}
+  .trust__label{font-size:9px !important;line-height:1.35;}
+  .symptoms__grid{gap:12px !important;}
+  .symptom-card{min-width:240px !important;}
+  .symptom-card__body{padding:14px !important;}
+  .symptom-card__text{font-size:14px !important;line-height:1.45 !important;}
+  .benefits__layout{gap:14px !important;}
+  .benefits__video{border-radius:14px !important;}
+  .benefit-card{padding:14px !important;gap:12px !important;}
+  .benefit-card__text{font-size:13px !important;line-height:1.5 !important;}
+  #benefitsMobile .benefit-card{min-width:240px !important;}
+  .conditions__grid{gap:12px !important;padding-bottom:4px !important;}
+  .condition-card{min-width:240px !important;}
+  .condition-card__body{padding:14px !important;}
+  .condition-card__title{font-size:16px !important;}
+  .howto__wrap{gap:20px !important;}
+  .step{gap:12px !important;padding:14px 0 !important;}
+  .step__num{width:32px !important;height:32px !important;font-size:14px !important;}
+  .step__title{font-size:14px !important;}
+  .step__desc{font-size:13px !important;}
+  .story__img{height:220px !important;}
+  .story__content{padding:28px 16px 34px !important;}
+  .story__title{margin-bottom:14px !important;}
+  .story__text{margin-bottom:18px !important;font-size:14px !important;line-height:1.7 !important;}
+  .badges{padding:26px 12px !important;}
+  .badges__grid{gap:14px !important;}
+  .badge-item{flex:0 0 90px !important;gap:6px !important;}
+  .badge-item img{width:48px !important;height:48px !important;}
+  .badge-item span{font-size:10px !important;line-height:1.35;}
+  .ingredients__layout{border-radius:14px !important;}
+  .ing-list{padding:8px !important;gap:6px !important;}
+  .ing-item{padding:7px 14px !important;font-size:12px !important;}
+  .ing-detail{padding:16px 14px !important;gap:10px !important;}
+  .ing-detail h3{font-size:18px !important;}
+  .ing-detail p{font-size:13px !important;line-height:1.6 !important;}
+  .reviews__carousel{gap:12px !important;padding:4px 2px 10px !important;}
+  .review-card{flex:0 0 86% !important;padding:16px !important;gap:12px !important;}
+  .review-text{font-size:13px !important;line-height:1.6 !important;}
+  #policyBox{padding:24px 18px 18px !important;}
+  .wa-float{width:48px !important;height:48px !important;right:12px !important;bottom:16px;}
+  .mobile-carousel{gap:12px !important;padding:2px 2px 10px !important;}
+  .mobile-carousel > *{flex:0 0 86% !important;}
 }
 </style>
 </head>
@@ -929,25 +904,21 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
     </svg>
     <img src="Images/hero.webp" alt="Herbal Relief Spray 60ml" class="hero__img" width="400" height="400" loading="eager" fetchpriority="high" decoding="async"/>
   </div>
-
   <div class="hero__content">
     <div class="hero__eyebrow reveal">🌿 प्राकृतिक आयुर्वेदिक उपाय</div>
     <h1 class="hero__title reveal reveal-d1">Herbal Relief<br><em>Spray</em></h1>
     <p class="hero__sub reveal reveal-d2">दिसाद्वारको <strong>जलन, सुन्निने र असहजता</strong>बाट पाउनुहोस् प्राकृतिक राहत — 60ml प्राकृतिक जडीबुटी स्प्रे।</p>
-
     <div class="hero__price reveal reveal-d2">
       <span class="hero__price-old">Rs 2,500</span>
       <span class="hero__price-main">Rs 1,900</span>
       <span class="hero__price-save">Save Rs 600</span>
     </div>
-
     <ul class="hero__list reveal reveal-d3">
       <li>सुन्निएको भाग बिस्तारै सामान्य हुन मद्दत गर्छ</li>
       <li>जलन र असहजताबाट राहत दिन्छ</li>
       <li>दिसाद्वार चिलाउने र पोल्नेबाट राहत दिन्छ</li>
       <li>असहज लक्षणहरू कम गरी आराम दिन्छ</li>
     </ul>
-
     <button class="btn-cta open-order reveal reveal-d4">
       Order Now — Rs 1,900 <span class="arrow">→</span>
     </button>
@@ -980,31 +951,22 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
       <h2 class="s-header__title">यदि यस्ता असहजताहरू महसुस हुन्छन् भने<br><em>बेवास्ता नगर्नुहोस्</em></h2>
       <div class="s-header__line"></div>
     </div>
-
     <div class="symptoms__grid">
       <div class="symptom-card reveal reveal-d1">
         <img src="Images/p01.jpg.webp" alt="चिलाउने" class="symptom-card__img" loading="lazy" decoding="async"/>
-        <div class="symptom-card__body">
-          <p class="symptom-card__text">दिसाद्वार वरिपरि बारम्बार चिलाउने वा असहज हुने</p>
-        </div>
+        <div class="symptom-card__body"><p class="symptom-card__text">दिसाद्वार वरिपरि बारम्बार चिलाउने वा असहज हुने</p></div>
       </div>
       <div class="symptom-card reveal reveal-d2">
         <img src="Images/p02.jpg.webp" alt="पोल्ने" class="symptom-card__img" loading="lazy" decoding="async"/>
-        <div class="symptom-card__body">
-          <p class="symptom-card__text">दिसा गर्दा वा हिड्दा–बस्दा असहजता वा पोल्ने</p>
-        </div>
+        <div class="symptom-card__body"><p class="symptom-card__text">दिसा गर्दा वा हिड्दा–बस्दा असहजता वा पोल्ने</p></div>
       </div>
       <div class="symptom-card reveal reveal-d3">
         <img src="Images/p03.jpg.webp" alt="सुन्निएको" class="symptom-card__img" loading="lazy" decoding="async"/>
-        <div class="symptom-card__body">
-          <p class="symptom-card__text">दिसाद्वारमा सुन्निएको वा थिचिएको जस्तो महसुस हुनु</p>
-        </div>
+        <div class="symptom-card__body"><p class="symptom-card__text">दिसाद्वारमा सुन्निएको वा थिचिएको जस्तो महसुस हुनु</p></div>
       </div>
       <div class="symptom-card reveal reveal-d4">
         <img src="Images/p04.webp" alt="दुख्ने" class="symptom-card__img" loading="lazy" decoding="async"/>
-        <div class="symptom-card__body">
-          <p class="symptom-card__text">लामो समय बस्दा चसक्क दुख्ने वा जल्ने महसुस हुनु</p>
-        </div>
+        <div class="symptom-card__body"><p class="symptom-card__text">लामो समय बस्दा चसक्क दुख्ने वा जल्ने महसुस हुनु</p></div>
       </div>
     </div>
   </div>
@@ -1018,26 +980,14 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
       <h2 class="s-header__title">मुख्य <em>फाइदाहरू</em></h2>
       <div class="s-header__line"></div>
     </div>
-
-    <!-- Desktop layout -->
     <div class="benefits__layout" id="benefitsDesktop">
       <div class="benefit-card benefit-b1 reveal reveal-d1">
-        <div class="benefit-card__icon">
-          <img src="Images/1s80q9i-4_10ci0ci000000000000028.webp" alt="राहत" loading="lazy"/>
-        </div>
-        <div class="benefit-card__text">
-          <strong>दीर्घकालीन राहत</strong>
-          असहज लक्षणहरू कम गरी दीर्घकालीन राहत दिन मद्दत गर्छ
-        </div>
+        <div class="benefit-card__icon"><img src="Images/1s80q9i-4_10ci0ci000000000000028.webp" alt="राहत" loading="lazy"/></div>
+        <div class="benefit-card__text"><strong>दीर्घकालीन राहत</strong>असहज लक्षणहरू कम गरी दीर्घकालीन राहत दिन मद्दत गर्छ</div>
       </div>
       <div class="benefit-card benefit-b2 reveal reveal-d2">
-        <div class="benefit-card__icon">
-          <img src="Images/h7qnt3-7_10ci0ci000000000000028.webp" alt="सुन्निने" loading="lazy"/>
-        </div>
-        <div class="benefit-card__text">
-          <strong>सुन्निने कम गर्छ</strong>
-          सुन्निएको भाग बिस्तारै सामान्य अवस्थामा फर्किन मद्दत गर्छ
-        </div>
+        <div class="benefit-card__icon"><img src="Images/h7qnt3-7_10ci0ci000000000000028.webp" alt="सुन्निने" loading="lazy"/></div>
+        <div class="benefit-card__text"><strong>सुन्निने कम गर्छ</strong>सुन्निएको भाग बिस्तारै सामान्य अवस्थामा फर्किन मद्दत गर्छ</div>
       </div>
       <div class="benefits__video benefit-video reveal">
         <div class="benefits__video">
@@ -1045,43 +995,19 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
         </div>
       </div>
       <div class="benefit-card benefit-b3 reveal reveal-d1">
-        <div class="benefit-card__icon">
-          <img src="Videos/p9sip5-6_10ci0ci000000000000028.png" alt="आराम" loading="lazy"/>
-        </div>
-        <div class="benefit-card__text">
-          <strong>आराम र सहजता</strong>
-          बस्दा वा हिँड्दा हुने असहजता र तनाव कम गर्न मद्दत गर्छ
-        </div>
+        <div class="benefit-card__icon"><img src="Videos/p9sip5-6_10ci0ci000000000000028.png" alt="आराम" loading="lazy"/></div>
+        <div class="benefit-card__text"><strong>आराम र सहजता</strong>बस्दा वा हिँड्दा हुने असहजता र तनाव कम गर्न मद्दत गर्छ</div>
       </div>
       <div class="benefit-card benefit-b4 reveal reveal-d2">
-        <div class="benefit-card__icon">
-          <img src="Videos/gtdgrc-5_10ci0ci000000000000028.png" alt="छाला" loading="lazy"/>
-        </div>
-        <div class="benefit-card__text">
-          <strong>छाला सहज राख्छ</strong>
-          चिलाउने, पोल्ने र जलन हुनेबाट राहत दिई छाला सहज राख्छ
-        </div>
+        <div class="benefit-card__icon"><img src="Videos/gtdgrc-5_10ci0ci000000000000028.png" alt="छाला" loading="lazy"/></div>
+        <div class="benefit-card__text"><strong>छाला सहज राख्छ</strong>चिलाउने, पोल्ने र जलन हुनेबाट राहत दिई छाला सहज राख्छ</div>
       </div>
     </div>
-
-    <!-- Mobile fallback grid -->
     <div class="benefits__grid-mobile" id="benefitsMobile" style="display:none;">
-      <div class="benefit-card reveal">
-        <div class="benefit-card__icon"><img src="Images/1s80q9i-4_10ci0ci000000000000028.webp" alt="राहत" loading="lazy"/></div>
-        <div class="benefit-card__text"><strong>दीर्घकालीन राहत</strong>असहज लक्षणहरू कम गरी दीर्घकालीन राहत दिन मद्दत गर्छ</div>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-card__icon"><img src="Images/h7qnt3-7_10ci0ci000000000000028.webp" alt="सुन्निने" loading="lazy"/></div>
-        <div class="benefit-card__text"><strong>सुन्निने कम गर्छ</strong>सुन्निएको भाग बिस्तारै सामान्य अवस्थामा फर्किन मद्दत गर्छ</div>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-card__icon"><img src="Videos/p9sip5-6_10ci0ci000000000000028.png" alt="आराम" loading="lazy"/></div>
-        <div class="benefit-card__text"><strong>आराम र सहजता</strong>बस्दा वा हिँड्दा हुने असहजता कम गर्न मद्दत गर्छ</div>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="benefit-card__icon"><img src="Videos/gtdgrc-5_10ci0ci000000000000028.png" alt="छाला" loading="lazy"/></div>
-        <div class="benefit-card__text"><strong>छाला सहज राख्छ</strong>चिलाउने, पोल्ने र जलनबाट राहत दिन्छ</div>
-      </div>
+      <div class="benefit-card reveal"><div class="benefit-card__icon"><img src="Images/1s80q9i-4_10ci0ci000000000000028.webp" alt="राहत" loading="lazy"/></div><div class="benefit-card__text"><strong>दीर्घकालीन राहत</strong>असहज लक्षणहरू कम गरी दीर्घकालीन राहत दिन मद्दत गर्छ</div></div>
+      <div class="benefit-card reveal"><div class="benefit-card__icon"><img src="Images/h7qnt3-7_10ci0ci000000000000028.webp" alt="सुन्निने" loading="lazy"/></div><div class="benefit-card__text"><strong>सुन्निने कम गर्छ</strong>सुन्निएको भाग बिस्तारै सामान्य अवस्थामा फर्किन मद्दत गर्छ</div></div>
+      <div class="benefit-card reveal"><div class="benefit-card__icon"><img src="Videos/p9sip5-6_10ci0ci000000000000028.png" alt="आराम" loading="lazy"/></div><div class="benefit-card__text"><strong>आराम र सहजता</strong>बस्दा वा हिँड्दा हुने असहजता कम गर्न मद्दत गर्छ</div></div>
+      <div class="benefit-card reveal"><div class="benefit-card__icon"><img src="Videos/gtdgrc-5_10ci0ci000000000000028.png" alt="छाला" loading="lazy"/></div><div class="benefit-card__text"><strong>छाला सहज राख्छ</strong>चिलाउने, पोल्ने र जलनबाट राहत दिन्छ</div></div>
     </div>
   </div>
 </section>
@@ -1094,29 +1020,10 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
       <h2 class="s-header__title">एउटै <em>प्राकृतिक</em> समाधान</h2>
       <div class="s-header__line"></div>
     </div>
-
     <div class="conditions__grid">
-      <div class="condition-card reveal reveal-d1">
-        <img src="Images/piles.webp" alt="Internal Swelling" loading="lazy" decoding="async"/>
-        <div class="condition-card__body">
-          <h3 class="condition-card__title">आन्तरिक सुन्निने</h3>
-          <p class="condition-card__sub">Internal Swelling</p>
-        </div>
-      </div>
-      <div class="condition-card reveal reveal-d2">
-        <img src="Images/fissure.webp" alt="Fissure" loading="lazy" decoding="async"/>
-        <div class="condition-card__body">
-          <h3 class="condition-card__title">दिसाद्वारमा दरार</h3>
-          <p class="condition-card__sub">Fissure</p>
-        </div>
-      </div>
-      <div class="condition-card reveal reveal-d3">
-        <img src="Images/fistula.webp" alt="Fistula" loading="lazy" decoding="async"/>
-        <div class="condition-card__body">
-          <h3 class="condition-card__title">नली समस्या</h3>
-          <p class="condition-card__sub">Fistula</p>
-        </div>
-      </div>
+      <div class="condition-card reveal reveal-d1"><img src="Images/piles.webp" alt="Internal Swelling" loading="lazy" decoding="async"/><div class="condition-card__body"><h3 class="condition-card__title">आन्तरिक सुन्निने</h3><p class="condition-card__sub">Internal Swelling</p></div></div>
+      <div class="condition-card reveal reveal-d2"><img src="Images/fissure.webp" alt="Fissure" loading="lazy" decoding="async"/><div class="condition-card__body"><h3 class="condition-card__title">दिसाद्वारमा दरार</h3><p class="condition-card__sub">Fissure</p></div></div>
+      <div class="condition-card reveal reveal-d3"><img src="Images/fistula.webp" alt="Fistula" loading="lazy" decoding="async"/><div class="condition-card__body"><h3 class="condition-card__title">नली समस्या</h3><p class="condition-card__sub">Fistula</p></div></div>
     </div>
   </div>
 </section>
@@ -1129,33 +1036,12 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
       <h2 class="s-header__title"><em>३ सजिलो चरण</em>मा प्रयोग गर्नुहोस्</h2>
       <div class="s-header__line"></div>
     </div>
-
     <div class="howto__wrap">
-      <div class="howto__img reveal">
-        <img src="Images/img.webp" alt="Herbal Relief Spray Bottle" width="280" height="380" loading="lazy" decoding="async"/>
-      </div>
+      <div class="howto__img reveal"><img src="Images/img.webp" alt="Herbal Relief Spray Bottle" width="280" height="380" loading="lazy" decoding="async"/></div>
       <div class="howto__steps">
-        <div class="step reveal reveal-d1">
-          <div class="step__num">1</div>
-          <div>
-            <div class="step__title">प्रभावित भाग सफा गरेर सुखाउनुहोस्</div>
-            <p class="step__desc">हल्का साबुन र पानीले सफा गरी नरम कपडाले राम्ररी सुखाउनुहोस्।</p>
-          </div>
-        </div>
-        <div class="step reveal reveal-d2">
-          <div class="step__num">2</div>
-          <div>
-            <div class="step__title">१–२ पटक स्प्रे गर्नुहोस्</div>
-            <p class="step__desc">बोतललाई केही दूरीमा राखेर प्रभावित स्थानमा १–२ पटक स्प्रे गर्नुहोस्।</p>
-          </div>
-        </div>
-        <div class="step reveal reveal-d3">
-          <div class="step__num">3</div>
-          <div>
-            <div class="step__title">सुक्न दिनुहोस्</div>
-            <p class="step__desc">स्प्रे प्राकृतिक रूपमा सुक्न दिनुहोस् अनि मात्र बस्नुहोस् वा कपडा लगाउनुहोस्।</p>
-          </div>
-        </div>
+        <div class="step reveal reveal-d1"><div class="step__num">1</div><div><div class="step__title">प्रभावित भाग सफा गरेर सुखाउनुहोस्</div><p class="step__desc">हल्का साबुन र पानीले सफा गरी नरम कपडाले राम्ररी सुखाउनुहोस्।</p></div></div>
+        <div class="step reveal reveal-d2"><div class="step__num">2</div><div><div class="step__title">१–२ पटक स्प्रे गर्नुहोस्</div><p class="step__desc">बोतललाई केही दूरीमा राखेर प्रभावित स्थानमा १–२ पटक स्प्रे गर्नुहोस्।</p></div></div>
+        <div class="step reveal reveal-d3"><div class="step__num">3</div><div><div class="step__title">सुक्न दिनुहोस्</div><p class="step__desc">स्प्रे प्राकृतिक रूपमा सुक्न दिनुहोस् अनि मात्र बस्नुहोस् वा कपडा लगाउनुहोस्।</p></div></div>
       </div>
     </div>
   </div>
@@ -1163,34 +1049,21 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
 
 <!-- ==================== STORY ==================== -->
 <section class="story" id="story">
-  <div class="story__img">
-    <img src="Images/70.webp" alt="सन्तुष्ट ग्राहक" width="600" height="400" loading="lazy" decoding="async"/>
-  </div>
+  <div class="story__img"><img src="Images/70.webp" alt="सन्तुष्ट ग्राहक" width="600" height="400" loading="lazy" decoding="async"/></div>
   <div class="story__content">
     <div class="story__eyebrow reveal">तपाईंको यात्रा</div>
     <h2 class="story__title reveal reveal-d1">असहज दिनहरूबाट<br><em>आरामदायक जीवनतर्फ</em></h2>
     <p class="story__text reveal reveal-d2">Herbal Relief Spray ले धेरैलाई दैनिक असहजता, जलन र तनाव कम गर्दै सामान्य जीवनमा फर्किन मद्दत गरेको छ। अब तपाईं पनि प्राकृतिक राहतका साथ खुसी–खुसी आफ्नो दिन बिताउन सक्नुहुन्छ।</p>
-    <button class="btn-cta--light open-order reveal reveal-d3">
-      Order Now — Rs 1,900 →
-    </button>
+    <button class="btn-cta--light open-order reveal reveal-d3">Order Now — Rs 1,900 →</button>
   </div>
 </section>
 
 <!-- ==================== TRUST BADGES ==================== -->
 <div class="badges">
   <div class="badges__grid">
-    <div class="badge-item reveal reveal-d2">
-      <img src="https://cdn.shopify.com/s/files/1/0602/2440/5694/files/Instant-relief.jpg?v=1727688883" alt="Instant Relief" loading="lazy"/>
-      <span>Instant Relief</span>
-    </div>
-    <div class="badge-item reveal reveal-d1">
-      <img src="https://cdn.shopify.com/s/files/1/0602/2440/5694/files/No-hurt-formula.jpg?v=1727688883" alt="No-Hurt Formula" loading="lazy"/>
-      <span>No-Hurt Formula</span>
-    </div>
-    <div class="badge-item reveal reveal-d2">
-      <img src="https://cdn.shopify.com/s/files/1/0602/2440/5694/files/Rapid-cooling.jpg?v=1727688883" alt="Rapid Cooling" loading="lazy"/>
-      <span>Rapid Cooling</span>
-    </div>
+    <div class="badge-item reveal reveal-d2"><img src="https://cdn.shopify.com/s/files/1/0602/2440/5694/files/Instant-relief.jpg?v=1727688883" alt="Instant Relief" loading="lazy"/><span>Instant Relief</span></div>
+    <div class="badge-item reveal reveal-d1"><img src="https://cdn.shopify.com/s/files/1/0602/2440/5694/files/No-hurt-formula.jpg?v=1727688883" alt="No-Hurt Formula" loading="lazy"/><span>No-Hurt Formula</span></div>
+    <div class="badge-item reveal reveal-d2"><img src="https://cdn.shopify.com/s/files/1/0602/2440/5694/files/Rapid-cooling.jpg?v=1727688883" alt="Rapid Cooling" loading="lazy"/><span>Rapid Cooling</span></div>
   </div>
 </div>
 
@@ -1202,14 +1075,9 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
       <h2 class="s-header__title">वर्षौंदेखि आयुर्वेदमा प्रयोग हुँदै आएका<br><em>प्राकृतिक जडीबुटीहरू</em></h2>
       <div class="s-header__line"></div>
     </div>
-
     <div class="ingredients__layout reveal">
       <div class="ing-list" id="ingList"></div>
-      <div class="ing-detail">
-        <img id="ingImg" src="" alt="" loading="lazy"/>
-        <h3 id="ingName"></h3>
-        <p id="ingDesc"></p>
-      </div>
+      <div class="ing-detail"><img id="ingImg" src="" alt="" loading="lazy"/><h3 id="ingName"></h3><p id="ingDesc"></p></div>
     </div>
   </div>
 </section>
@@ -1222,67 +1090,22 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
       <h2 class="s-header__title">हाम्रा ग्राहकहरूका<br><em>मनका कुराहरू</em></h2>
       <div class="s-header__line"></div>
     </div>
-
     <div class="reviews__carousel" id="reviewCarousel">
-      <div class="review-card reveal">
-        <div class="review-proof"><div class="review-proof-img" data-src="Images/59.webp"></div></div>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"पहिले त उठबस गर्न र सानोतिनो काम गर्दा पनि चस्स-चस्स घोचेर सहनै गाह्रो हुन्थ्यो। लगातार ३ दिन यो Herbal Relief Spray लगाएँ, अहिले त बस्न, हिँडडुल गर्न र काम गर्न धेरै नै हलुका भएको छु।"</p>
-        <div class="review-author">रामबहादुर थापा — काठमाडौँ</div>
-      </div>
-      <div class="review-card reveal reveal-d1">
-        <div class="review-proof"><div class="review-proof-img" data-src="Images/61.webp"></div></div>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"४-५ दिनमा नै अचम्मको सुधार महसुस गरेँ। सुन्निएको जस्तो महसुस हुन छाड्यो अनि अहिले धेरै हलुका र आरामदायक छु।"</p>
-        <div class="review-author">सुष्मा केसी — पोखरा</div>
-      </div>
-      <div class="review-card reveal reveal-d2">
-        <div class="review-proof"><div class="review-proof-img" data-src="Images/63.webp"></div></div>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"क्रिम र अरू उपायहरू कति फेरें, केही दिनलाई मात्रै राहत हुन्थ्यो। यो Herbal Relief Spray चाहिँ लगाउने बित्तिकै सुक्छ, पोल्दैन पनि अनि बिस्तारै धेरै सहज महसुस भइराछ।"</p>
-        <div class="review-author">प्रकाश अधिकारी — भरतपुर</div>
-      </div>
-      <div class="review-card reveal reveal-d1">
-        <div class="review-proof"><div class="review-proof-img" data-src="Images/60.webp"></div></div>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"सुत्केरी भएपछि असहजताले साह्रै सतायो। यो स्प्रे लगाउँदा एकदमै चिसो र आनन्द आउँछ। एक हप्तामै बिस्तारै सहज भएको थाहा पाएँ।"</p>
-        <div class="review-author">रीता बस्नेत — भक्तपुर</div>
-      </div>
-      <div class="review-card reveal reveal-d2">
-        <div class="review-proof"><div class="review-proof-img" data-src="Images/64.webp"></div></div>
-        <div class="review-stars">★★★★☆</div>
-        <p class="review-text">"दिनभरि बस चलाउँदा सिटमा बस्नै नसकिने गरी असहज हुन्थ्यो। अहिले त लामो ड्युटीमा पनि त्यस्तो खप्नै नसक्ने असहजता छैन।"</p>
-        <div class="review-author">दिपेश गुरुङ — बुटवल</div>
-      </div>
-      <div class="review-card reveal reveal-d3">
-        <div class="review-proof"><div class="review-proof-img" data-src="Images/62.webp"></div></div>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"पहिले दिसाद्वारको वरिपरि असाध्यै चिलाउने र पोल्ने गर्थ्यो। यो स्प्रेले गर्दा त्यहाँको छाला नरम र चिसो भइराख्छ।"</p>
-        <div class="review-author">मीना रिजाल — धरान</div>
-      </div>
-      <div class="review-card reveal">
-        <div class="review-proof"><div class="review-proof-img" data-src="Images/71.webp"></div></div>
-        <div class="review-stars">★★★★☆</div>
-        <p class="review-text">"स्प्रे भएको हुनाले प्रभावित भागमा हातले छोइराख्न परेन। छिट्टै सुक्ने रहेछ, भित्री लुगामा दाग पनि लाग्दैन।"</p>
-        <div class="review-author">कुमार श्रेष्ठ — विराटनगर</div>
-      </div>
-      <div class="review-card reveal reveal-d1">
-        <div class="review-proof"><div class="review-proof-img" data-src="Images/65.webp"></div></div>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"यसको कडा गन्ध छैन, जडिबुटीको मन्द र फ्रेस बासना मात्रै आउँछ। यति राम्रो काम गरेपछि परिवारको लागि पनि भनेर मैले त एकैचोटि ३ बोतलको प्याकेज मगाइसकेको छु।"</p>
-        <div class="review-author">सन्तोष लामिछाने — नेपालगञ्ज</div>
-      </div>
+      <div class="review-card reveal"><div class="review-proof"><div class="review-proof-img" data-src="Images/59.webp"></div></div><div class="review-stars">★★★★★</div><p class="review-text">"पहिले त उठबस गर्न र सानोतिनो काम गर्दा पनि चस्स-चस्स घोचेर सहनै गाह्रो हुन्थ्यो। लगातार ३ दिन यो Herbal Relief Spray लगाएँ, अहिले त बस्न, हिँडडुल गर्न र काम गर्न धेरै नै हलुका भएको छु।"</p><div class="review-author">रामबहादुर थापा — काठमाडौँ</div></div>
+      <div class="review-card reveal reveal-d1"><div class="review-proof"><div class="review-proof-img" data-src="Images/61.webp"></div></div><div class="review-stars">★★★★★</div><p class="review-text">"४-५ दिनमा नै अचम्मको सुधार महसुस गरेँ। सुन्निएको जस्तो महसुस हुन छाड्यो अनि अहिले धेरै हलुका र आरामदायक छु।"</p><div class="review-author">सुष्मा केसी — पोखरा</div></div>
+      <div class="review-card reveal reveal-d2"><div class="review-proof"><div class="review-proof-img" data-src="Images/63.webp"></div></div><div class="review-stars">★★★★★</div><p class="review-text">"क्रिम र अरू उपायहरू कति फेरें, केही दिनलाई मात्रै राहत हुन्थ्यो। यो Herbal Relief Spray चाहिँ लगाउने बित्तिकै सुक्छ, पोल्दैन पनि अनि बिस्तारै धेरै सहज महसुस भइराछ।"</p><div class="review-author">प्रकाश अधिकारी — भरतपुर</div></div>
+      <div class="review-card reveal reveal-d1"><div class="review-proof"><div class="review-proof-img" data-src="Images/60.webp"></div></div><div class="review-stars">★★★★★</div><p class="review-text">"सुत्केरी भएपछि असहजताले साह्रै सतायो। यो स्प्रे लगाउँदा एकदमै चिसो र आनन्द आउँछ। एक हप्तामै बिस्तारै सहज भएको थाहा पाएँ।"</p><div class="review-author">रीता बस्नेत — भक्तपुर</div></div>
+      <div class="review-card reveal reveal-d2"><div class="review-proof"><div class="review-proof-img" data-src="Images/64.webp"></div></div><div class="review-stars">★★★★☆</div><p class="review-text">"दिनभरि बस चलाउँदा सिटमा बस्नै नसकिने गरी असहज हुन्थ्यो। अहिले त लामो ड्युटीमा पनि त्यस्तो खप्नै नसक्ने असहजता छैन।"</p><div class="review-author">दिपेश गुरुङ — बुटवल</div></div>
+      <div class="review-card reveal reveal-d3"><div class="review-proof"><div class="review-proof-img" data-src="Images/62.webp"></div></div><div class="review-stars">★★★★★</div><p class="review-text">"पहिले दिसाद्वारको वरिपरि असाध्यै चिलाउने र पोल्ने गर्थ्यो। यो स्प्रेले गर्दा त्यहाँको छाला नरम र चिसो भइराख्छ।"</p><div class="review-author">मीना रिजाल — धरान</div></div>
+      <div class="review-card reveal"><div class="review-proof"><div class="review-proof-img" data-src="Images/71.webp"></div></div><div class="review-stars">★★★★☆</div><p class="review-text">"स्प्रे भएको हुनाले प्रभावित भागमा हातले छोइराख्न परेन। छिट्टै सुक्ने रहेछ, भित्री लुगामा दाग पनि लाग्दैन।"</p><div class="review-author">कुमार श्रेष्ठ — विराटनगर</div></div>
+      <div class="review-card reveal reveal-d1"><div class="review-proof"><div class="review-proof-img" data-src="Images/65.webp"></div></div><div class="review-stars">★★★★★</div><p class="review-text">"यसको कडा गन्ध छैन, जडिबुटीको मन्द र फ्रेस बासना मात्रै आउँछ। यति राम्रो काम गरेपछि परिवारको लागि पनि भनेर मैले त एकैचोटि ३ बोतलको प्याकेज मगाइसकेको छु।"</p><div class="review-author">सन्तोष लामिछाने — नेपालगञ्ज</div></div>
     </div>
-
     <div class="reviews__controls">
       <button id="revPrev" aria-label="Previous">‹</button>
       <button id="revNext" aria-label="Next">›</button>
     </div>
-
     <div style="text-align:center;margin-top:32px;">
-      <button class="btn-cta open-order reveal" style="margin:0 auto;">
-         Order Now — Rs 1,900  <span class="arrow">→</span>
-      </button>
+      <button class="btn-cta open-order reveal" style="margin:0 auto;"> Order Now — Rs 1,900  <span class="arrow">→</span></button>
     </div>
   </div>
 </section>
@@ -1320,99 +1143,116 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
 </template>
 
 <!-- ==================== ORDER MODAL ==================== -->
+<!-- NEW STRUCTURE: overlay → box (flex column) → header | scroll-area | footer -->
 <div id="orderOverlay" role="dialog" aria-modal="true" aria-label="Order Form">
   <div id="orderBox">
-    <button id="orderClose" aria-label="Close">×</button>
-    <h2 class="order-title">प्याकेज छान्नुहोस्</h2>
-    <p class="order-sub">🌿 60ml · Free Delivery · Cash on Delivery</p>
 
-    <form id="orderForm" novalidate>
-      <div class="form-field">
-        <input type="text" id="f_name" name="name" placeholder=" " required autocomplete="name"/>
-        <label for="f_name">नाम / Name</label>
-      </div>
-      <div class="form-field">
-        <input type="tel" id="f_phone" name="phone" placeholder=" " required inputmode="numeric"
-               pattern="^(?:\+?977)?9[6-8]\d{8}$" title="कृपया ठिक नेपाली मोबाइल नम्बर हाल्नुहोस्" autocomplete="tel"/>
-        <label for="f_phone">मोबाइल नम्बर / Mobile</label>
-      </div>
-      <div class="form-field">
-        <input type="text" id="f_address" name="address" placeholder=" " required autocomplete="street-address"/>
-        <label for="f_address">ठेगाना / Address</label>
-      </div>
-      <div class="form-field">
-        <input list="provinceList" id="f_province" name="province" placeholder=" " required autocomplete="address-level1"/>
-        <label for="f_province">प्रदेश / Province</label>
-        <datalist id="provinceList">
-          <option value="कोशी प्रदेश / Koshi Province">
-          <option value="मधेश प्रदेश / Madhesh Province">
-          <option value="बाग्मती प्रदेश / Bagmati Province">
-          <option value="गण्डकी प्रदेश / Gandaki Province">
-          <option value="लुम्बिनी प्रदेश / Lumbini Province">
-          <option value="कर्णाली प्रदेश / Karnali Province">
-          <option value="सुदूरपश्चिम प्रदेश / Sudurpashchim Province">
-        </datalist>
-      </div>
+    <!-- Fixed header — title + close button, never scrolls -->
+    <div class="order-header">
+      <button id="orderClose" aria-label="Close">×</button>
+      <h2 class="order-title">प्याकेज छान्नुहोस्</h2>
+      <p class="order-sub">🌿 60ml · Free Delivery · Cash on Delivery</p>
+    </div>
 
-      <div class="pkg-grid">
-        <div class="pkg-card" id="pkg1" data-bottles="1" data-price="1900" role="button" tabindex="0" aria-pressed="false">
-          <div class="pkg-card__row">
-            <span class="pkg-card__name">X1 — 1 बोतल (60ml)</span>
+    <!-- Scrollable middle — only this area scrolls if content is too tall -->
+    <div class="order-scroll">
+      <form id="orderForm" novalidate>
+        <div class="form-field">
+          <input type="text" id="f_name" name="name" placeholder=" " required autocomplete="name"/>
+          <label for="f_name">नाम / Name</label>
+        </div>
+        <div class="form-field">
+          <input type="tel" id="f_phone" name="phone" placeholder=" " required inputmode="numeric"
+                 pattern="^(?:\+?977)?9[6-8]\d{8}$" title="कृपया ठिक नेपाली मोबाइल नम्बर हाल्नुहोस्" autocomplete="tel"/>
+          <label for="f_phone">मोबाइल / Mobile</label>
+        </div>
+        <div class="form-field">
+          <input type="text" id="f_address" name="address" placeholder=" " required autocomplete="street-address"/>
+          <label for="f_address">ठेगाना / Address</label>
+        </div>
+        <div class="form-field">
+          <input list="provinceList" id="f_province" name="province" placeholder=" " required autocomplete="address-level1"/>
+          <label for="f_province">प्रदेश / Province</label>
+          <datalist id="provinceList">
+            <option value="कोशी / Koshi">
+            <option value="मधेश / Madhesh">
+            <option value="बाग्मती / Bagmati">
+            <option value="गण्डकी / Gandaki">
+            <option value="लुम्बिनी / Lumbini">
+            <option value="कर्णाली / Karnali">
+            <option value="सुदूरपश्चिम / Sudurpashchim">
+          </datalist>
+        </div>
+
+        <!-- Package cards — horizontal 3-column grid, always -->
+        <div class="pkg-grid">
+          <div class="pkg-card" id="pkg1" data-bottles="1" data-price="1900" role="button" tabindex="0" aria-pressed="false">
+            <div class="pkg-card__row">
+              <span class="pkg-card__radio"></span>
+              <span class="pkg-card__name">X1 — 1 बोतल<br><small style="font-weight:500;font-size:12px;color:var(--c-muted);">60ml · एक पटकको उपचार</small></span>
+            </div>
             <div class="pkg-card__prices">
               <span class="pkg-card__old">Rs 2,500</span>
               <span class="pkg-card__new">Rs 1,900</span>
+              <span class="pkg-card__save">Save Rs 600</span>
             </div>
           </div>
-          <span class="pkg-card__save">बचत Rs 600</span>
-        </div>
-        <div class="pkg-card sel" id="pkg2" data-bottles="2" data-price="3200" role="button" tabindex="0" aria-pressed="true">
-          <div class="pkg-card__row">
-            <span class="pkg-card__name">X2 — 2 बोतल (60ml)</span>
+          <div class="pkg-card sel" id="pkg2" data-bottles="2" data-price="3200" role="button" tabindex="0" aria-pressed="true">
+            <span class="pkg-best">Best Choice</span>
+            <div class="pkg-card__row">
+              <span class="pkg-card__radio"></span>
+              <span class="pkg-card__name">X2 — 2 बोतल<br><small style="font-weight:500;font-size:12px;color:var(--c-muted);">120ml · पूरा उपचार</small></span>
+            </div>
             <div class="pkg-card__prices">
               <span class="pkg-card__old">Rs 5,000</span>
               <span class="pkg-card__new">Rs 3,200</span>
+              <span class="pkg-card__save">Save Rs 1,800</span>
             </div>
           </div>
-          <span class="pkg-card__save">बचत Rs 1,800</span>
-          <span class="pkg-best">Best Choice</span>
-        </div>
-        <div class="pkg-card" id="pkg3" data-bottles="3" data-price="4500" role="button" tabindex="0" aria-pressed="false">
-          <div class="pkg-card__row">
-            <span class="pkg-card__name">X3 — 3 बोतल (60ml)</span>
+          <div class="pkg-card" id="pkg3" data-bottles="3" data-price="4500" role="button" tabindex="0" aria-pressed="false">
+            <div class="pkg-card__row">
+              <span class="pkg-card__radio"></span>
+              <span class="pkg-card__name">X3 — 3 बोतल<br><small style="font-weight:500;font-size:12px;color:var(--c-muted);">180ml · परिवारको लागि</small></span>
+            </div>
             <div class="pkg-card__prices">
               <span class="pkg-card__old">Rs 7,500</span>
               <span class="pkg-card__new">Rs 4,500</span>
+              <span class="pkg-card__save">Save Rs 3,000</span>
             </div>
           </div>
-          <span class="pkg-card__save">बचत Rs 3,000</span>
+        </div>
+
+        <label class="consent-row">
+          <input type="checkbox" name="policy_consent" value="Agreed" required/>
+          <span>मैले <a href="#" data-policy="privacy-policy">Privacy Policy</a>, <a href="#" data-policy="shipping-policy">Shipping</a>, <a href="#" data-policy="return-refund-policy">Return/Refund</a> र <a href="#" data-policy="terms-conditions">Terms</a> पढेर सहमति जनाएको छु।</span>
+        </label>
+
+        <div id="formError"></div>
+      </form>
+
+      <div id="confirmStep">
+        <h3 style="font-family:var(--ff-head);font-size:18px;color:var(--c-forest);text-align:center;margin-bottom:10px;">अर्डर पुष्टि गर्नुहोस्</h3>
+        <div class="confirm-details">
+          <div><b>नाम:</b> <span id="c_name"></span></div>
+          <div><b>मोबाइल:</b> <span id="c_phone"></span></div>
+          <div><b>ठेगाना:</b> <span id="c_address"></span></div>
+          <div><b>प्रदेश:</b> <span id="c_province"></span></div>
+          <div><b>प्याकेज:</b> <span id="c_pkg"></span></div>
+          <div><b>जम्मा:</b> Rs <span id="c_price"></span></div>
+        </div>
+        <div class="confirm-actions">
+          <button class="btn-edit" id="editBtn">← Edit</button>
+          <button class="btn-submit" id="confirmBtn" style="flex:1;">Confirm Order ✓</button>
         </div>
       </div>
+    </div><!-- /.order-scroll -->
 
-      <label class="consent-row">
-        <input type="checkbox" name="policy_consent" value="Agreed" required/>
-        <span>मैले <a href="#" data-policy="privacy-policy">Privacy Policy</a>, <a href="#" data-policy="shipping-policy">Shipping</a>, <a href="#" data-policy="return-refund-policy">Return/Refund</a> र <a href="#" data-policy="terms-conditions">Terms</a> पढेर सहमति जनाएको छु।</span>
-      </label>
-
-      <button type="submit" class="btn-submit">अर्डर गर्नुहोस् / Submit Order</button>
-      <div id="formError"></div>
-    </form>
-
-    <div id="confirmStep">
-      <h3 style="font-family:var(--ff-head);font-size:20px;color:var(--c-forest);text-align:center;margin-bottom:12px;">अर्डर पुष्टि गर्नुहोस्</h3>
-      <div class="confirm-details">
-        <div><b>नाम:</b> <span id="c_name"></span></div>
-        <div><b>मोबाइल:</b> <span id="c_phone"></span></div>
-        <div><b>ठेगाना:</b> <span id="c_address"></span></div>
-        <div><b>प्रदेश:</b> <span id="c_province"></span></div>
-        <div><b>प्याकेज:</b> <span id="c_pkg"></span></div>
-        <div><b>जम्मा:</b> Rs <span id="c_price"></span></div>
-      </div>
-      <div class="confirm-actions">
-        <button class="btn-edit" id="editBtn">← Edit</button>
-        <button class="btn-submit" id="confirmBtn" style="margin-top:0;flex:1;">Confirm Order ✓</button>
-      </div>
+    <!-- Fixed footer — submit button always visible -->
+    <div class="order-footer" id="orderFormFooter">
+      <button type="submit" class="btn-submit" id="submitBtn">अर्डर गर्नुहोस् / Submit Order</button>
     </div>
-  </div>
+
+  </div><!-- /#orderBox -->
 </div>
 
 <!-- LOADING -->
@@ -1430,75 +1270,45 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
 <script>
 /* ===== PROMO BAR ===== */
 (function(){
-  const msgs = document.querySelectorAll('.promo-msg');
-  let idx = 0;
-  setInterval(()=>{
-    msgs[idx].classList.remove('active');
-    idx = (idx+1)%msgs.length;
-    msgs[idx].classList.add('active');
-  }, 3200);
+  const msgs=document.querySelectorAll('.promo-msg');
+  let idx=0;
+  setInterval(()=>{msgs[idx].classList.remove('active');idx=(idx+1)%msgs.length;msgs[idx].classList.add('active');},3200);
 })();
 
-/* ===== STICKY CTA — show after hero scrolled past ===== */
+/* ===== STICKY CTA ===== */
 (function(){
-  const stickyCta = document.getElementById('stickyCta');
-  const hero = document.getElementById('home');
-  if(!stickyCta || !hero) return;
-
-  function updateSticky(){
-    const heroBottom = hero.getBoundingClientRect().bottom;
-    // Show once the bottom of the hero goes above the viewport
-    if(heroBottom <= 0){
-      stickyCta.classList.add('visible');
-      document.body.classList.add('sticky-visible');
-    } else {
-      stickyCta.classList.remove('visible');
-      document.body.classList.remove('sticky-visible');
-    }
-  }
-
-  // Throttle with rAF for performance
-  let ticking = false;
-  window.addEventListener('scroll', function(){
-    if(!ticking){
-      requestAnimationFrame(function(){
-        updateSticky();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, {passive: true});
-
-  // Initial check (in case page reloads mid-scroll)
+  const stickyCta=document.getElementById('stickyCta');
+  const hero=document.getElementById('home');
+  if(!stickyCta||!hero)return;
+  function updateSticky(){const b=hero.getBoundingClientRect().bottom;if(b<=0){stickyCta.classList.add('visible');document.body.classList.add('sticky-visible');}else{stickyCta.classList.remove('visible');document.body.classList.remove('sticky-visible');}}
+  let ticking=false;
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(function(){updateSticky();ticking=false;});ticking=true;}},{passive:true});
   updateSticky();
 })();
 
 /* ===== REVEAL ON SCROLL ===== */
-const revObs = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); revObs.unobserve(e.target); }});
-},{threshold:.12});
+const revObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}});},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
 
 /* ===== BENEFITS LAYOUT TOGGLE ===== */
 (function(){
-  const d = document.getElementById('benefitsDesktop');
-  const m = document.getElementById('benefitsMobile');
-  function check(){ const isMob = window.innerWidth <= 1024; d.style.display = isMob?'none':'grid'; m.style.display = isMob?'grid':'none'; }
-  check(); window.addEventListener('resize',check);
+  const d=document.getElementById('benefitsDesktop'),m=document.getElementById('benefitsMobile');
+  function check(){const isMob=window.innerWidth<=1024;d.style.display=isMob?'none':'grid';m.style.display=isMob?'grid':'none';}
+  check();window.addEventListener('resize',check);
 })();
 
 /* ===== INGREDIENTS ===== */
 const ingredients=[
   {name:"Haritaki",image:"Images/haritaki.webp",desc:"आयुर्वेदमा वर्षौंदेखि प्रयोग हुँदै आएको महत्वपूर्ण जडीबुटी, जुन पाचन सन्तुलन र शरीरको समग्र सुस्वास्थ्यका लागि परम्परागत रूपले उपयोगी मानिन्छ।"},
-  {name:"Suran",image:"Images/suran.webp",desc:"पेट र आन्द्रासम्बन्धी असहजतामा परम्परागत रूपमा प्रयोग हुँदै आएको कन्द, जुन आयुर्वेदिक सूत्रणमा लामो इतिहास बोकेको छ।"},
-  {name:"Haridara (Turmeric)",image:"Images/haridra.webp",desc:"हजारौं वर्षदेखि आयुर्वेद र पाककलामा प्रयोग हुँदै आएको बलियो प्राकृतिक एन्टिअक्सिडेन्ट जडीबुटी।"},
-  {name:"Lodhra",image:"Images/lodhra.webp",desc:"परम्परागत आयुर्वेदिक चिकित्सामा कोमल टिस्युहरूको स्वास्थ्य र छाला सन्तुलनका लागि वर्षौंदेखि प्रयोग गरिँदै आएको जडीबुटी।"},
+  {name:"Suran",image:"Images/suran.webp",desc:"पेट र आन्द्रासम्बन्धी असहजतामा परम्परागत रूपमा प्रयोग हुँदै आएको कन्द।"},
+  {name:"Haridara (Turmeric)",image:"Images/haridra.webp",desc:"हजारौं वर्षदेखि आयुर्वेद र पाककलामा प्रयोग हुँदै आएको बलियो प्राकृतिक एन्टिअक्सिडेन्ट।"},
+  {name:"Lodhra",image:"Images/lodhra.webp",desc:"परम्परागत आयुर्वेदिक चिकित्सामा कोमल टिस्युहरूको स्वास्थ्य र छाला सन्तुलनका लागि प्रयोग गरिँदै आएको जडीबुटी।"},
   {name:"Yastimadhu (Licorice)",image:"Images/Yastimadhu-Licorice.webp",desc:"छाला शान्त राख्न र असहजता कम गर्न आयुर्वेदिक परम्परामा लामो समयदेखि उपयोग हुँदै आएको मीठो जरा।"},
   {name:"Daruharidra",image:"Images/Daruharidra.webp",desc:"आयुर्वेदिक परम्परामा छाला र समग्र स्वास्थ्यका लागि सदियौंदेखि उपयोग हुँदै आएको प्रसिद्ध बोट।"},
   {name:"Nirgundi",image:"Images/Nirgundi.webp",desc:"असहजता र शरीरको तनाव कम गर्न परम्परागत आयुर्वेदिक सूत्रणमा महत्वपूर्ण स्थान राख्ने जडीबुटी।"},
   {name:"Manjistha",image:"Images/Manjistha.webp",desc:"रक्तशुद्धि र छाला सम्बन्धी परम्परागत उपचारमा आयुर्वेदले सदियौंदेखि उपयोग गर्दै आएको बोट।"},
   {name:"Lajjawati",image:"Images/Lajjawati-Jhar.webp",desc:"संवेदनशील छालाको हेरचाह र आराम प्रदान गर्न परम्परागत आयुर्वेदिक मिश्रणमा प्रयोग हुने सहयोगी बोट।"},
-  {name:"Dhubo",image:"Images/dubo.webp",desc:"लोक चिकित्सा र आयुर्वेदमा छाला निको पार्न र सुरक्षित राख्न परम्परागत रूपमा प्रयोग हुँदै आएको घाँस।"},
+  {name:"Dhubo",image:"Images/dubo.webp",desc:"लोक चिकित्सा र आयुर्वेदमा छाला निको पार्न परम्परागत रूपमा प्रयोग हुँदै आएको घाँस।"},
   {name:"Kustha",image:"Images/Kustha.webp",desc:"त्वचा र शरीरको शुद्धिकरणमा आयुर्वेदमा परम्परागत रूपले प्रयोग हुँदै आएको सुगन्धित जडीबुटी।"},
   {name:"Mahanimba",image:"Images/Mahanimba.webp",desc:"आयुर्वेदिक परम्परामा शरीरको सफाइ र सुरक्षाका लागि वर्षौंदेखि प्रयोग गरिँदै आएको निम वर्गको बोट।"},
   {name:"Nilakama",image:"Images/nilkama.webp",desc:"परम्परागत आयुर्वेदिक प्रयोगमा रक्तशुद्धि र छाला सन्तुलनका लागि उपयोगी मानिने जडीबुटी।"},
@@ -1506,31 +1316,19 @@ const ingredients=[
   {name:"Jaipahal",image:"Images/Jaipahal.webp",desc:"आयुर्वेदिक मिश्रणमा शरीरको ऊर्जा र सन्तुलन कायम राख्न परम्परागत रूपले थपिने मसला।"},
   {name:"Padhnakh",image:"Images/padmank.webp",desc:"आयुर्वेदिक सूत्रणमा सन्तुलन र अतिरिक्त शक्ति प्रदान गर्न प्रयोग हुने सहयोगी जडीबुटी।"},
   {name:"Baumika",image:"Images/Baumika.webp",desc:"परम्परागत लोक चिकित्सामा शरीरलाई आराम र सहजता दिन प्रयोग हुने भुइँ–आधारित जडीबुटी।"},
-  {name:"Til oil (Sesame oil)",image:"Images/Til-oil-Sesame-oil.webp",desc:"आयुर्वेदिक सूत्रणमा छाला नरम, पोषणयुक्त र लचिलो राख्न सदियौंदेखि प्रयोग हुँदै आएको आधार तेल।"},
-  {name:"Bee wax",image:"Images/Bee-wax.webp",desc:"छालामा सुरक्षात्मक तह बनाई नमी जोगाउन आयुर्वेद र प्राकृतिक सौन्दर्यमा प्रयोग हुने प्राकृतिक मैन।"},
+  {name:"Til oil",image:"Images/Til-oil-Sesame-oil.webp",desc:"आयुर्वेदिक सूत्रणमा छाला नरम, पोषणयुक्त र लचिलो राख्न सदियौंदेखि प्रयोग हुँदै आएको आधार तेल।"},
+  {name:"Bee wax",image:"Images/Bee-wax.webp",desc:"छालामा सुरक्षात्मक तह बनाई नमी जोगाउन प्रयोग हुने प्राकृतिक मैन।"},
   {name:"Nilo tooth",image:"Images/sweetpea-king-tut-2-1-scaled.webp",desc:"परम्परागत हर्बल संयोजनमा समग्र सन्तुलन र सहजताका लागि प्रयोग हुने प्राकृतिक घटक।"}
 ];
 (function(){
   const list=document.getElementById('ingList'),img=document.getElementById('ingImg'),name=document.getElementById('ingName'),desc=document.getElementById('ingDesc');
-  ingredients.forEach((ing,i)=>{
-    const el=document.createElement('div');
-    el.className='ing-item';el.textContent=ing.name;
-    el.onclick=()=>select(i);list.appendChild(el);
-  });
-  function select(i){
-    document.querySelectorAll('.ing-item').forEach((el,j)=>el.classList.toggle('active',j===i));
-    img.src=ingredients[i].image;img.alt=ingredients[i].name;
-    name.textContent=ingredients[i].name;desc.textContent=ingredients[i].desc;
-    const el = list.querySelectorAll('.ing-item')[i];
-    if(el) el.scrollIntoView({block:'nearest',inline:'center'});
-  }
+  ingredients.forEach((ing,i)=>{const el=document.createElement('div');el.className='ing-item';el.textContent=ing.name;el.onclick=()=>select(i);list.appendChild(el);});
+  function select(i){document.querySelectorAll('.ing-item').forEach((el,j)=>el.classList.toggle('active',j===i));img.src=ingredients[i].image;img.alt=ingredients[i].name;name.textContent=ingredients[i].name;desc.textContent=ingredients[i].desc;const el=list.querySelectorAll('.ing-item')[i];if(el)el.scrollIntoView({block:'nearest',inline:'center'});}
   select(0);
 })();
 
 /* ===== REVIEW IMAGES ===== */
-document.querySelectorAll('.review-proof-img[data-src]').forEach(el=>{
-  el.style.backgroundImage=`url("${el.dataset.src}")`;el.removeAttribute('data-src');
-});
+document.querySelectorAll('.review-proof-img[data-src]').forEach(el=>{el.style.backgroundImage=`url("${el.dataset.src}")`;el.removeAttribute('data-src');});
 
 /* ===== REVIEW CAROUSEL ===== */
 (function(){
@@ -1542,15 +1340,12 @@ document.querySelectorAll('.review-proof-img[data-src]').forEach(el=>{
 
 /* ===== POLICY POPUP ===== */
 const polOverlay=document.getElementById('policyOverlay');
-const polBox=document.getElementById('policyBox');
-const polTitle=document.getElementById('policyTitle');
-const polBody=document.getElementById('policyBody');
 let polTrigger=null;
 function openPolicy(id,trigger){
   const tpl=document.getElementById('policyTemplates').content.querySelector(`[data-id="${id}"]`);
   if(!tpl)return;
-  polTitle.textContent=tpl.dataset.title;
-  polBody.innerHTML=tpl.innerHTML;
+  document.getElementById('policyTitle').textContent=tpl.dataset.title;
+  document.getElementById('policyBody').innerHTML=tpl.innerHTML;
   polTrigger=trigger||null;
   polOverlay.classList.add('open');polOverlay.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
@@ -1561,10 +1356,7 @@ function closePolicy(){
   if(!document.getElementById('orderOverlay').classList.contains('open'))document.body.style.overflow='';
   if(polTrigger)polTrigger.focus();
 }
-document.addEventListener('click',e=>{
-  const a=e.target.closest('[data-policy]');
-  if(a){e.preventDefault();openPolicy(a.dataset.policy,a);}
-});
+document.addEventListener('click',e=>{const a=e.target.closest('[data-policy]');if(a){e.preventDefault();openPolicy(a.dataset.policy,a);}});
 document.getElementById('policyClose').onclick=closePolicy;
 document.getElementById('policyOk').onclick=closePolicy;
 polOverlay.addEventListener('click',e=>{if(e.target===polOverlay)closePolicy();});
@@ -1575,12 +1367,16 @@ const orderOverlay=document.getElementById('orderOverlay');
 const orderBox=document.getElementById('orderBox');
 const orderForm=document.getElementById('orderForm');
 const confirmStep=document.getElementById('confirmStep');
+const orderFormFooter=document.getElementById('orderFormFooter');
 let pendingData=null;
 
 function trackPx(event,params){if(typeof fbq==='function')fbq('track',event,params);}
 
 function openOrder(){
-  orderOverlay.classList.add('open');document.body.style.overflow='hidden';orderBox.scrollTop=0;
+  orderOverlay.classList.add('open');
+  document.body.style.overflow='hidden';
+  // Reset scroll to top of scroll area
+  document.querySelector('.order-scroll').scrollTop=0;
   trackPx('AddToCart',{content_name:'Herbal Relief Spray 60ml',content_ids:['herbal-relief-spray-60ml'],content_type:'product',currency:'NPR',value:1900});
 }
 function closeOrder(){orderOverlay.classList.remove('open');document.body.style.overflow='';}
@@ -1590,19 +1386,20 @@ document.getElementById('orderClose').onclick=closeOrder;
 orderOverlay.addEventListener('click',e=>{if(e.target===orderOverlay)closeOrder();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&orderOverlay.classList.contains('open')&&!polOverlay.classList.contains('open'))closeOrder();});
 
-// Package selection
+/* Package selection */
 document.querySelectorAll('.pkg-card').forEach(c=>{
-  c.onclick=()=>{
-    document.querySelectorAll('.pkg-card').forEach(x=>{x.classList.remove('sel');x.setAttribute('aria-pressed','false');});
-    c.classList.add('sel');c.setAttribute('aria-pressed','true');
-  };
+  c.onclick=()=>{document.querySelectorAll('.pkg-card').forEach(x=>{x.classList.remove('sel');x.setAttribute('aria-pressed','false');});c.classList.add('sel');c.setAttribute('aria-pressed','true');};
   c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();c.click();}};
 });
 
 function showError(msg){const b=document.getElementById('formError');b.textContent=msg;b.style.display='block';}
 function clearError(){document.getElementById('formError').style.display='none';}
-
 const fmt=n=>new Intl.NumberFormat('ne-NP').format(n);
+
+/* Submit is triggered by the footer button clicking the form's submit */
+document.getElementById('submitBtn').addEventListener('click',()=>{
+  orderForm.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));
+});
 
 orderForm.addEventListener('submit',e=>{
   e.preventDefault();clearError();
@@ -1620,10 +1417,17 @@ orderForm.addEventListener('submit',e=>{
   document.getElementById('c_pkg').textContent=pkgName;
   document.getElementById('c_price').textContent=fmt(+price);
   trackPx('InitiateCheckout',{content_name:'Herbal Relief Spray 60ml',content_ids:['herbal-relief-spray-60ml'],content_type:'product',num_items:+bottles,currency:'NPR',value:+price});
-  orderForm.style.display='none';confirmStep.style.display='block';orderBox.scrollTop=0;
+  orderForm.style.display='none';
+  confirmStep.style.display='block';
+  orderFormFooter.style.display='none'; // hide the submit footer on confirm step
+  document.querySelector('.order-scroll').scrollTop=0;
 });
 
-document.getElementById('editBtn').onclick=()=>{confirmStep.style.display='none';orderForm.style.display='block';};
+document.getElementById('editBtn').onclick=()=>{
+  confirmStep.style.display='none';
+  orderForm.style.display='block';
+  orderFormFooter.style.display='block';
+};
 
 document.getElementById('confirmBtn').onclick=async function(){
   if(!pendingData)return;
@@ -1650,7 +1454,7 @@ document.getElementById('confirmBtn').onclick=async function(){
   if(!ok){
     lo.classList.remove('on');sp.style.display='block';ch.style.display='none';pf.style.width='0%';
     lt.innerHTML='अर्डर प्रशोधन हुँदैछ…<br/>Processing…';ls.textContent='कृपया पर्खनुहोस् / Please wait';
-    confirmStep.style.display='none';orderForm.style.display='block';openOrder();showError('❌ '+errMsg);return;
+    confirmStep.style.display='none';orderForm.style.display='block';orderFormFooter.style.display='block';openOrder();showError('❌ '+errMsg);return;
   }
   pf.style.width='100%';
   setTimeout(()=>{sp.style.display='none';ch.style.display='flex';lt.innerHTML='अर्डर सफल भयो! 🎉<br/>Order Placed!';ls.textContent='धन्यवाद! / Thank you!';},400);
@@ -1661,106 +1465,56 @@ document.getElementById('confirmBtn').onclick=async function(){
 };
 
 /* ===== VIDEO VISIBILITY ===== */
-document.addEventListener('visibilitychange',()=>{
-  document.querySelectorAll('video[autoplay]').forEach(v=>document.hidden?v.pause():v.play().catch(()=>{}));
-});
+document.addEventListener('visibilitychange',()=>{document.querySelectorAll('video[autoplay]').forEach(v=>document.hidden?v.pause():v.play().catch(()=>{}));});
 </script>
 
 <script>
-/* =========================================
-   FORCE PAGE TO LOAD FROM TOP
-========================================= */
-(function () {
-  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-  if (window.location.hash) { history.replaceState(null, null, window.location.pathname); }
-  window.scrollTo(0, 0);
-  document.addEventListener('DOMContentLoaded', function () { window.scrollTo(0, 0); });
-  window.addEventListener('load', function () {
-    setTimeout(function () {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }, 0);
-  });
-  window.addEventListener('beforeunload', function () { window.scrollTo(0, 0); });
+(function(){
+  if('scrollRestoration' in history){history.scrollRestoration='manual';}
+  if(window.location.hash){history.replaceState(null,null,window.location.pathname);}
+  window.scrollTo(0,0);
+  document.addEventListener('DOMContentLoaded',function(){window.scrollTo(0,0);});
+  window.addEventListener('load',function(){setTimeout(function(){window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0;},0);});
+  window.addEventListener('beforeunload',function(){window.scrollTo(0,0);});
 })();
 
-window.addEventListener('load', function () {
-  const active = document.activeElement;
-  if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'BUTTON')) {
-    active.blur();
-  }
-});
+window.addEventListener('load',function(){const active=document.activeElement;if(active&&(active.tagName==='INPUT'||active.tagName==='TEXTAREA'||active.tagName==='BUTTON')){active.blur();}});
 
-/* =========================================
-   SAFE REVEAL ANIMATION
-========================================= */
-const revealEls = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
-}, { threshold: 0.12 });
-revealEls.forEach(el => { revealObserver.observe(el); });
+const revealEls=document.querySelectorAll('.reveal');
+const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}});},{threshold:0.12});
+revealEls.forEach(el=>{revealObserver.observe(el);});
 
-/* =========================================
-   REVIEW CAROUSEL
-========================================= */
-const carousel = document.getElementById('reviewCarousel');
-const prevBtn = document.getElementById('revPrev');
-const nextBtn = document.getElementById('revNext');
-if (carousel && prevBtn && nextBtn) {
-  nextBtn.addEventListener('click', () => { carousel.scrollBy({ left: 380, behavior: 'smooth' }); });
-  prevBtn.addEventListener('click', () => { carousel.scrollBy({ left: -380, behavior: 'smooth' }); });
+const carousel=document.getElementById('reviewCarousel');
+const prevBtn=document.getElementById('revPrev');
+const nextBtn=document.getElementById('revNext');
+if(carousel&&prevBtn&&nextBtn){
+  nextBtn.addEventListener('click',()=>{carousel.scrollBy({left:380,behavior:'smooth'});});
+  prevBtn.addEventListener('click',()=>{carousel.scrollBy({left:-380,behavior:'smooth'});});
 }
 
-/* =========================================
-   LAZY LOAD REVIEW IMAGES
-========================================= */
-document.querySelectorAll('.review-proof-img').forEach(el => {
-  const src = el.getAttribute('data-src');
-  if (src) { el.style.backgroundImage = `url('${src}')`; }
-});
+document.querySelectorAll('.review-proof-img').forEach(el=>{const src=el.getAttribute('data-src');if(src){el.style.backgroundImage=`url('${src}')`;};});
 
-/* =========================================
-   MOBILE BENEFITS LAYOUT SWITCH
-========================================= */
-function handleBenefitsLayout() {
-  const desktop = document.getElementById('benefitsDesktop');
-  const mobile = document.getElementById('benefitsMobile');
-  if (!desktop || !mobile) return;
-  if (window.innerWidth <= 1024) { desktop.style.display = 'none'; mobile.style.display = 'grid'; }
-  else { desktop.style.display = 'grid'; mobile.style.display = 'none'; }
+function handleBenefitsLayout(){
+  const desktop=document.getElementById('benefitsDesktop');
+  const mobile=document.getElementById('benefitsMobile');
+  if(!desktop||!mobile)return;
+  if(window.innerWidth<=1024){desktop.style.display='none';mobile.style.display='grid';}
+  else{desktop.style.display='grid';mobile.style.display='none';}
 }
 handleBenefitsLayout();
-window.addEventListener('resize', handleBenefitsLayout);
+window.addEventListener('resize',handleBenefitsLayout);
 </script>
 
 <script>
-/* =========================================
-   SAFE MOBILE CAROUSEL SYSTEM
-========================================= */
-(function () {
-  const carousels = [
-    document.querySelector('.symptoms__grid'),
-    document.querySelector('#benefitsMobile'),
-    document.querySelector('.conditions__grid'),
-    document.querySelector('.reviews__carousel'),
-  ];
-  carousels.forEach((carousel) => {
-    if (!carousel) return;
+(function(){
+  const carousels=[document.querySelector('.symptoms__grid'),document.querySelector('#benefitsMobile'),document.querySelector('.conditions__grid'),document.querySelector('.reviews__carousel'),];
+  carousels.forEach((carousel)=>{
+    if(!carousel)return;
     carousel.classList.add('mobile-carousel');
-    let startX = 0, startY = 0, isDragging = false, isHorizontal = false;
-    carousel.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX; startY = e.touches[0].clientY;
-      isDragging = true; isHorizontal = false;
-    }, { passive: true });
-    carousel.addEventListener('touchmove', (e) => {
-      if (!isDragging) return;
-      const deltaX = Math.abs(e.touches[0].clientX - startX);
-      const deltaY = Math.abs(e.touches[0].clientY - startY);
-      if (deltaX > 10 && deltaX > deltaY) { isHorizontal = true; }
-      if (isHorizontal) { e.stopPropagation(); }
-    }, { passive: true });
-    carousel.addEventListener('touchend', () => { isDragging = false; isHorizontal = false; });
+    let startX=0,startY=0,isDragging=false,isHorizontal=false;
+    carousel.addEventListener('touchstart',(e)=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;isDragging=true;isHorizontal=false;},{passive:true});
+    carousel.addEventListener('touchmove',(e)=>{if(!isDragging)return;const deltaX=Math.abs(e.touches[0].clientX-startX);const deltaY=Math.abs(e.touches[0].clientY-startY);if(deltaX>10&&deltaX>deltaY){isHorizontal=true;}if(isHorizontal){e.stopPropagation();}},{passive:true});
+    carousel.addEventListener('touchend',()=>{isDragging=false;isHorizontal=false;});
   });
 })();
 </script>
