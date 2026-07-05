@@ -16,26 +16,35 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+
 (function(){
-  var p=new URLSearchParams(window.location.search);
-  var m={};
-  if(p.get('ph'))m.ph=p.get('ph');
-  if(p.get('fn'))m.fn=p.get('fn');
-  if(p.get('ln'))m.ln=p.get('ln');
-  fbq('init','970297515750839',m);
-  fbq('track','Purchase');
-  fbq('track','Purchase',{
-    value:1900,
-    currency:'NPR',
-    content_name:'Herbal Relief Spray 60ml',
-    content_ids:['herbal-relief-spray-60ml'],
-    content_type:'product'
+  var p = new URLSearchParams(window.location.search);
+  var m = {};
+
+  // Advanced Matching parameters
+  if (p.get('ph')) m.ph = p.get('ph');
+  if (p.get('fn')) m.fn = p.get('fn');
+  if (p.get('ln')) m.ln = p.get('ln');
+
+  // Initialize Meta Pixel
+  fbq('init', '2191423278302855', m);
+
+  // Track Purchase event
+  fbq('track', 'Purchase', {
+    value: 1900,
+    currency: 'NPR',
+    content_name: 'Herbal Relief Spray 60ml',
+    content_ids: ['herbal-relief-spray-60ml'],
+    content_type: 'product'
   });
+
 })();
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=970297515750839&ev=Purchase&noscript=1"
-/></noscript>
+
+<noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=2191423278302855&ev=Purchase&noscript=1"/>
+</noscript>
 <!-- End Meta Pixel Code -->
 
 
