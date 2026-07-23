@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="/Images/favicon.png">
 
 <!-- Meta Pixel Code with Advanced Matching -->
-<script>
+script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -16,36 +16,12 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-
-(function(){
-  var p = new URLSearchParams(window.location.search);
-  var m = {};
-
-  // Advanced Matching parameters
-  if (p.get('ph')) m.ph = p.get('ph');
-  if (p.get('fn')) m.fn = p.get('fn');
-  if (p.get('ln')) m.ln = p.get('ln');
-  if (p.get('em')) m.em = p.get('em'); // Optional email matching
-
-  // Initialize Meta Pixel
-  fbq('init', '1743800773620093', m);
-
-  // Track Purchase event
-  fbq('track', 'Purchase', {
-    value: 1900,
-    currency: 'NPR',
-    content_name: 'Herbal Relief Spray 60ml',
-    content_ids: ['herbal-relief-spray-60ml'],
-    content_type: 'product'
-  });
-
-})();
+fbq('init', '1743800773620093');
+fbq('track', 'Lead');
 </script>
-
-<noscript>
-  <img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id=1743800773620093&ev=Purchase&noscript=1"/>
-</noscript>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1743800773620093&ev=PageView&noscript=1"
+/></noscript>
 <!-- End Meta Pixel Code -->
 
 
