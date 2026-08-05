@@ -193,10 +193,10 @@ header{background:var(--navy);}
 }
 .pcard:hover{box-shadow:0 10px 26px rgba(20,20,20,.1);transform:translateY(-3px);}
 .pcard__media{
-  aspect-ratio:1/1;background:linear-gradient(160deg,#fff3ea,#fff 75%);
-  display:flex;align-items:center;justify-content:center;position:relative;
+  aspect-ratio:1/1;background:#fff3ea;
+  display:block;position:relative;overflow:hidden;
 }
-.pcard__media svg{width:58px;height:58px;stroke:var(--orange-dark);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;}
+.pcard__media img{width:100%;height:100%;object-fit:cover;display:block;}
 .pcard__off{
   position:absolute;top:8px;left:8px;background:var(--red);color:#fff;font-size:10.5px;font-weight:800;
   padding:3px 7px;border-radius:4px;font-family:var(--ff-body);
@@ -259,10 +259,9 @@ footer{background:var(--navy);color:#c9ccd1;}
 /* ===================== WHATSAPP FLOAT ===================== */
 .wa-float{
   position:fixed;bottom:20px;right:20px;z-index:60;width:52px;height:52px;border-radius:50%;
-  background:#25d366;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 8px 22px rgba(37,211,102,.4);
+  overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.25);
 }
-.wa-float svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:1.8;}
+.wa-float img{width:100%;height:100%;object-fit:cover;}
 </style>
 </head>
 <body>
@@ -413,7 +412,7 @@ footer{background:var(--navy);color:#c9ccd1;}
 </footer>
 
 <a class="wa-float" href="https://wa.me/9779713309074?text=Namaste!" target="_blank" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 1 1 16.1-3.8Z"/></svg>
+  <img src="Images/whatsapp.webp" alt="WhatsApp" width="52" height="52" loading="lazy"/>
 </a>
 
 <script>
@@ -421,13 +420,13 @@ footer{background:var(--navy);color:#c9ccd1;}
 /* Herbal Relief Spray → HPS.html. Others → link left blank (page not built yet). */
 const PRODUCTS = [
   {name:"Herbal Relief Spray",cat:"wellness",catLabel:"वेलनेस",price:1900,old:2500,off:24,rating:4.8,reviews:212,sold:"500+",link:"HPS.html",
-   icon:'<path d="M9 2h6v3H9z"/><path d="M8 5h8l1 4v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9z"/><path d="M9 12h6"/><path d="M9 16h6"/>'},
+   image:"Images/product-herbal-spray.webp"},
   {name:"सफ्ट क्याडल टोय — बेबी", cat:"baby",catLabel:"बेबी",price:850,old:1200,off:29,rating:4.6,reviews:87,sold:"180+",link:"",
-   icon:'<circle cx="12" cy="8" r="4"/><path d="M8 12c-2 1-3 3-3 5v3h14v-3c0-2-1-4-3-5"/>'},
+   image:"Images/product-baby-toy.webp"},
   {name:"स्टेनलेस किचन नाइफ",cat:"kitchen",catLabel:"किचन",price:650,old:990,off:34,rating:4.5,reviews:64,sold:"140+",link:"",
-   icon:'<path d="M3 21l7-7"/><path d="M10 14 20 4a2 2 0 0 1 2 2L12 16"/><path d="M13 17l-2 2"/>'},
+   image:"Images/product-kitchen-knife.webp"},
   {name:"स्क्रिन क्लिनर स्प्रे",cat:"tech",catLabel:"ग्याजेट्स",price:450,old:690,off:35,rating:4.4,reviews:53,sold:"210+",link:"",
-   icon:'<rect x="4" y="3" width="16" height="12" rx="1.5"/><path d="M9 19h6"/><path d="M12 15v4"/><path d="M15 7l3-2"/>'}
+   image:"Images/product-screen-cleaner.webp"}
 ];
 const fmt=n=>"रु "+n.toLocaleString('en-IN');
 let cartCount=0;
@@ -444,7 +443,7 @@ function cardHTML(p){
       <a href="${href}" class="pcard__media">
         <span class="pcard__off">-${p.off}%</span>
         <span class="pcard__wish"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.5-9C.5 8 3 4 7 4c2 0 4 1.2 5 3 1-1.8 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.6-9.5 9-9.5 9z"/></svg></span>
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">${p.icon}</svg>
+        <img src="${p.image}" alt="${p.name}" loading="lazy"/>
       </a>
       <div class="pcard__body">
         <div class="pcard__cat">${p.catLabel}</div>
