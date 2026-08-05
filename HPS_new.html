@@ -58,7 +58,7 @@
   .p-visual{position:relative; aspect-ratio:1/1;}
   .p-blob{position:absolute; inset:6%; border-radius:44% 56% 62% 38% / 48% 42% 58% 52%; background:var(--marigold);}
   .p-visual .prod{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
-  .p-visual .prod svg{width:44%; filter:drop-shadow(0 24px 30px rgba(20,32,26,0.25));}
+  .p-visual .prod img{width:78%; height:78%; object-fit:cover; border-radius:22px; filter:drop-shadow(0 24px 30px rgba(20,32,26,0.25));}
   .p-badge-top{position:absolute; top:8%; left:4%; background:var(--coral); color:#fff; font-size:12px; font-weight:800; padding:7px 14px; border-radius:100px; transform:rotate(-6deg); box-shadow:0 8px 18px -4px rgba(255,107,74,0.5); z-index:2;}
   .float-badge{position:absolute; background:var(--surface); border-radius:var(--r-md); padding:11px 15px; box-shadow:var(--shadow); font-size:12.5px; font-weight:700; display:flex; align-items:center; gap:7px; animation:float 5s ease-in-out infinite; z-index:2;}
   .float-badge.b1{bottom:8%; right:0%; animation-delay:1s;}
@@ -138,8 +138,8 @@
   .rel-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
   .rel-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; display:flex; flex-direction:column; transition:transform .2s;}
   .rel-card:hover{transform:translateY(-4px);}
-  .rel-thumb{aspect-ratio:1/1; background:var(--bg); display:flex; align-items:center; justify-content:center;}
-  .rel-thumb svg{width:48%;}
+  .rel-thumb{aspect-ratio:1/1; background:var(--bg); overflow:hidden;}
+  .rel-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
   .rel-body{padding:14px 16px 18px;}
   .rel-body h3{font-size:15px; margin-bottom:4px;}
   .rel-body .price{font-size:14px; font-weight:800; color:var(--teal-deep); font-family:'Baloo 2',sans-serif;}
@@ -193,7 +193,7 @@
       <div class="p-blob"></div>
       <span class="p-badge-top">बेस्ट सेलर</span>
       <div class="prod">
-        <svg viewBox="0 0 100 100" fill="none"><rect x="36" y="16" width="28" height="66" rx="10" fill="#14201A"/><rect x="41" y="8" width="18" height="14" rx="4" fill="#0E6F63"/><path d="M32 46c8-9 28-9 36 0" stroke="#FAF6EC" stroke-width="2.4" fill="none"/></svg>
+        <img src="Images/product-daily-spray.webp" alt="दैनिक स्प्रे" loading="eager"/>
       </div>
       <div class="float-badge b1">🌿 १,८००+ ग्राहक</div>
     </div>
@@ -294,9 +294,9 @@
   <div class="wrap" style="padding:70px 24px;">
     <div class="section-head"><div class="eyebrow">थप हेर्नुहोस्</div><h2>अन्य हिमबुटी उत्पादनहरू</h2></div>
     <div class="rel-grid">
-      <a class="rel-card" href="index.html#products"><div class="rel-thumb"><svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="55" rx="26" ry="32" fill="#8B4A2B"/><rect x="40" y="16" width="20" height="16" rx="4" fill="#14201A"/></svg></div><div class="rel-body"><h3>जाइफल मालिश तेल</h3><span class="price">रु. १,२००</span></div></a>
-      <a class="rel-card" href="index.html#products"><div class="rel-thumb"><svg viewBox="0 0 100 100" fill="none"><rect x="36" y="20" width="28" height="56" rx="10" fill="#FFB238"/><rect x="42" y="12" width="16" height="12" rx="3" fill="#14201A"/></svg></div><div class="rel-body"><h3>उर्जा टोनिक</h3><span class="price">रु. १,५००</span></div></a>
-      <a class="rel-card" href="index.html#products"><div class="rel-thumb"><svg viewBox="0 0 100 100" fill="none"><path d="M50 14c-16 0-26 14-26 30 0 20 12 34 26 42 14-8 26-22 26-42 0-16-10-30-26-30Z" fill="#14201A"/></svg></div><div class="rel-body"><h3>केश रानी हेयर अोइल</h3><span class="price">रु. ९९९</span></div></a>
+      <a class="rel-card" href="index.html#products"><div class="rel-thumb"><img src="Images/product-jaiphal-oil.webp" alt="जाइफल मालिश तेल" loading="lazy"/></div><div class="rel-body"><h3>जाइफल मालिश तेल</h3><span class="price">रु. १,२००</span></div></a>
+      <a class="rel-card" href="index.html#products"><div class="rel-thumb"><img src="Images/product-urja-tonic.webp" alt="उर्जा टोनिक" loading="lazy"/></div><div class="rel-body"><h3>उर्जा टोनिक</h3><span class="price">रु. १,५००</span></div></a>
+      <a class="rel-card" href="index.html#products"><div class="rel-thumb"><img src="Images/product-keshrani-oil.webp" alt="केश रानी हेयर अोइल" loading="lazy"/></div><div class="rel-body"><h3>केश रानी हेयर अोइल</h3><span class="price">रु. ९९९</span></div></a>
     </div>
   </div>
 </section>
