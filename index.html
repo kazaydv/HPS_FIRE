@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>himbuti.store</title>
+<title>himbuti.store — अनलाइन बजार</title>
 <link rel="icon" type="image/png" href="Images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Meta Pixel Code -->
 <script>
@@ -28,286 +28,388 @@ src="https://www.facebook.com/tr?id=1083545343996510&ev=PageView&noscript=1"/></
 
 <style>
 :root{
-  --bg:#f2f1ed;
-  --panel:#fbfaf8;
-  --ink:#16181a;
-  --muted:#767a76;
-  --line:#dedad2;
-  --teal:#3f6a63;
-  --teal-dim:#e6ede9;
-  --white:#ffffff;
-  --radius:14px;
-  --ff-display:'Fraunces',Georgia,serif;
+  --navy:#131a22;
+  --navy-2:#232f3e;
+  --navy-3:#37475a;
+  --orange:#ff7a1a;
+  --orange-dark:#e8630a;
+  --red:#e33636;
+  --bg:#f2f2f0;
+  --panel:#ffffff;
+  --ink:#14171a;
+  --muted:#5c6470;
+  --line:#e5e5e2;
+  --star:#ffa41c;
+  --ff-dev:'Noto Sans Devanagari',sans-serif;
   --ff-body:'Inter',system-ui,sans-serif;
-  --ease:cubic-bezier(.4,0,.2,1);
+  --radius:8px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:var(--ff-body);background:var(--bg);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body{font-family:var(--ff-dev);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
 img,svg{display:block;max-width:100%;}
 a{color:inherit;text-decoration:none;}
-button{font-family:inherit;cursor:pointer;background:none;border:none;}
+button{font-family:inherit;cursor:pointer;}
 ul{list-style:none;}
+.num{font-family:var(--ff-body);}
 
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease),transform .55s var(--ease);}
-.reveal.visible{opacity:1;transform:translateY(0);}
+/* ===================== TOP STRIP ===================== */
+.top-strip{background:var(--navy);color:#cfd4d9;font-size:11.5px;}
+.top-strip__inner{
+  max-width:1240px;margin:0 auto;padding:6px 20px;
+  display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.top-strip a{color:#cfd4d9;}
+.top-strip a:hover{color:#fff;text-decoration:underline;}
 
 /* ===================== HEADER ===================== */
-header{
-  position:sticky;top:0;z-index:50;background:rgba(242,241,237,.88);backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);
-}
+header{background:var(--navy);}
 .header-inner{
-  max-width:1140px;margin:0 auto;padding:20px 28px;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  max-width:1240px;margin:0 auto;padding:14px 20px;
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
 }
-.wordmark{
-  font-family:var(--ff-display);font-size:20px;font-weight:600;letter-spacing:-.01em;
-  display:flex;align-items:center;gap:9px;
+.logo{
+  font-family:var(--ff-body);font-weight:800;font-size:22px;color:#fff;flex-shrink:0;
+  display:flex;align-items:center;gap:6px;
 }
-.wordmark .peak{width:20px;height:20px;flex-shrink:0;}
-.wordmark .peak path{stroke:var(--teal);stroke-width:1.6;fill:none;}
-nav.main-nav{display:flex;gap:30px;font-size:13.5px;font-weight:500;color:var(--muted);}
-nav.main-nav a{transition:color .2s;}
-nav.main-nav a:hover{color:var(--ink);}
-.header-actions{display:flex;align-items:center;gap:18px;}
-.icon-btn{position:relative;width:20px;height:20px;}
-.icon-btn svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.6;}
-.icon-btn .count{
-  position:absolute;top:-8px;right:-9px;background:var(--ink);color:var(--panel);
-  font-size:9px;font-weight:700;width:15px;height:15px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
+.logo span{color:var(--orange);}
+.deliver-to{
+  display:none;color:#fff;font-size:11px;line-height:1.3;flex-shrink:0;
 }
-.header-cta{
-  font-size:12.5px;font-weight:600;background:var(--ink);color:var(--panel);
-  padding:10px 18px;border-radius:999px;white-space:nowrap;transition:opacity .2s;
+.deliver-to b{display:block;font-size:12.5px;font-weight:700;}
+.search-bar{
+  flex:1;min-width:220px;display:flex;border-radius:4px;overflow:hidden;height:40px;
 }
-.header-cta:hover{opacity:.85;}
-
-/* ===================== HERO ===================== */
-.hero{position:relative;max-width:1140px;margin:0 auto;padding:74px 28px 40px;overflow:hidden;}
-.hero__peaks{
-  position:absolute;left:0;right:0;bottom:0;height:180px;opacity:.5;pointer-events:none;
+.search-bar select{
+  background:#e7e9ec;border:none;padding:0 8px;font-size:12px;color:#333;border-right:1px solid #cfd2d6;
 }
-.hero__inner{position:relative;max-width:620px;}
-.hero__eyebrow{
-  font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);
-  margin-bottom:20px;
+.search-bar input{
+  flex:1;border:none;padding:0 12px;font-size:14px;outline:none;
 }
-.hero h1{
-  font-family:var(--ff-display);font-size:clamp(36px,5.4vw,58px);line-height:1.08;
-  font-weight:500;letter-spacing:-.01em;margin-bottom:20px;
+.search-bar button{
+  width:46px;background:var(--orange);border:none;display:flex;align-items:center;justify-content:center;
 }
-.hero h1 em{font-style:italic;font-weight:500;color:var(--teal);}
-.hero p{font-size:16px;line-height:1.7;color:var(--muted);max-width:440px;margin-bottom:34px;}
-.hero__ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;}
-.btn-solid{
-  background:var(--ink);color:var(--panel);padding:14px 26px;border-radius:999px;
-  font-size:13.5px;font-weight:600;transition:transform .2s var(--ease);
-  display:inline-flex;align-items:center;gap:8px;
-}
-.btn-solid:hover{transform:translateY(-2px);}
-.btn-outline{
-  border:1.4px solid var(--line);padding:14px 24px;border-radius:999px;
-  font-size:13.5px;font-weight:600;color:var(--ink);transition:border-color .2s,background .2s;
-}
-.btn-outline:hover{border-color:var(--ink);background:var(--panel);}
-.hero__stats{display:flex;gap:36px;flex-wrap:wrap;}
-.hero__stats div{display:flex;flex-direction:column;gap:3px;}
-.hero__stats b{font-family:var(--ff-display);font-size:22px;font-weight:600;}
-.hero__stats span{font-size:11px;color:var(--muted);letter-spacing:.02em;}
-
-@media(max-width:680px){
-  .hero{padding-top:52px;}
-  .hero__peaks{height:110px;opacity:.35;}
+.search-bar button svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2.2;}
+.header-icons{display:flex;align-items:center;gap:20px;flex-shrink:0;}
+.header-icons a{color:#fff;font-size:11px;line-height:1.25;display:flex;flex-direction:column;}
+.header-icons a b{font-size:13px;font-weight:700;}
+.header-icons .cart{position:relative;display:flex;align-items:flex-end;gap:5px;}
+.header-icons .cart svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.7;}
+.header-icons .cart .count{
+  position:absolute;top:-8px;left:14px;background:var(--orange);color:#fff;font-weight:800;
+  font-size:11px;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;
 }
 
-/* ===================== FILTER BAR ===================== */
-.filters{
-  max-width:1140px;margin:0 auto;padding:0 28px 30px;
-  display:flex;gap:10px;flex-wrap:wrap;
+/* category nav */
+.cat-nav{background:var(--navy-2);}
+.cat-nav__inner{
+  max-width:1240px;margin:0 auto;padding:0 20px;
+  display:flex;align-items:center;gap:22px;overflow-x:auto;
+  scrollbar-width:none;
 }
-.filter-chip{
-  font-size:12.5px;font-weight:600;padding:9px 18px;border-radius:999px;
-  border:1.4px solid var(--line);color:var(--muted);transition:all .2s var(--ease);
+.cat-nav__inner::-webkit-scrollbar{display:none;}
+.cat-nav a{
+  color:#e4e6e8;font-size:13px;font-weight:500;padding:11px 2px;white-space:nowrap;
+  border-bottom:2px solid transparent;transition:border-color .15s,color .15s;
 }
-.filter-chip.active,.filter-chip:hover{border-color:var(--ink);color:var(--ink);background:var(--panel);}
+.cat-nav a:hover{border-color:var(--orange);color:#fff;}
+.cat-nav a.all{font-weight:700;color:#fff;}
 
-/* ===================== PRODUCT GRID ===================== */
-.shop{max-width:1140px;margin:0 auto;padding:10px 28px 90px;}
-.product-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
-}
-@media(max-width:900px){.product-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:560px){.product-grid{grid-template-columns:1fr;}}
+@media(min-width:820px){.deliver-to{display:block;}}
 
-.card{
+/* ===================== HERO BANNER ===================== */
+.banner-wrap{background:var(--bg);padding:16px 20px 0;}
+.banner{
+  max-width:1240px;margin:0 auto;border-radius:6px;overflow:hidden;position:relative;
+  background:linear-gradient(115deg,#ff7a1a,#e33636 65%);
+  min-height:280px;display:flex;align-items:center;
+}
+.banner__ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.25);}
+.banner__ring--1{width:420px;height:420px;right:-120px;top:-160px;}
+.banner__ring--2{width:280px;height:280px;right:40px;bottom:-160px;}
+.banner__content{position:relative;padding:34px 40px;color:#fff;max-width:560px;}
+.banner__tag{
+  display:inline-block;background:rgba(255,255,255,.18);font-size:11px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:16px;
+}
+.banner__content h1{font-size:clamp(26px,4vw,40px);font-weight:800;line-height:1.2;margin-bottom:12px;}
+.banner__content p{font-size:14.5px;line-height:1.65;opacity:.92;margin-bottom:22px;max-width:420px;}
+.banner__btn{
+  display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--orange-dark);
+  font-weight:800;font-size:13.5px;padding:12px 24px;border-radius:999px;
+}
+.banner-dots{display:flex;justify-content:center;gap:6px;margin-top:14px;}
+.banner-dots span{width:6px;height:6px;border-radius:50%;background:#d3d0c8;}
+.banner-dots span.on{background:var(--orange);width:20px;border-radius:4px;}
+
+@media(max-width:640px){.banner{min-height:220px;}.banner__content{padding:24px 22px;}}
+
+/* ===================== CATEGORY ICONS ===================== */
+.cat-icons{max-width:1240px;margin:0 auto;padding:22px 20px 4px;}
+.cat-icons__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+@media(max-width:760px){.cat-icons__grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:460px){.cat-icons__grid{grid-template-columns:repeat(2,1fr);}}
+.cat-icons a{
   background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
-  overflow:hidden;display:flex;flex-direction:column;transition:transform .25s var(--ease),box-shadow .25s var(--ease);
+  padding:18px 10px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;
+  transition:box-shadow .2s,transform .2s;
 }
-.card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(20,24,22,.08);}
-.card__media{
-  aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;
-  background:linear-gradient(160deg,var(--teal-dim),var(--panel) 75%);
+.cat-icons a:hover{box-shadow:0 6px 18px rgba(20,20,20,.08);transform:translateY(-2px);}
+.cat-icons .ic{
+  width:52px;height:52px;border-radius:50%;background:#fff3ea;display:flex;align-items:center;justify-content:center;
 }
-.card__media svg{width:52px;height:52px;stroke:var(--teal);stroke-width:1.3;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.card__flag{
-  position:absolute;top:12px;left:12px;font-size:9.5px;font-weight:700;letter-spacing:.05em;
-  text-transform:uppercase;background:var(--ink);color:var(--panel);padding:4px 10px;border-radius:999px;
-}
-.card__body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1;}
-.card__cat{font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);}
-.card__name{font-family:var(--ff-display);font-size:17.5px;font-weight:500;line-height:1.3;}
-.card__desc{font-size:12.5px;line-height:1.55;color:var(--muted);flex:1;}
-.card__foot{display:flex;align-items:center;justify-content:space-between;margin-top:4px;}
-.card__price{display:flex;align-items:baseline;gap:7px;}
-.card__price .old{font-size:11.5px;color:#adaa9f;text-decoration:line-through;}
-.card__price .now{font-family:var(--ff-display);font-size:17px;font-weight:600;}
-.card__buy{
-  width:36px;height:36px;border-radius:50%;border:1.4px solid var(--line);
-  display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s;
-  flex-shrink:0;
-}
-.card__buy svg{width:15px;height:15px;stroke:var(--ink);fill:none;stroke-width:1.8;}
-.card__buy:hover{background:var(--ink);border-color:var(--ink);}
-.card__buy:hover svg{stroke:var(--panel);}
+.cat-icons .ic svg{width:24px;height:24px;stroke:var(--orange-dark);fill:none;stroke-width:1.6;}
+.cat-icons b{font-size:12.5px;font-weight:600;}
 
-/* ===================== STRIP ===================== */
-.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel);}
-.strip__inner{
-  max-width:1140px;margin:0 auto;padding:30px 28px;
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:22px;
+/* ===================== SECTION SHELL ===================== */
+.shelf{max-width:1240px;margin:0 auto;padding:26px 20px 6px;}
+.shelf__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;}
+.shelf__head h2{font-size:19px;font-weight:800;}
+.shelf__head .see-all{font-size:12.5px;font-weight:700;color:var(--orange-dark);}
+
+/* flash sale timer */
+.flash-head{
+  background:linear-gradient(120deg,var(--navy),var(--navy-2));border-radius:var(--radius) var(--radius) 0 0;
+  padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
 }
-.strip__item{display:flex;align-items:center;gap:12px;flex:1;min-width:200px;}
-.strip__item svg{width:22px;height:22px;stroke:var(--teal);fill:none;stroke-width:1.5;flex-shrink:0;}
-.strip__item b{display:block;font-size:13px;font-weight:600;margin-bottom:2px;}
-.strip__item span{font-size:11.5px;color:var(--muted);}
+.flash-head__title{display:flex;align-items:center;gap:10px;color:#fff;font-size:17px;font-weight:800;}
+.flash-head__title svg{width:20px;height:20px;stroke:var(--orange);fill:none;stroke-width:2;}
+.timer{display:flex;align-items:center;gap:6px;color:#fff;font-size:12px;font-weight:600;}
+.timer .box{
+  background:#fff;color:var(--navy);font-family:var(--ff-body);font-weight:800;font-size:14px;
+  padding:5px 8px;border-radius:4px;min-width:30px;text-align:center;
+}
+.flash-body{background:var(--panel);border-radius:0 0 var(--radius) var(--radius);padding:18px;border:1px solid var(--line);border-top:none;}
+
+/* ===================== PRODUCT GRID / CARDS ===================== */
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+@media(max-width:980px){.product-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:700px){.product-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:420px){.product-grid{grid-template-columns:repeat(2,1fr);gap:10px;}}
+
+.pcard{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  display:flex;flex-direction:column;position:relative;transition:box-shadow .2s,transform .2s;
+}
+.pcard:hover{box-shadow:0 10px 26px rgba(20,20,20,.1);transform:translateY(-3px);}
+.pcard__media{
+  aspect-ratio:1/1;background:linear-gradient(160deg,#fff3ea,#fff 75%);
+  display:flex;align-items:center;justify-content:center;position:relative;
+}
+.pcard__media svg{width:58px;height:58px;stroke:var(--orange-dark);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;}
+.pcard__off{
+  position:absolute;top:8px;left:8px;background:var(--red);color:#fff;font-size:10.5px;font-weight:800;
+  padding:3px 7px;border-radius:4px;font-family:var(--ff-body);
+}
+.pcard__wish{
+  position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;background:#fff;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.12);
+}
+.pcard__wish svg{width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:1.8;}
+.pcard__body{padding:11px 12px 13px;display:flex;flex-direction:column;gap:6px;flex:1;}
+.pcard__cat{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--orange-dark);}
+.pcard__name{font-size:13.5px;font-weight:700;line-height:1.35;min-height:36px;}
+.pcard__rating{display:flex;align-items:center;gap:5px;font-family:var(--ff-body);}
+.pcard__rating .stars{color:var(--star);font-size:12px;letter-spacing:1px;}
+.pcard__rating span{font-size:11px;color:var(--muted);}
+.pcard__price{display:flex;align-items:baseline;gap:7px;font-family:var(--ff-body);}
+.pcard__price .now{font-size:16.5px;font-weight:800;color:var(--ink);}
+.pcard__price .old{font-size:11.5px;color:#aaa;text-decoration:line-through;}
+.pcard__sold{font-size:10.5px;color:var(--muted);}
+.pcard__actions{display:flex;gap:8px;margin-top:6px;}
+.pcard__view{
+  flex:1;text-align:center;font-size:11.5px;font-weight:700;padding:8px;border-radius:6px;
+  border:1.4px solid var(--navy-2);color:var(--navy-2);transition:background .2s,color .2s;
+}
+.pcard__view:hover{background:var(--navy-2);color:#fff;}
+.pcard__cart{
+  width:34px;height:34px;border-radius:6px;background:var(--orange);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:background .2s;
+}
+.pcard__cart:hover{background:var(--orange-dark);}
+.pcard__cart svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2;}
+
+/* ===================== SERVICE STRIP ===================== */
+.services{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:30px;}
+.services__inner{max-width:1240px;margin:0 auto;padding:26px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+@media(max-width:760px){.services__inner{grid-template-columns:repeat(2,1fr);}}
+.services__item{display:flex;align-items:center;gap:12px;}
+.services__item svg{width:26px;height:26px;stroke:var(--orange-dark);fill:none;stroke-width:1.5;flex-shrink:0;}
+.services__item b{display:block;font-size:12.5px;font-weight:700;}
+.services__item span{font-size:11px;color:var(--muted);}
 
 /* ===================== FOOTER ===================== */
-footer{padding:60px 28px 30px;}
-.footer-inner{max-width:1140px;margin:0 auto;}
-.footer-top{
-  display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px;
-  padding-bottom:36px;border-bottom:1px solid var(--line);margin-bottom:24px;
+.back-top{
+  background:var(--navy-3);color:#fff;text-align:center;padding:14px;font-size:12.5px;font-weight:600;
+  cursor:pointer;transition:background .2s;
 }
-.footer-brand .wordmark{margin-bottom:10px;}
-.footer-brand p{font-size:12.5px;color:var(--muted);max-width:260px;line-height:1.7;}
-.footer-links{display:flex;gap:60px;flex-wrap:wrap;}
-.footer-col span{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
-.footer-col a{display:block;font-size:13px;margin-bottom:10px;color:var(--ink);}
-.footer-col a:hover{color:var(--teal);}
-.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11.5px;color:var(--muted);}
+.back-top:hover{background:#455873;}
+footer{background:var(--navy);color:#c9ccd1;}
+.footer-grid{
+  max-width:1240px;margin:0 auto;padding:36px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;
+}
+@media(max-width:760px){.footer-grid{grid-template-columns:repeat(2,1fr);}}
+.footer-grid h4{color:#fff;font-size:13px;margin-bottom:14px;}
+.footer-grid a,.footer-grid p{display:block;font-size:12px;margin-bottom:9px;color:#c9ccd1;}
+.footer-grid a:hover{text-decoration:underline;}
+.footer-bottom{
+  border-top:1px solid #2b3542;text-align:center;padding:16px 20px;font-size:11px;color:#8b909a;
+}
 
 /* ===================== WHATSAPP FLOAT ===================== */
 .wa-float{
-  position:fixed;bottom:22px;right:22px;z-index:60;width:50px;height:50px;border-radius:50%;
-  background:var(--ink);display:flex;align-items:center;justify-content:center;
-  box-shadow:0 10px 26px rgba(20,24,22,.28);transition:transform .2s var(--ease);
+  position:fixed;bottom:20px;right:20px;z-index:60;width:52px;height:52px;border-radius:50%;
+  background:#25d366;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 22px rgba(37,211,102,.4);
 }
-.wa-float:hover{transform:scale(1.07);}
-.wa-float svg{width:22px;height:22px;stroke:var(--panel);fill:none;stroke-width:1.8;}
+.wa-float svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:1.8;}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="header-inner">
-    <div class="wordmark">
-      <svg class="peak" viewBox="0 0 24 24"><path d="M2 19 9 6l4 6 2-3 7 10Z"/></svg>
-      himbuti
-    </div>
-    <nav class="main-nav">
-      <a href="#shop">पसल</a>
-      <a href="#about">हाम्रोबारे</a>
-      <a href="#contact">सम्पर्क</a>
-    </nav>
-    <div class="header-actions">
-      <button class="icon-btn" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-      <button class="icon-btn" aria-label="Cart"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6L23 6H6"/></svg><span class="count" id="cartCount">0</span></button>
-      <a class="header-cta" href="#shop">किनमेल गर्नुहोस्</a>
+<!-- ===================== TOP STRIP ===================== -->
+<div class="top-strip">
+  <div class="top-strip__inner">
+    <span>🚚 सम्पूर्ण नेपालमा Cash on Delivery उपलब्ध</span>
+    <div style="display:flex;gap:16px;">
+      <a href="https://wa.me/9779713309074" target="_blank">ग्राहक सेवा</a>
+      <a href="#">अर्डर ट्र्याक गर्नुहोस्</a>
     </div>
   </div>
+</div>
+
+<!-- ===================== HEADER ===================== -->
+<header>
+  <div class="header-inner">
+    <div class="logo">him<span>buti</span></div>
+    <div class="deliver-to">
+      डेलिभर गर्ने ठेगाना<br><b>📍 नेपालभर</b>
+    </div>
+    <div class="search-bar">
+      <select><option>सबै</option><option>वेलनेस</option><option>बेबी</option><option>किचन</option><option>ग्याजेट्स</option></select>
+      <input type="text" id="searchInput" placeholder="प्रोडक्ट खोज्नुहोस्..."/>
+      <button aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    </div>
+    <div class="header-icons">
+      <a href="#"><span>तपाईंको खाता</span><b>Sign In</b></a>
+      <a href="#" class="cart"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6L23 6H6"/></svg><span class="count" id="cartCount">0</span></a>
+    </div>
+  </div>
+  <nav class="cat-nav">
+    <div class="cat-nav__inner">
+      <a href="#shop" class="all">☰ सबै प्रोडक्ट</a>
+      <a href="#shop" data-filter="wellness">वेलनेस</a>
+      <a href="#shop" data-filter="baby">बेबी</a>
+      <a href="#shop" data-filter="kitchen">किचन</a>
+      <a href="#shop" data-filter="tech">ग्याजेट्स</a>
+      <a href="#flash">⚡ फ्ल्यास सेल</a>
+      <a href="#contact">सम्पर्क</a>
+    </div>
+  </nav>
 </header>
 
-<section class="hero">
-  <svg class="hero__peaks" viewBox="0 0 1200 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 180 L120 70 L200 130 L320 40 L430 130 L560 20 L680 120 L800 55 L920 130 L1040 60 L1200 130 L1200 180Z" fill="none" stroke="#3f6a63" stroke-width="1.2"/>
-  </svg>
-  <div class="hero__inner">
-    <div class="hero__eyebrow reveal">himbuti.store</div>
-    <h1 class="reveal">दैनिक जीवनलाई <em>अलि सजिलो</em> बनाउने सामान।</h1>
-    <p class="reveal">भान्साकोठादेखि बच्चाको कोठासम्म, हामी हरेक सामान राम्रोसँग जाँचेर मात्र राख्छौं — कम तर भरपर्दो।</p>
-    <div class="hero__ctas reveal">
-      <a class="btn-solid" href="#shop">सबै सामान हेर्नुहोस् <span>→</span></a>
-      <a class="btn-outline" href="https://wa.me/9779713309074" target="_blank">WhatsApp मा सोध्नुहोस्</a>
+<!-- ===================== HERO BANNER ===================== -->
+<div class="banner-wrap">
+  <div class="banner">
+    <div class="banner__ring banner__ring--1"></div>
+    <div class="banner__ring banner__ring--2"></div>
+    <div class="banner__content">
+      <span class="banner__tag">आजको मात्र ⚡ सीमित समय</span>
+      <h1>मेगा सेल — ५०% सम्म छुट</h1>
+      <p>वेलनेस, बेबी, किचन र ग्याजेट्स — सबैमा विशेष छुट। Cash on Delivery सहित नेपालभर डेलिभरी।</p>
+      <a class="banner__btn" href="#shop">अहिले किनमेल गर्नुहोस् →</a>
     </div>
-    <div class="hero__stats reveal">
-      <div><b>100%</b><span>गुणस्तर जाँचिएको</span></div>
-      <div><b>COD</b><span>नेपालभर उपलब्ध</span></div>
-      <div><b>24–72h</b><span>डेलिभरी समय</span></div>
+  </div>
+  <div class="banner-dots"><span class="on"></span><span></span><span></span></div>
+</div>
+
+<!-- ===================== CATEGORY ICONS ===================== -->
+<div class="cat-icons">
+  <div class="cat-icons__grid">
+    <a href="#shop" data-filter="wellness">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 2h6v3H9z"/><path d="M8 5h8l1 4v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9z"/></svg></div>
+      <b>वेलनेस</b>
+    </a>
+    <a href="#shop" data-filter="baby">
+      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M8 12c-2 1-3 3-3 5v3h14v-3c0-2-1-4-3-5"/></svg></div>
+      <b>बेबी</b>
+    </a>
+    <a href="#shop" data-filter="kitchen">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21l7-7"/><path d="M10 14 20 4a2 2 0 0 1 2 2L12 16"/></svg></div>
+      <b>किचन</b>
+    </a>
+    <a href="#shop" data-filter="tech">
+      <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="12" rx="1.5"/><path d="M9 19h6"/><path d="M12 15v4"/></svg></div>
+      <b>ग्याजेट्स</b>
+    </a>
+    <a href="#shop">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 4v16"/></svg></div>
+      <b>सबै हेर्नुहोस्</b>
+    </a>
+  </div>
+</div>
+
+<!-- ===================== FLASH SALE ===================== -->
+<section class="shelf" id="flash">
+  <div class="flash-head">
+    <div class="flash-head__title"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 11-14h-7z"/></svg> फ्ल्यास सेल</div>
+    <div class="timer">बाँकी समय:
+      <span class="box" id="th">03</span>:<span class="box" id="tm">45</span>:<span class="box" id="ts">10</span>
     </div>
+  </div>
+  <div class="flash-body">
+    <div class="product-grid" id="flashGrid"></div>
   </div>
 </section>
 
-<div class="filters reveal" id="filters">
-  <button class="filter-chip active" data-filter="all">सबै</button>
-  <button class="filter-chip" data-filter="wellness">वेलनेस</button>
-  <button class="filter-chip" data-filter="baby">बेबी</button>
-  <button class="filter-chip" data-filter="kitchen">किचन</button>
-  <button class="filter-chip" data-filter="tech">ग्याजेट्स</button>
-</div>
-
-<section class="shop" id="shop">
+<!-- ===================== ALL PRODUCTS ===================== -->
+<section class="shelf" id="shop">
+  <div class="shelf__head">
+    <h2>हाम्रा प्रोडक्टहरू</h2>
+    <span class="see-all" id="clearFilter">सबै हेर्नुहोस्</span>
+  </div>
   <div class="product-grid" id="productGrid"></div>
 </section>
 
-<div class="strip">
-  <div class="strip__inner">
-    <div class="strip__item reveal">
-      <svg viewBox="0 0 24 24"><rect x="2" y="7" width="15" height="12" rx="1.5"/><path d="M17 10h3l2 3v6h-5"/><circle cx="7" cy="21" r="1.6"/><circle cx="18" cy="21" r="1.6"/></svg>
-      <div><b>नेपालभर डेलिभरी</b><span>२४–७२ घण्टाभित्र</span></div>
-    </div>
-    <div class="strip__item reveal">
-      <svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6Z"/></svg>
-      <div><b>Cash on Delivery</b><span>हातमा पाएपछि मात्र तिर्नुहोस्</span></div>
-    </div>
-    <div class="strip__item reveal">
-      <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 1 1 16.1-3.8Z"/></svg>
-      <div><b>WhatsApp सपोर्ट</b><span>प्रश्न भए सोझै लेख्नुहोस्</span></div>
-    </div>
+<!-- ===================== SERVICES STRIP ===================== -->
+<div class="services">
+  <div class="services__inner">
+    <div class="services__item"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="15" height="12" rx="1.5"/><path d="M17 10h3l2 3v6h-5"/><circle cx="7" cy="21" r="1.6"/><circle cx="18" cy="21" r="1.6"/></svg><div><b>नेपालभर डेलिभरी</b><span>२४–७२ घण्टाभित्र</span></div></div>
+    <div class="services__item"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6Z"/></svg><div><b>Cash on Delivery</b><span>हातमा पाएपछि तिर्नुहोस्</span></div></div>
+    <div class="services__item"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 1 1 16.1-3.8Z"/></svg><div><b>WhatsApp सपोर्ट</b><span>अर्डर र प्रश्नका लागि</span></div></div>
+    <div class="services__item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><div><b>गुणस्तर जाँचिएको</b><span>हरेक प्रोडक्ट प्रमाणित</span></div></div>
   </div>
 </div>
 
+<!-- ===================== FOOTER ===================== -->
+<div class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ माथि जानुहोस्</div>
 <footer id="contact">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="wordmark"><svg class="peak" viewBox="0 0 24 24"><path d="M2 19 9 6l4 6 2-3 7 10Z"/></svg> himbuti</div>
-        <p>नेपालभर घरसम्मै डेलिभरी हुने, राम्रोसँग जाँचिएका दैनिक उपयोगी सामानहरू।</p>
-      </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <span>पसल</span>
-          <a href="#shop">सबै सामान</a>
-          <a href="#shop">नयाँ आइटम</a>
-        </div>
-        <div class="footer-col">
-          <span>ग्राहक सेवा</span>
-          <a href="#">डेलिभरी जानकारी</a>
-          <a href="#">रिटर्न नीति</a>
-        </div>
-        <div class="footer-col">
-          <span>सम्पर्क</span>
-          <a href="https://wa.me/9779713309074" target="_blank">WhatsApp</a>
-          <a href="tel:+9779713309074">+977 971-330-9074</a>
-        </div>
-      </div>
+  <div class="footer-grid">
+    <div>
+      <h4>himbuti.store</h4>
+      <p>नेपालभर घरसम्मै डेलिभरी हुने, राम्रोसँग जाँचिएका दैनिक उपयोगी सामानहरू।</p>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 himbuti.store</span>
-      <span>Cash on Delivery मात्र उपलब्ध छ</span>
+    <div>
+      <h4>श्रेणीहरू</h4>
+      <a href="#shop" data-filter="wellness">वेलनेस</a>
+      <a href="#shop" data-filter="baby">बेबी</a>
+      <a href="#shop" data-filter="kitchen">किचन</a>
+      <a href="#shop" data-filter="tech">ग्याजेट्स</a>
+    </div>
+    <div>
+      <h4>ग्राहक सेवा</h4>
+      <a href="#">डेलिभरी जानकारी</a>
+      <a href="#">रिटर्न नीति</a>
+      <a href="#">बारम्बार सोधिने प्रश्न</a>
+    </div>
+    <div>
+      <h4>सम्पर्क गर्नुहोस्</h4>
+      <a href="https://wa.me/9779713309074" target="_blank">WhatsApp</a>
+      <a href="tel:+9779713309074">+977 971-330-9074</a>
+      <a href="#">काठमाडौं, नेपाल</a>
     </div>
   </div>
+  <div class="footer-bottom">© 2026 himbuti.store — सर्वाधिकार सुरक्षित · Cash on Delivery मात्र उपलब्ध छ</div>
 </footer>
 
 <a class="wa-float" href="https://wa.me/9779713309074?text=Namaste!" target="_blank" aria-label="WhatsApp">
@@ -315,65 +417,109 @@ footer{padding:60px 28px 30px;}
 </a>
 
 <script>
+/* ============ PRODUCT DATA ============ */
+/* Herbal Relief Spray → HPS.html. Others → link left blank (page not built yet). */
 const PRODUCTS = [
-  {name:"Herbal Relief Spray",cat:"wellness",catLabel:"वेलनेस",desc:"२० जडीबुटीबाट बनेको प्राकृतिक राहत स्प्रे।",price:1900,old:2500,flag:"Bestseller",
+  {name:"Herbal Relief Spray",cat:"wellness",catLabel:"वेलनेस",price:1900,old:2500,off:24,rating:4.8,reviews:212,sold:"500+",link:"HPS.html",
    icon:'<path d="M9 2h6v3H9z"/><path d="M8 5h8l1 4v11a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9z"/><path d="M9 12h6"/><path d="M9 16h6"/>'},
-  {name:"सफ्ट क्याडल टोय",cat:"baby",catLabel:"बेबी",desc:"नरम, सुरक्षित सामग्रीबाट बनेको बेबी क्याडल।",price:850,old:1200,flag:null,
+  {name:"सफ्ट क्याडल टोय — बेबी", cat:"baby",catLabel:"बेबी",price:850,old:1200,off:29,rating:4.6,reviews:87,sold:"180+",link:"",
    icon:'<circle cx="12" cy="8" r="4"/><path d="M8 12c-2 1-3 3-3 5v3h14v-3c0-2-1-4-3-5"/>'},
-  {name:"स्टेनलेस किचन नाइफ",cat:"kitchen",catLabel:"किचन",desc:"जंग नलाग्ने, धारिलो, दीर्घकालीन प्रयोगका लागि।",price:650,old:990,flag:null,
+  {name:"स्टेनलेस किचन नाइफ",cat:"kitchen",catLabel:"किचन",price:650,old:990,off:34,rating:4.5,reviews:64,sold:"140+",link:"",
    icon:'<path d="M3 21l7-7"/><path d="M10 14 20 4a2 2 0 0 1 2 2L12 16"/><path d="M13 17l-2 2"/>'},
-  {name:"स्क्रिन क्लिनर स्प्रे",cat:"tech",catLabel:"ग्याजेट्स",desc:"फोन र ल्यापटप स्क्रिन खरोंच बिना सफा गर्ने स्प्रे।",price:450,old:690,flag:"New",
+  {name:"स्क्रिन क्लिनर स्प्रे",cat:"tech",catLabel:"ग्याजेट्स",price:450,old:690,off:35,rating:4.4,reviews:53,sold:"210+",link:"",
    icon:'<rect x="4" y="3" width="16" height="12" rx="1.5"/><path d="M9 19h6"/><path d="M12 15v4"/><path d="M15 7l3-2"/>'}
 ];
-const grid=document.getElementById('productGrid');
 const fmt=n=>"रु "+n.toLocaleString('en-IN');
 let cartCount=0;
 
-function render(filter){
-  grid.innerHTML='';
-  PRODUCTS.filter(p=>filter==='all'||p.cat===filter).forEach(p=>{
-    const card=document.createElement('div');
-    card.className='card';
-    card.innerHTML=`
-      <div class="card__media">
-        ${p.flag?`<span class="card__flag">${p.flag}</span>`:''}
+function starRow(r){
+  const full=Math.round(r);
+  return '★★★★★☆☆☆☆☆'.slice(5-full,10-full);
+}
+
+function cardHTML(p){
+  const href = p.link && p.link.length ? p.link : '#';
+  return `
+    <div class="pcard">
+      <a href="${href}" class="pcard__media">
+        <span class="pcard__off">-${p.off}%</span>
+        <span class="pcard__wish"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.5-9C.5 8 3 4 7 4c2 0 4 1.2 5 3 1-1.8 3-3 5-3 4 0 6.5 4 4.5 8-2.5 4.6-9.5 9-9.5 9z"/></svg></span>
         <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">${p.icon}</svg>
-      </div>
-      <div class="card__body">
-        <div class="card__cat">${p.catLabel}</div>
-        <div class="card__name">${p.name}</div>
-        <div class="card__desc">${p.desc}</div>
-        <div class="card__foot">
-          <div class="card__price"><span class="old">${fmt(p.old)}</span><span class="now">${fmt(p.price)}</span></div>
-          <button class="card__buy" data-name="${p.name}" data-price="${p.price}" aria-label="Order">
-            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+      <div class="pcard__body">
+        <div class="pcard__cat">${p.catLabel}</div>
+        <a href="${href}" class="pcard__name">${p.name}</a>
+        <div class="pcard__rating"><span class="stars">${starRow(p.rating)}</span><span>${p.rating} (${p.reviews})</span></div>
+        <div class="pcard__price"><span class="now">${fmt(p.price)}</span><span class="old">${fmt(p.old)}</span></div>
+        <div class="pcard__sold">${p.sold} बिक्री भयो</div>
+        <div class="pcard__actions">
+          <a class="pcard__view" href="${href}">हेर्नुहोस्</a>
+          <button class="pcard__cart" data-name="${p.name}" data-price="${p.price}" aria-label="Add to cart">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.6 13.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6L23 6H6"/></svg>
           </button>
         </div>
-      </div>`;
-    grid.appendChild(card);
-  });
+      </div>
+    </div>`;
 }
-render('all');
 
-document.getElementById('filters').addEventListener('click',e=>{
-  const chip=e.target.closest('.filter-chip');
-  if(!chip)return;
-  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
-  chip.classList.add('active');
-  render(chip.dataset.filter);
+const productGrid=document.getElementById('productGrid');
+const flashGrid=document.getElementById('flashGrid');
+
+function renderProducts(filter){
+  productGrid.innerHTML = PRODUCTS.filter(p=>!filter||p.cat===filter).map(cardHTML).join('');
+}
+renderProducts(null);
+flashGrid.innerHTML = PRODUCTS.map(cardHTML).join('');
+
+document.querySelectorAll('[data-filter]').forEach(el=>{
+  el.addEventListener('click',e=>{
+    e.preventDefault();
+    renderProducts(el.dataset.filter);
+    document.getElementById('shop').scrollIntoView({behavior:'smooth'});
+  });
 });
+document.getElementById('clearFilter').addEventListener('click',()=>renderProducts(null));
 
-grid.addEventListener('click',e=>{
-  const btn=e.target.closest('.card__buy');
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('.pcard__cart');
   if(!btn)return;
+  e.preventDefault();
   cartCount++;
   document.getElementById('cartCount').textContent=cartCount;
   const msg=`Namaste! Ma yo product order garna chahanchu:%0A%0A🛍️ ${encodeURIComponent(btn.dataset.name)}%0A💰 Rs ${btn.dataset.price}%0A%0AKripaya order confirm garidinuhos.`;
   window.open(`https://wa.me/9779713309074?text=${msg}`,'_blank');
 });
 
-const revObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}});},{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+/* search filter (matches product name) */
+document.getElementById('searchInput').addEventListener('input',e=>{
+  const term=e.target.value.trim().toLowerCase();
+  document.querySelectorAll('#productGrid .pcard, #flashGrid .pcard').forEach(card=>{
+    const name=card.querySelector('.pcard__name').textContent.toLowerCase();
+    card.style.display = term.length && !name.includes(term) ? 'none' : '';
+  });
+});
+
+/* ============ FLASH SALE COUNTDOWN ============ */
+(function(){
+  let total = 3*3600 + 45*60 + 10;
+  const th=document.getElementById('th'),tm=document.getElementById('tm'),ts=document.getElementById('ts');
+  function pad(n){return String(n).padStart(2,'0');}
+  function tick(){
+    if(total<=0) total = 3*3600 + 45*60 + 10;
+    total--;
+    const h=Math.floor(total/3600), m=Math.floor((total%3600)/60), s=total%60;
+    th.textContent=pad(h); tm.textContent=pad(m); ts.textContent=pad(s);
+  }
+  tick();
+  setInterval(tick,1000);
+})();
+
+/* ============ BANNER DOTS (visual only) ============ */
+(function(){
+  const dots=document.querySelectorAll('.banner-dots span');
+  let i=0;
+  setInterval(()=>{dots[i].classList.remove('on');i=(i+1)%dots.length;dots[i].classList.add('on');},3000);
+})();
 </script>
 </body>
 </html>
