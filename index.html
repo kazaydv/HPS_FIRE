@@ -139,7 +139,7 @@
   .hero-visual{position:relative; aspect-ratio:1/1;}
   .blob{position:absolute; inset:6%; border-radius:44% 56% 62% 38% / 48% 42% 58% 52%; background:var(--marigold); opacity:0.9;}
   .hero-visual .prod{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
-  .hero-visual .prod img{width:52%; border-radius:18px; filter:drop-shadow(0 24px 30px rgba(20,32,26,0.25)); object-fit:cover; aspect-ratio:1/1;}
+  .hero-visual .prod img{width:52%; border-radius:18px; filter:drop-shadow(0 24px 30px rgba(20,32,26,0.25)); object-fit:contain; aspect-ratio:1/1;}
   .float-badge{
     position:absolute; background:var(--surface); border-radius:var(--r-md);
     padding:12px 16px; box-shadow:var(--shadow); font-size:13px; font-weight:700;
@@ -182,10 +182,10 @@
   }
   .p-card:hover{transform:translateY(-6px) rotate(-0.4deg); box-shadow:var(--shadow);}
   .p-thumb{
-    aspect-ratio:1/1; position:relative; overflow:hidden;
-    background:var(--bg);
+    aspect-ratio:1/1; position:relative; overflow:hidden; box-sizing:border-box;
+    background:var(--bg); padding:9%;
   }
-  .p-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+  .p-thumb img{width:100%; height:100%; object-fit:contain; display:block;}
   .sticker{
     position:absolute; top:12px; left:12px; z-index:2;
     background:var(--coral); color:#fff; font-size:11px; font-weight:800;
@@ -327,7 +327,7 @@
     <div class="hero-visual">
       <div class="blob"></div>
       <div class="prod">
-        <img src="Images/hero.webp" alt="हिमबुटी उत्पादन" loading="eager"/>
+        <img src="Images/product-daily-spray.webp" alt="हिमबुटी उत्पादन" loading="eager"/>
       </div>
       <div class="float-badge b1"><span class="star">★★★★★</span></div>
       <div class="float-badge b2">🌿 १,८००+ ग्राहक</div>
@@ -354,7 +354,7 @@
       <div class="p-card">
         <div class="p-thumb">
           <span class="sticker">बेस्ट सेलर</span>
-          <img src="Images/hero.webp" alt="दैनिक स्प्रे" loading="lazy"/>
+          <img src="Images/product-daily-spray.webp" alt="दैनिक स्प्रे" loading="lazy"/>
         </div>
         <div class="p-body">
           <h3>दैनिक स्प्रे</h3>
