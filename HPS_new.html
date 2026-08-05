@@ -55,11 +55,10 @@
   /* ---------- PRODUCT HERO ---------- */
   .p-hero{padding:20px 0 40px;}
   .p-hero-grid{display:grid; grid-template-columns:0.95fr 1.05fr; gap:52px; align-items:center;}
-  .p-visual{position:relative; aspect-ratio:1/1;}
+  .p-visual{position:relative; width:100%; max-width:380px; aspect-ratio:1/1; margin:0 auto;}
   .p-blob{position:absolute; inset:6%; border-radius:44% 56% 62% 38% / 48% 42% 58% 52%; background:var(--marigold);}
-  .p-visual .prod{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
-  .p-visual .prod img{width:78%; height:78%; object-fit:contain; filter:drop-shadow(0 24px 30px rgba(20,32,26,0.25));}
-  .p-badge-top{position:absolute; top:8%; left:4%; background:var(--coral); color:#fff; font-size:12px; font-weight:800; padding:7px 14px; border-radius:100px; transform:rotate(-6deg); box-shadow:0 8px 18px -4px rgba(255,107,74,0.5); z-index:2;}
+  .p-visual .prod{position:absolute; inset:11%; display:flex; align-items:center; justify-content:center;}
+  .p-visual .prod img{width:100%; height:100%; display:block; object-fit:contain; filter:drop-shadow(0 24px 30px rgba(20,32,26,0.25));}
   .float-badge{position:absolute; background:var(--surface); border-radius:var(--r-md); padding:11px 15px; box-shadow:var(--shadow); font-size:12.5px; font-weight:700; display:flex; align-items:center; gap:7px; animation:float 5s ease-in-out infinite; z-index:2;}
   .float-badge.b1{bottom:8%; right:0%; animation-delay:1s;}
   @keyframes float{0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)}}
@@ -191,9 +190,8 @@
   <div class="wrap p-hero-grid">
     <div class="p-visual">
       <div class="p-blob"></div>
-      <span class="p-badge-top">बेस्ट सेलर</span>
       <div class="prod">
-        <img src="Images/hero.webp" alt="दैनिक स्प्रे" loading="eager"/>
+        <img src="Images/product-daily-spray.webp" alt="दैनिक स्प्रे" width="500" height="500" loading="eager"/>
       </div>
       <div class="float-badge b1">🌿 १,८००+ ग्राहक</div>
     </div>
