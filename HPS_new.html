@@ -58,9 +58,9 @@
   .p-hero{padding:20px 0 40px;}
   .p-hero-grid{display:grid; grid-template-columns:0.95fr 1.05fr; gap:52px; align-items:center;}
   .p-visual{position:relative; width:100%; max-width:380px; aspect-ratio:1/1; margin:0 auto;}
-  .p-blob{position:absolute; inset:6%; border-radius:44% 56% 62% 38% / 48% 42% 58% 52%; background:var(--marigold);}
-  .p-visual .prod{}
-  .p-visual .prod img{width:100%; height:100%; display:block; object-fit:contain; filter:drop-shadow(0 24px 30px rgba(20,32,26,0.25));}
+  .p-blob{position:absolute; inset:6%; border-radius:44% 56% 62% 38% / 48% 42% 58% 52%; background:var(--marigold); z-index:0; animation:blob-breathe 7s ease-in-out infinite;}
+  @keyframes blob-breathe{0%,100%{border-radius:44% 56% 62% 38% / 48% 42% 58% 52%;} 50%{border-radius:56% 44% 42% 58% / 40% 58% 42% 60%;}}
+  .p-visual img{position:relative; z-index:1; width:100%; height:100%; display:block; object-fit:contain; filter:drop-shadow(0 24px 30px rgba(20,32,26,0.25));}
   .float-badge{position:absolute; background:var(--surface); border-radius:var(--r-md); padding:11px 15px; box-shadow:var(--shadow); font-size:12.5px; font-weight:700; display:flex; align-items:center; gap:7px; animation:float 5s ease-in-out infinite; z-index:2;}
   .float-badge.b1{bottom:8%; right:0%; animation-delay:1s;}
   @keyframes float{0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)}}
@@ -84,7 +84,40 @@
   .trust-row{display:flex; flex-wrap:wrap; gap:16px 18px; margin-top:24px;}
   .trust-item{display:flex; align-items:center; gap:8px; font-size:12.5px; font-weight:600;}
   .trust-item svg{width:16px; height:16px; flex-shrink:0; color:var(--teal-deep);}
-  @media (max-width:860px){ .p-hero-grid{grid-template-columns:1fr;} .p-visual{max-width:300px; margin:0 auto;} }
+
+  /* Tablet: stack the hero, keep image modest */
+  @media (max-width:860px){
+    .p-hero-grid{grid-template-columns:1fr; gap:22px;}
+    .p-visual{max-width:260px; margin:0 auto;}
+    .p-info{text-align:center;}
+    .p-stars, .p-price-row, .trust-row{justify-content:center;}
+    .p-desc{margin-left:auto; margin-right:auto;}
+    .pack-select{max-width:420px; margin-left:auto; margin-right:auto;}
+  }
+
+  /* Phone: hero image stays compact so the price fits on the first screen */
+  @media (max-width:600px){
+    header nav.wrap{padding:10px 24px;}
+    .logo{font-size:20px;}
+    .breadcrumb{padding:8px 0; font-size:11px;}
+
+    .p-hero{padding:10px 0 26px;}
+    .p-hero-grid{gap:12px;}
+    .p-visual{max-width:min(44vw,170px);}
+    .float-badge{padding:7px 11px; font-size:10.5px; gap:5px;}
+
+    .eyebrow{margin-bottom:8px !important;}
+    .p-info h1{font-size:23px; margin-bottom:6px;}
+    .p-stars{font-size:12.5px; margin-bottom:8px; gap:6px;}
+    .p-desc{font-size:12.5px; margin-bottom:14px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+    .p-price-row{margin-bottom:16px; gap:9px;}
+    .p-price-row .now{font-size:23px;}
+    .p-price-row .was{font-size:13px;}
+
+    .pack-select{margin-bottom:18px;}
+    .btn-block{max-width:100%;}
+    .trust-row{margin-top:16px; gap:10px 14px;}
+  }
 
   /* ---------- STRIP ---------- */
   .marquee-wrap{background:var(--teal); overflow:hidden; padding:14px 0;}
@@ -144,7 +177,8 @@
   .rel-body{padding:14px 16px 18px;}
   .rel-body h3{font-size:15px; margin-bottom:4px;}
   .rel-body .price{font-size:14px; font-weight:800; color:var(--teal-deep); font-family:'Baloo 2',sans-serif;}
-  @media (max-width:860px){ .rel-grid{grid-template-columns:1fr;} }
+  @media (max-width:860px){ .rel-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .rel-grid{grid-template-columns:1fr;} }
 
   /* ---------- POLICY ---------- */
   .policy{background:var(--ink); color:#EDE9DE; border-radius:40px; margin:0 20px;}
@@ -191,9 +225,8 @@
 <section class="p-hero">
   <div class="wrap p-hero-grid">
     <div class="p-visual">
-     
-        <img src="Images/hero.webp" alt="दैनिक स्प्रे" width="500" height="500" loading="eager"/>
-     
+    
+      <img src="Images/hero.webp" alt="दैनिक स्प्रे" width="500" height="500" loading="eager"/>
       <div class="float-badge b1">🌿 १,८००+ ग्राहक</div>
     </div>
     <div class="p-info">
