@@ -207,7 +207,22 @@
   }
   .p-order:hover{background:var(--teal-deep); transform:translateY(-1px);}
   @media (max-width:980px){ .product-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:560px){ .product-grid{grid-template-columns:1fr;} }
+  /* Mobile: single scrollable row instead of stacking into extra rows, to save vertical space */
+  @media (max-width:560px){
+    .product-grid{
+      display:flex;
+      flex-wrap:nowrap;
+      gap:16px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding-bottom:8px;
+      -webkit-overflow-scrolling:touch;
+      overscroll-behavior-x:contain;
+    }
+    .product-grid::-webkit-scrollbar{height:6px;}
+    .product-grid::-webkit-scrollbar-thumb{background:var(--line); border-radius:10px;}
+    .p-card{flex:0 0 78%; scroll-snap-align:start;}
+  }
 
   /* ---------- WHY ---------- */
   .why{background:var(--surface); border-radius:40px; margin:0 20px;}
@@ -355,11 +370,11 @@
 
       <div class="p-card">
         <div class="p-thumb">
-          <span class="sticker">बेस्ट सेलर</span>
+          <span class="sticker">Best Seller</span>
           <img src="Images/hero.webp" alt="दैनिक स्प्रे" loading="lazy"/>
         </div>
         <div class="p-body">
-          <h3>दैनिक स्प्रे</h3>
+          <h3>Herbal Relief Spray</h3>
           <p>२० प्राकृतिक जडीबुटीको मिश्रणबाट तयार पारिएको दैनिक प्रयोगको स्प्रे।</p>
           <div class="p-price"><span class="now">रु. १,९००</span><span class="was">रु. २,५००</span></div>
           <a class="p-order" href="HPS_new.html">थप हेर्नुहोस् →</a>
@@ -371,7 +386,7 @@
           <img src="Images/jaiphal.jpg" alt="जाइफल मालिश तेल" loading="lazy"/>
         </div>
         <div class="p-body">
-          <h3>जाइफल मालिश तेल</h3>
+          <h3>Jaiphal Massage Oil</h3>
           <p>शुद्ध जाइफल र प्राकृतिक तत्वले भरिएको दैनिक मालिश तेल।</p>
           <div class="p-price"><span class="now">रु. १,२००</span><span class="was">रु. १,६००</span></div>
           <a class="p-order" href="#" target="_blank" rel="noopener">WhatsApp मा अर्डर</a>
@@ -383,7 +398,7 @@
           <img src="Images/urja.webp" alt="उर्जा टोनिक" loading="lazy"/>
         </div>
         <div class="p-body">
-          <h3>उर्जा टोनिक</h3>
+          <h3>Urja Tonic</h3>
           <p>हिमाली जडीबुटीहरूको मिश्रणबाट बनेको प्राकृतिक दैनिक टोनिक।</p>
           <div class="p-price"><span class="now">रु. १,५००</span><span class="was">रु. १,९००</span></div>
           <a class="p-order" href="#" target="_blank" rel="noopener">WhatsApp मा अर्डर</a>
@@ -395,7 +410,7 @@
           <img src="Images/keshrani.jpg" alt="केश रानी हेयर अोइल" loading="lazy"/>
         </div>
         <div class="p-body">
-          <h3>केश रानी हेयर अोइल</h3>
+          <h3>Keshrani Hair Oil</h3>
           <p>४५ जडीबुटीबाट निर्मित कपाल स्याहारको लागि प्राकृतिक तेल।</p>
           <div class="p-price"><span class="now">रु. ९९९</span><span class="was">रु. १,३५०</span></div>
           <a class="p-order" href="#" target="_blank" rel="noopener">WhatsApp मा अर्डर</a>
