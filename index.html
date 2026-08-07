@@ -155,7 +155,18 @@
 
   @media (max-width:900px){
     .hero-grid{grid-template-columns:1fr;}
-    .hero-visual{max-width:260px;}
+    .hero-visual{
+      max-width:300px;
+      aspect-ratio:auto;
+    }
+    .hero-visual .prod{
+      position:relative;
+      inset:auto;
+    }
+    .hero-visual .prod img{
+      width:100%;
+      height:auto;
+    }
     .float-badge{display:none;}
   }
 
