@@ -177,8 +177,23 @@
   .rel-body{padding:14px 16px 18px;}
   .rel-body h3{font-size:15px; margin-bottom:4px;}
   .rel-body .price{font-size:14px; font-weight:800; color:var(--teal-deep); font-family:'Baloo 2',sans-serif;}
-  @media (max-width:860px){ .rel-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:520px){ .rel-grid{grid-template-columns:1fr;} }
+  /* Tablet & phone: single scrollable row instead of wrapping into stacked rows, to save vertical space */
+  @media (max-width:860px){
+    .rel-grid{
+      display:flex;
+      flex-wrap:nowrap;
+      gap:16px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding-bottom:8px;
+      -webkit-overflow-scrolling:touch;
+      overscroll-behavior-x:contain;
+    }
+    .rel-grid::-webkit-scrollbar{height:6px;}
+    .rel-grid::-webkit-scrollbar-thumb{background:var(--line); border-radius:10px;}
+    .rel-card{flex:0 0 220px; scroll-snap-align:start;}
+  }
+  @media (max-width:520px){ .rel-card{flex:0 0 66%;} }
 
   /* ---------- POLICY ---------- */
   .policy{background:var(--ink); color:#EDE9DE; border-radius:40px; margin:0 20px;}
@@ -244,8 +259,8 @@
       <div class="pack-hint">प्याक छान्नुहोस्:</div>
       <div class="pack-select" id="packSelect">
         <div class="pack active" data-bottles="1" data-price="1900">१ बोतल<span class="pack-price">रु. १,९००</span></div>
-        <div class="pack" data-bottles="2" data-price="3400">२ बोतल<span class="pack-price">रु. ३,४००</span></div>
-        <div class="pack" data-bottles="3" data-price="4600">३ बोतल<span class="pack-price">रु. ४,६००</span></div>
+        <div class="pack" data-bottles="2" data-price="2900">२ बोतल<span class="pack-price">रु. २,९००</span></div>
+        <div class="pack" data-bottles="3" data-price="3900">३ बोतल<span class="pack-price">रु. ३,९००</span></div>
       </div>
 
       <a class="btn btn-marigold btn-block" id="orderBtn" href="#" target="_blank" rel="noopener">
