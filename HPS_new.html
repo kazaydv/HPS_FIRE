@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Herbal Daily Care Spray — हिमबुटी</title>
-<meta name="description" content="२० प्राकृतिक जडीबुटीको मिश्रणबाट तयार दैनिक स्प्रे। १००% प्राकृतिक, Cash on Delivery। WhatsApp मा अर्डर गर्नुहोस्।">
+<title>Herbal Relief Spray — हिमबुटी</title>
+<meta name="description" content="२० प्राकृतिक जडीबुटीको मिश्रणबाट तयार Herbal Relief Spray। १००% प्राकृतिक, Cash on Delivery। WhatsApp मा अर्डर गर्नुहोस्।">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/png" href="Images/favicon.png" sizes="32x32">
+<link rel="icon" type="image/png" href="Images/favicon.png" sizes="32x32">
 
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Hind:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -61,14 +61,11 @@
   .p-blob{position:absolute; inset:6%; border-radius:44% 56% 62% 38% / 48% 42% 58% 52%; background:var(--marigold); z-index:0; animation:blob-breathe 7s ease-in-out infinite;}
   @keyframes blob-breathe{0%,100%{border-radius:44% 56% 62% 38% / 48% 42% 58% 52%;} 50%{border-radius:56% 44% 42% 58% / 40% 58% 42% 60%;}}
   .p-visual img{position:relative; z-index:1; width:100%; height:100%; display:block; object-fit:contain; filter:drop-shadow(0 24px 30px rgba(20,32,26,0.25));}
-  .float-badge{position:absolute; background:var(--surface); border-radius:var(--r-md); padding:11px 15px; box-shadow:var(--shadow); font-size:12.5px; font-weight:700; display:flex; align-items:center; gap:7px; animation:float 5s ease-in-out infinite; z-index:2;}
-  .float-badge.b1{bottom:8%; right:0%; animation-delay:1s;}
-  @keyframes float{0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)}}
 
   .p-info h1{font-size:clamp(28px,4.6vw,36px); margin-bottom:12px;}
   .p-stars{color:var(--marigold-deep); font-size:15px; margin-bottom:16px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
   .p-stars span{color:var(--ink-soft); font-size:13px; font-weight:600;}
-  .p-desc{font-size:15px; color:var(--ink-soft); margin-bottom:24px; max-width:460px;}
+  .p-desc{font-size:15px; color:var(--ink-soft); margin-bottom:24px; max-width:480px;}
   .p-price-row{display:flex; align-items:baseline; gap:12px; margin-bottom:22px; flex-wrap:wrap;}
   .p-price-row .now{font-size:clamp(26px,4.4vw,32px); font-weight:800; color:var(--teal-deep); font-family:'Baloo 2',sans-serif;}
   .p-price-row .was{font-size:15px; text-decoration:line-through; color:var(--ink-soft);}
@@ -85,7 +82,7 @@
   .trust-item{display:flex; align-items:center; gap:8px; font-size:12.5px; font-weight:600;}
   .trust-item svg{width:16px; height:16px; flex-shrink:0; color:var(--teal-deep);}
 
-  /* Tablet: stack the hero, keep image modest */
+  /* Tablet & Phone styling */
   @media (max-width:860px){
     .p-hero-grid{grid-template-columns:1fr; gap:22px;}
     .p-visual{max-width:260px; margin:0 auto;}
@@ -95,7 +92,6 @@
     .pack-select{max-width:420px; margin-left:auto; margin-right:auto;}
   }
 
-  /* Phone: hero image stays compact so the price fits on the first screen */
   @media (max-width:600px){
     header nav.wrap{padding:10px 24px;}
     .logo{font-size:20px;}
@@ -104,12 +100,11 @@
     .p-hero{padding:10px 0 26px;}
     .p-hero-grid{gap:12px;}
     .p-visual{max-width:min(44vw,170px);}
-    .float-badge{padding:7px 11px; font-size:10.5px; gap:5px;}
 
     .eyebrow{margin-bottom:8px !important;}
     .p-info h1{font-size:23px; margin-bottom:6px;}
     .p-stars{font-size:12.5px; margin-bottom:8px; gap:6px;}
-    .p-desc{font-size:12.5px; margin-bottom:14px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+    .p-desc{font-size:12.5px; margin-bottom:14px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;}
     .p-price-row{margin-bottom:16px; gap:9px;}
     .p-price-row .now{font-size:23px;}
     .p-price-row .was{font-size:13px;}
@@ -177,7 +172,7 @@
   .rel-body{padding:14px 16px 18px;}
   .rel-body h3{font-size:15px; margin-bottom:4px;}
   .rel-body .price{font-size:14px; font-weight:800; color:var(--teal-deep); font-family:'Baloo 2',sans-serif;}
-  /* Tablet & phone: single scrollable row instead of wrapping into stacked rows, to save vertical space */
+
   @media (max-width:860px){
     .rel-grid{
       display:flex;
@@ -229,26 +224,24 @@
 <header>
   <nav class="wrap">
     <a class="logo" href="index.html"><span class="dot"></span>हिमबुटी</a>
-    <a class="nav-cta" href="https://wa.me/9779713309074?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%2C%20%E0%A4%AE%20%E0%A4%A6%E0%A5%88%E0%A4%A8%E0%A4%BF%E0%A4%95%20%E0%A4%B8%E0%A5%8D%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%20%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87%20%E0%A4%9C%E0%A4%BE%E0%A4%A8%E0%A5%8D%E0%A4%A8%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A8%E0%A5%8D%E0%A4%9B%E0%A5%81" target="_blank" rel="noopener">सोध्नुहोस् →</a>
+    <a class="nav-cta" href="https://wa.me/9779713309074?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%2C%20%E0%A4%AE%20Herbal%20Relief%20Spray%20%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87%20%E0%A4%9C%E0%A4%BE%E0%A4%A8%E0%A5%8D%E0%A4%A8%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A8%E0%A5%8D%E0%A4%9B%E0%A5%81" target="_blank" rel="noopener">सोध्नुहोस् →</a>
   </nav>
 </header>
 
 <div class="breadcrumb wrap">
-  <a href="index.html">गृहपृष्ठ</a> / <a href="index.html#products">उत्पादनहरू</a> / दैनिक स्प्रे
+  <a href="index.html">गृहपृष्ठ</a> / <a href="index.html#products">उत्पादनहरू</a> / Herbal Relief Spray
 </div>
 
 <section class="p-hero">
   <div class="wrap p-hero-grid">
     <div class="p-visual">
-     
-      <img src="Images/hero.webp" alt="दैनिक स्प्रे" width="500" height="500" loading="eager"/>
-      
+      <img src="Images/hero.webp" alt="Herbal Relief Spray" width="500" height="500" loading="eager"/>
     </div>
     <div class="p-info">
-      
+      <div class="eyebrow" style="margin-bottom:14px;">प्राकृतिक दैनिक स्याहार</div>
       <h1>Herbal Relief Spray</h1>
       <div class="p-stars">★★★★★ <span>(२४०+ ग्राहक समीक्षा)</span></div>
-      <p class="p-desc">२० प्राकृतिक जडीबुटीको मिश्रणबाट तयार पारिएको दैनिक प्रयोगको स्प्रे। सजिलो प्रयोग, हलुका बनावट। नेपालमै तयार, कुनै कृत्रिम रसायन बिना।</p>
+      <p class="p-desc">दिनभरिको थकानलाई बिदा दिनुहोस्, प्राकृतिक फ्रेसनेस अपनाउनुहोस्। २० भन्दा बढी प्राकृतिक जडीबुटीको शुद्ध अर्कबाट तयार। कुनै झन्झट बिना, शरीरको भारीपन हटाएर तपाईंलाई दिनभरि हलुका र फ्रेस राख्ने १००% प्राकृतिक स्प्रे।</p>
 
       <div class="p-price-row">
         <span class="now" id="priceNow">रु. १,९००</span>
@@ -287,9 +280,9 @@
 <section id="ingredients">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">तत्वहरू</div>
-      <h2>२० प्राकृतिक जडीबुटीको मिश्रण</h2>
-      <p>हरेक तत्व सावधानीपूर्वक छानिएको, कुनै कृत्रिम रसायन थपिएको छैन।</p>
+      <div class="eyebrow">शुद्ध तत्वहरू</div>
+      <h2>२० प्राकृतिक जडीबुटीको सम्मिश्रण</h2>
+      <p>हाम्रा पुर्खाहरूले प्रयोग गर्दै आएको निम, तुलसी, हल्दी र एलोभेरा जस्ता शुद्ध तत्वहरू। कुनै कृत्रिम रसायन थपिएको छैन।</p>
     </div>
     <div class="ing-grid">
       <div class="ing-item"><svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C7 8 4 12 4 16a8 8 0 0 0 16 0c0-4-3-8-8-14Z"/></svg><span>निम</span></div>
@@ -303,28 +296,26 @@
 <section id="how-to-use" class="why">
   <div class="wrap" style="padding:70px 24px;">
     <div class="section-head">
-      <div class="eyebrow">प्रयोग विधि</div>
+      <div class="eyebrow">सजिलो प्रयोग विधि</div>
       <h2>कसरी प्रयोग गर्ने</h2>
     </div>
     <div class="steps">
-      <div class="step"><div class="num">१</div><h3>सफा गर्नुहोस्</h3><p>प्रयोग गर्ने ठाउँ सफा र सुख्खा गर्नुहोस्।</p></div>
-      <div class="step"><div class="num">२</div><h3>स्प्रे लगाउनुहोस्</h3><p>१-२ पटक हल्का मात्रामा लगाउनुहोस्।</p></div>
-      <div class="step"><div class="num">३</div><h3>नियमित प्रयोग</h3><p>दिनमा २ पटक, बिहान र बेलुका प्रयोग गर्नुहोस्।</p></div>
+      <div class="step"><div class="num">१</div><h3>सफा गर्नुहोस्</h3><p>प्रयोग गर्ने ठाउँ सफा र सुख्खा राख्नुहोस्।</p></div>
+      <div class="step"><div class="num">२</div><h3>स्प्रे लगाउनुहोस्</h3><p>थकान वा भारीपन महसुस भएको ठाउँमा १-२ पटक हल्का स्प्रे गर्नुहोस्।</p></div>
+      <div class="step"><div class="num">३</div><h3>आराम लिनुहोस्</h3><p>यसलाई छालामा सोसिन दिनुहोस्। दिनमा २ पटक (बिहान र बेलुका) प्रयोग गर्नुहोस्।</p></div>
     </div>
   </div>
 </section>
 
 <section id="reviews">
-  <div class="wrap"><div class="section-head"><div class="eyebrow">ग्राहक अनुभव</div><h2>ग्राहकहरूले के भन्छन्</h2></div></div>
+  <div class="wrap"><div class="section-head"><div class="eyebrow">ग्राहक अनुभव</div><h2>ग्राहकहरू के भन्छन्</h2></div></div>
   <div class="wrap">
     <div class="t-scroll">
-      <div class="t-card"><span class="t-quote">"</span><div class="t-stars">★★★★★</div><p>प्याकेजिङ राम्रो थियो र डेलिभरी पनि समयमै भयो। WhatsApp मा सोध्दा छिटो जवाफ पाइयो।</p><div class="t-name">सुनिता श्रेष्ठ — ललितपुर</div></div>
-      <div class="t-card"><span class="t-quote">"</span><div class="t-stars">★★★★★</div><p>नियमित प्रयोग गरेको छु, प्रयोग गर्न सजिलो छ र प्याकेजिङ पनि राम्रो छ।</p><div class="t-name">राजु कार्की — भक्तपुर</div></div>
-      <div class="t-card"><span class="t-quote">"</span><div class="t-stars">★★★★</div><p>Cash on Delivery भएकोले पहिलो पटक अर्डर गर्न सजिलो भयो।</p><div class="t-name">पूजा गुरुङ — काठमाडौं</div></div>
-     <div class="t-card"><span class="t-quote">"</span><div class="t-stars">★★★★★</div><p>दिनभरिको कामले हुने थकानपछि यो स्प्रे प्रयोग गर्दा धेरै फ्रेस र आरामदायक महसुस हुन्छ। मेरो दैनिक रुटिनको महत्त्वपूर्ण हिस्सा बनेको छ।</p><div class="t-name">सुष्मा केसी — पोखरा</div></div>
-
+      <div class="t-card"><span class="t-quote">"</span><div class="t-stars">★★★★★</div><p>अफिसको कामले गर्दा बेलुका घर पुग्दा शरीर पूरै थाकेको हुन्थ्यो। यो स्प्रे प्रयोग गर्न थालेपछि एकदमै फ्रेस र हलुका महसुस हुन्छ।</p><div class="t-name">रमेश खड्का — काठमाडौं</div></div>
+      <div class="t-card"><span class="t-quote">"</span><div class="t-stars">★★★★★</div><p>प्याकेजिङ राम्रो थियो र डेलिभरी पनि समयमै भयो। १००% प्राकृतिक भएकोले निर्धक्क भएर प्रयोग गरिरहेको छु।</p><div class="t-name">सुनिता श्रेष्ठ — ललितपुर</div></div>
+      <div class="t-card"><span class="t-quote">"</span><div class="t-stars">★★★★</div><p>Cash on Delivery भएकोले पहिलो पटक अर्डर गर्न सजिलो भयो। WhatsApp मा सोध्दा छिटो जवाफ पाइयो।</p><div class="t-name">पूजा गुरुङ — पोखरा</div></div>
+      <div class="t-card"><span class="t-quote">"</span><div class="t-stars">★★★★★</div><p>दिनभरिको कामले हुने थकानपछि यो स्प्रे प्रयोग गर्दा धेरै फ्रेस र आरामदायक महसुस हुन्छ। मेरो दैनिक रुटिनको महत्त्वपूर्ण हिस्सा बनेको छ।</p><div class="t-name">सुष्मा केसी — भक्तपुर</div></div>
     </div>
-      
   </div>
 </section>
 
@@ -332,10 +323,10 @@
   <div class="wrap">
     <div class="section-head"><div class="eyebrow">जिज्ञासा</div><h2>बारम्बार सोधिने प्रश्नहरू</h2></div>
     <div class="faq">
-      <div class="faq-item"><button class="faq-q">यो कसका लागि उपयुक्त छ? <span class="plus">+</span></button><div class="faq-a"><div class="faq-a-inner">दैनिक स्याहारमा प्राकृतिक विकल्प खोज्नेहरूका लागि उपयुक्त। थप जान्न WhatsApp मा सिधै सोध्न सक्नुहुन्छ।</div></div></div>
-      <div class="faq-item"><button class="faq-q">कति पटक प्रयोग गर्ने? <span class="plus">+</span></button><div class="faq-a"><div class="faq-a-inner">दिनमा २ पटक नियमित प्रयोग सिफारिस गरिन्छ।</div></div></div>
-      <div class="faq-item"><button class="faq-q">भुक्तानी कसरी गर्ने? <span class="plus">+</span></button><div class="faq-a"><div class="faq-a-inner">Cash on Delivery — सामान हातमा प्राप्त गरेपछि मात्र भुक्तानी गर्नुहोस्।</div></div></div>
-      <div class="faq-item"><button class="faq-q">डेलिभरी कति समयमा हुन्छ? <span class="plus">+</span></button><div class="faq-a"><div class="faq-a-inner">सामान्यतया १–५ कार्यदिन भित्र, स्थान अनुसार फरक पर्न सक्छ।</div></div></div>
+      <div class="faq-item"><button class="faq-q">यो कसका लागि उपयुक्त छ? <span class="plus">+</span></button><div class="faq-a"><div class="faq-a-inner">दैनिक काम र दौडधुपले हुने थकानपछि प्राकृतिक आराम र फ्रेसनेस खोज्नेहरूका लागि यो एकदमै उपयुक्त छ।</div></div></div>
+      <div class="faq-item"><button class="faq-q">के यो साँच्चै १००% प्राकृतिक हो? <span class="plus">+</span></button><div class="faq-a"><div class="faq-a-inner">हो, यो निम, तुलसी, एलोभेरा जस्ता २० वटा जडीबुटीहरूको शुद्ध अर्कबाट तयार पारिएको हो। यसमा कुनै पनि हानिकारक रसायन मिसाइएको छैन।</div></div></div>
+      <div class="faq-item"><button class="faq-q">भुक्तानी कसरी गर्ने? <span class="plus">+</span></button><div class="faq-a"><div class="faq-a-inner">Cash on Delivery — सामान हातमा प्राप्त गरेपछि मात्र पैसा तिर्नुहोस्।</div></div></div>
+      <div class="faq-item"><button class="faq-q">डेलिभरी कति समयमा हुन्छ? <span class="plus">+</span></button><div class="faq-a"><div class="faq-a-inner">काठमाडौं उपत्यकाभित्र १-२ दिन र उपत्यका बाहिर सामान्यतया ३-५ कार्यदिनभित्र डेलिभरी हुन्छ।</div></div></div>
     </div>
   </div>
 </section>
@@ -374,7 +365,7 @@
   </div>
 </footer>
 
-<a class="float-wa" href="https://wa.me/9779713309074?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%2C%20%E0%A4%AE%20%E0%A4%A6%E0%A5%88%E0%A4%A8%E0%A4%BF%E0%A4%95%20%E0%A4%B8%E0%A5%8D%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A5%87%20%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87%20%E0%A4%9C%E0%A4%BE%E0%A4%A8%E0%A5%8D%E0%A4%A8%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A8%E0%A5%8D%E0%A4%9B%E0%A5%81" target="_blank" rel="noopener" aria-label="WhatsApp मा सम्पर्क गर्नुहोस्">
+<a class="float-wa" href="https://wa.me/9779713309074?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%2C%20%E0%A4%AE%20Herbal%20Relief%20Spray%20%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87%20%E0%A4%9C%E0%A4%BE%E0%A4%A8%E0%A5%8D%E0%A4%A8%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A8%E0%A5%8D%E0%A4%9B%E0%A5%81" target="_blank" rel="noopener" aria-label="WhatsApp मा सम्पर्क गर्नुहोस्">
   <span class="ping"></span>
   <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.39a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.45.29.14.46.12.63-.07.17-.19.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.7.8 1.99.95.29.14.48.22.55.34.07.13.07.72-.17 1.4z"/></svg>
 </a>
@@ -425,7 +416,7 @@
     priceWas.textContent = formatRs(original);
     priceOff.textContent = toNepDigits(off) + '% छुट';
 
-    const msg = encodeURIComponent(`म अर्डर गर्न चाहन्छु / I want to order\nProduct: दैनिक स्प्रे\nName: \nNumber: \nAddress: \nQuantity: ${bottles} बोतल (${formatRs(price)})`);
+    const msg = encodeURIComponent(`म अर्डर गर्न चाहन्छु / I want to order\nProduct: Herbal Relief Spray\nName: \nNumber: \nAddress: \nQuantity: ${bottles} बोतल (${formatRs(price)})`);
     const link = `https://wa.me/${WA_NUMBER}?text=${msg}`;
     orderBtn.href = link;
     stickyOrderBtn.href = link;
