@@ -392,9 +392,7 @@
 
   /* ---------- Functional pack selector ---------- */
   const WA_NUMBER = '9779713309074';
-  const digitMap = {'0':'०','1':'१','2':'२','3':'३','4':'४','5':'५','6':'६','7':'७','8':'८','9':'९'};
-  function toNepDigits(str){ return String(str).replace(/[0-9]/g, d => digitMap[d]); }
-  function formatRs(n){ return 'Rs ' + toNepDigits(n.toLocaleString('en-IN')); }
+  function formatRs(n){ return 'Rs ' + n.toLocaleString('en-IN'); }
 
   const priceNow = document.getElementById('priceNow');
   const priceWas = document.getElementById('priceWas');
