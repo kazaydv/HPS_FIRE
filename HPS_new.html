@@ -246,7 +246,7 @@
       <div class="p-price-row">
         <span class="now" id="priceNow">Rs 1900</span>
         <span class="was" id="priceWas">Rs 2500</span>
-        <span class="off" id="priceOff">२४% छुट</span>
+        <span class="off" id="priceOff">24% छुट</span>
       </div>
 
       <div class="pack-hint">प्याक छान्नुहोस्:</div>
@@ -394,7 +394,7 @@
   const WA_NUMBER = '9779713309074';
   const digitMap = {'0':'०','1':'१','2':'२','3':'३','4':'४','5':'५','6':'६','7':'७','8':'८','9':'९'};
   function toNepDigits(str){ return String(str).replace(/[0-9]/g, d => digitMap[d]); }
-  function formatRs(n){ return 'रु. ' + toNepDigits(n.toLocaleString('en-IN')); }
+  function formatRs(n){ return 'Rs ' + toNepDigits(n.toLocaleString('en-IN')); }
 
   const priceNow = document.getElementById('priceNow');
   const priceWas = document.getElementById('priceWas');
