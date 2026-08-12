@@ -81,7 +81,25 @@
   .trust-row{display:flex; flex-wrap:wrap; gap:16px 18px; margin-top:24px;}
   .trust-item{display:flex; align-items:center; gap:8px; font-size:12.5px; font-weight:600;}
   .trust-item svg{width:16px; height:16px; flex-shrink:0; color:var(--teal-deep);}
-
+/* ===== INGREDIENTS ===== */
+.ingredients__layout{display:grid;grid-template-columns:220px 1fr;gap:0;border:1px solid var(--c-border);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--c-white);}
+.ing-list{background:var(--c-cream);border-right:1px solid var(--c-border);overflow-y:auto;max-height:560px;padding:8px;}
+.ing-list::-webkit-scrollbar{width:4px;}
+.ing-list::-webkit-scrollbar-thumb{background:var(--c-border);border-radius:999px;}
+.ing-item{padding:10px 14px;border-radius:10px;font-size:14px;font-weight:500;color:var(--c-muted);cursor:pointer;transition:background .2s,color .2s;}
+.ing-item:hover{background:var(--c-cream-dark);}
+.ing-item.active{background:var(--c-forest);color:var(--c-cream);font-weight:700;}
+.ing-detail{padding:28px 32px;display:flex;flex-direction:column;gap:16px;}
+.ing-detail img{border-radius:14px;aspect-ratio:16/9;object-fit:contain;width:100%;max-height:400px;box-shadow:var(--shadow-sm);}
+.ing-detail h3{font-family:var(--ff-head);font-size:22px;color:var(--c-forest);}
+.ing-detail p{font-size:15px;line-height:1.75;color:var(--c-muted);}
+@media(max-width:700px){
+  .ingredients__layout{grid-template-columns:1fr;grid-template-rows:auto 1fr;}
+  .ing-list{max-height:none;overflow-x:auto;overflow-y:hidden;display:flex;gap:8px;padding:10px;border-right:none;border-bottom:1px solid var(--c-border);}
+  .ing-list::-webkit-scrollbar{display:none;}
+  .ing-item{white-space:nowrap;border-radius:999px;background:var(--c-cream-dark);padding:8px 16px;}
+  .ing-detail{padding:20px 16px;}
+}
   /* Tablet & Phone styling */
   @media (max-width:860px){
     .p-hero-grid{grid-template-columns:1fr; gap:22px;}
@@ -277,21 +295,21 @@
   </div>
 </div>
 
-<section id="ingredients">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">शुद्ध तत्वहरू</div>
-      <h2>२० प्राकृतिक जडीबुटीको सम्मिश्रण</h2>
-      <p>हाम्रा पुर्खाहरूले प्रयोग गर्दै आएको निम, तुलसी, हल्दी र एलोभेरा जस्ता शुद्ध तत्वहरू। कुनै कृत्रिम रसायन थपिएको छैन।</p>
+<!-- ==================== INGREDIENTS ==================== -->
+<section class="section section--alt" id="ingredients">
+  <div class="container">
+    <div class="s-header reveal">
+      <div class="s-header__eyebrow">२० शक्तिशाली जडीबुटीहरू</div>
+      <h2 class="s-header__title">वर्षौंदेखि आयुर्वेदमा प्रयोग हुँदै आएका<br><em>प्राकृतिक जडीबुटीहरू</em></h2>
+      <div class="s-header__line"></div>
     </div>
-    <div class="ing-grid">
-      <div class="ing-item"><svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C7 8 4 12 4 16a8 8 0 0 0 16 0c0-4-3-8-8-14Z"/></svg><span>निम</span></div>
-      <div class="ing-item"><svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C7 8 4 12 4 16a8 8 0 0 0 16 0c0-4-3-8-8-14Z"/></svg><span>तुलसी</span></div>
-      <div class="ing-item"><svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C7 8 4 12 4 16a8 8 0 0 0 16 0c0-4-3-8-8-14Z"/></svg><span>एलोभेरा</span></div>
-      <div class="ing-item"><svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C7 8 4 12 4 16a8 8 0 0 0 16 0c0-4-3-8-8-14Z"/></svg><span>हल्दी</span></div>
+    <div class="ingredients__layout reveal">
+      <div class="ing-list" id="ingList"></div>
+      <div class="ing-detail"><img id="ingImg" src="" alt="" loading="lazy"/><h3 id="ingName"></h3><p id="ingDesc"></p></div>
     </div>
   </div>
 </section>
+
 
 <section id="how-to-use" class="why">
   <div class="wrap" style="padding:70px 24px;">
@@ -389,7 +407,35 @@
       if(!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
     });
   });
-
+/* ===== INGREDIENTS ===== */
+const ingredients=[
+  {name:"Haritaki",image:"Images/haritaki.webp",desc:"आयुर्वेदमा वर्षौंदेखि प्रयोग हुँदै आएको महत्वपूर्ण जडीबुटी, जुन पाचन सन्तुलन र शरीरको समग्र सुस्वास्थ्यका लागि परम्परागत रूपले उपयोगी मानिन्छ।"},
+  {name:"Suran",image:"Images/suran.webp",desc:"पेट र आन्द्रासम्बन्धी असहजतामा परम्परागत रूपमा प्रयोग हुँदै आएको कन्द।"},
+  {name:"Haridara (Turmeric)",image:"Images/haridra.webp",desc:"हजारौं वर्षदेखि आयुर्वेद र पाककलामा प्रयोग हुँदै आएको बलियो प्राकृतिक एन्टिअक्सिडेन्ट।"},
+  {name:"Lodhra",image:"Images/lodhra.webp",desc:"परम्परागत आयुर्वेदिक चिकित्सामा कोमल टिस्युहरूको स्वास्थ्य र छाला सन्तुलनका लागि प्रयोग गरिँदै आएको जडीबुटी।"},
+  {name:"Yastimadhu (Licorice)",image:"Images/Yastimadhu-Licorice.webp",desc:"छाला शान्त राख्न र असहजता कम गर्न आयुर्वेदिक परम्परामा लामो समयदेखि उपयोग हुँदै आएको मीठो जरा।"},
+  {name:"Daruharidra",image:"Images/Daruharidra.webp",desc:"आयुर्वेदिक परम्परामा छाला र समग्र स्वास्थ्यका लागि सदियौंदेखि उपयोग हुँदै आएको प्रसिद्ध बोट।"},
+  {name:"Nirgundi",image:"Images/Nirgundi.webp",desc:"असहजता र शरीरको तनाव कम गर्न परम्परागत आयुर्वेदिक सूत्रणमा महत्वपूर्ण स्थान राख्ने जडीबुटी।"},
+  {name:"Manjistha",image:"Images/Manjistha.webp",desc:"रक्तशुद्धि र छाला सम्बन्धी परम्परागत उपचारमा आयुर्वेदले सदियौंदेखि उपयोग गर्दै आएको बोट।"},
+  {name:"Lajjawati",image:"Images/Lajjawati-Jhar.webp",desc:"संवेदनशील छालाको हेरचाह र आराम प्रदान गर्न परम्परागत आयुर्वेदिक मिश्रणमा प्रयोग हुने सहयोगी बोट।"},
+  {name:"Dhubo",image:"Images/dubo.webp",desc:"लोक चिकित्सा र आयुर्वेदमा छाला निको पार्न परम्परागत रूपमा प्रयोग हुँदै आएको घाँस।"},
+  {name:"Kustha",image:"Images/Kustha.webp",desc:"त्वचा र शरीरको शुद्धिकरणमा आयुर्वेदमा परम्परागत रूपले प्रयोग हुँदै आएको सुगन्धित जडीबुटी।"},
+  {name:"Mahanimba",image:"Images/Mahanimba.webp",desc:"आयुर्वेदिक परम्परामा शरीरको सफाइ र सुरक्षाका लागि वर्षौंदेखि प्रयोग गरिँदै आएको निम वर्गको बोट।"},
+  {name:"Nilakama",image:"Images/nilkama.webp",desc:"परम्परागत आयुर्वेदिक प्रयोगमा रक्तशुद्धि र छाला सन्तुलनका लागि उपयोगी मानिने जडीबुटी।"},
+  {name:"Kutki",image:"Images/Kutki.webp",desc:"आयुर्वेदिक परम्परामा मेटाबोलिज्म र समग्र स्वास्थ्य सन्तुलनका लागि सदियौंदेखि प्रयोग हुँदै आएको औषधिजन्य बोट।"},
+  {name:"Jaipahal",image:"Images/Jaipahal.webp",desc:"आयुर्वेदिक मिश्रणमा शरीरको ऊर्जा र सन्तुलन कायम राख्न परम्परागत रूपले थपिने मसला।"},
+  {name:"Padhnakh",image:"Images/padmank.webp",desc:"आयुर्वेदिक सूत्रणमा सन्तुलन र अतिरिक्त शक्ति प्रदान गर्न प्रयोग हुने सहयोगी जडीबुटी।"},
+  {name:"Baumika",image:"Images/Baumika.webp",desc:"परम्परागत लोक चिकित्सामा शरीरलाई आराम र सहजता दिन प्रयोग हुने भुइँ–आधारित जडीबुटी।"},
+  {name:"Til oil",image:"Images/Til-oil-Sesame-oil.webp",desc:"आयुर्वेदिक सूत्रणमा छाला नरम, पोषणयुक्त र लचिलो राख्न सदियौंदेखि प्रयोग हुँदै आएको आधार तेल।"},
+  {name:"Bee wax",image:"Images/Bee-wax.webp",desc:"छालामा सुरक्षात्मक तह बनाई नमी जोगाउन प्रयोग हुने प्राकृतिक मैन।"},
+  {name:"Nilo tooth",image:"Images/sweetpea-king-tut-2-1-scaled.webp",desc:"परम्परागत हर्बल संयोजनमा समग्र सन्तुलन र सहजताका लागि प्रयोग हुने प्राकृतिक घटक।"}
+];
+(function(){
+  const list=document.getElementById('ingList'),img=document.getElementById('ingImg'),name=document.getElementById('ingName'),desc=document.getElementById('ingDesc');
+  ingredients.forEach((ing,i)=>{const el=document.createElement('div');el.className='ing-item';el.textContent=ing.name;el.onclick=()=>select(i);list.appendChild(el);});
+  function select(i){document.querySelectorAll('.ing-item').forEach((el,j)=>el.classList.toggle('active',j===i));img.src=ingredients[i].image;img.alt=ingredients[i].name;name.textContent=ingredients[i].name;desc.textContent=ingredients[i].desc;const el=list.querySelectorAll('.ing-item')[i];if(el)el.scrollIntoView({block:'nearest',inline:'center'});}
+  select(0);
+})();
   /* ---------- Functional pack selector ---------- */
   const WA_NUMBER = '9779713309074';
   const digitMap = {'0':'०','1':'१','2':'२','3':'३','4':'४','5':'५','6':'६','7':'७','8':'८','9':'९'};
