@@ -249,60 +249,6 @@ section{padding:clamp(48px,8vw,88px) 0;}
   .p-card{flex:0 0 78%; scroll-snap-align:start;}
 }
 
-/* ---------- WHY ---------- */
-.why{background:var(--surface); border-radius:40px; margin:0 20px;}
-.why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
-.why-item{text-align:center; padding:0 12px;}
-.why-item .icon-wrap{
-  width:64px; height:64px; border-radius:50%; background:var(--bg);
-  display:flex; align-items:center; justify-content:center; margin:0 auto 18px;
-}
-.why-item .icon-wrap svg{width:28px; height:28px; color:var(--teal-deep);}
-.why-item h3{font-size:19px; margin-bottom:8px;}
-.why-item p{font-size:14px; color:var(--ink-soft);}
-@media (max-width:760px){ .why-grid{grid-template-columns:1fr; gap:36px;} .why{border-radius:24px; margin:0 14px;} }
-
-/* ---------- TESTIMONIALS ---------- */
-.t-scroll{display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:8px; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain;}
-.t-scroll::-webkit-scrollbar{height:6px;}
-.t-scroll::-webkit-scrollbar-thumb{background:var(--line); border-radius:10px;}
-.t-card{
-  scroll-snap-align:start; flex:0 0 300px;
-  background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); padding:26px;
-}
-.t-quote{font-size:34px; color:var(--marigold-deep); font-family:'Baloo 2',sans-serif; line-height:0.5; margin-bottom:10px; display:block;}
-.t-stars{color:var(--marigold-deep); font-size:14px; margin-bottom:12px; letter-spacing:2px;}
-.t-card p{font-size:14px; color:var(--ink-soft); margin-bottom:16px;}
-.t-name{font-size:13.5px; font-weight:700;}
-@media (max-width:480px){ .t-card{flex:0 0 84%;} }
-
-/* ---------- FAQ ---------- */
-.faq{max-width:760px; margin:0 auto;}
-.faq-item{border-bottom:1px solid var(--line);}
-.faq-q{
-  width:100%; text-align:right; background:none; border:none; cursor:pointer;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:20px 4px; font-size:clamp(14.5px,2vw,16.5px); font-weight:700; color:var(--ink);
-}
-.faq-q .plus{
-  width:28px; height:28px; border-radius:50%; background:var(--bg);
-  display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-left:16px;
-  font-size:18px; color:var(--teal-deep); transition:transform .25s, background .2s;
-}
-.faq-item.open .plus{transform:rotate(45deg); background:var(--marigold);}
-.faq-a{max-height:0; overflow:hidden; transition:max-height .3s ease; font-size:14px; color:var(--ink-soft);}
-.faq-a-inner{padding:0 4px 20px;}
-
-/* ---------- POLICY ---------- */
-.policy{background:var(--ink); color:#EDE9DE; border-radius:40px; margin:0 20px;}
-.policy .section-head h2{color:#fff;}
-.policy .section-head p{color:rgba(237,233,222,0.75);}
-.policy-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
-.policy-card{background:rgba(255,255,255,0.06); border-radius:var(--r-md); padding:24px;}
-.policy-card h3{color:#fff; font-size:16px; margin-bottom:9px; font-family:'Baloo 2',sans-serif;}
-.policy-card p{font-size:13.5px; opacity:0.78; line-height:1.75;}
-@media (max-width:760px){ .policy-grid{grid-template-columns:1fr;} .policy{border-radius:24px; margin:0 14px;} }
-
 /* ---------- FOOTER ---------- */
 footer{padding:44px 0 24px; color:var(--ink-soft);}
 footer .wrap{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; font-size:13.5px;}
@@ -330,68 +276,6 @@ footer a:hover{color:var(--teal-deep);}
 .sticky-cta .btn{padding:13px 22px; font-size:14.5px;}
 @media (max-width:780px){ .sticky-cta{display:flex;} body{padding-bottom:74px;} }
 
-/* =========================================================
-   PRODUCT DETAIL PAGES (WCB / WBB / PNM / etc.)
-   ========================================================= */
-
-.breadcrumb{
-  display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:600;
-  color:var(--ink-soft); padding:18px 0 0;
-}
-.breadcrumb a{color:var(--teal-deep);}
-.breadcrumb a:hover{text-decoration:underline;}
-
-.product-hero{padding:28px 0 clamp(40px,7vw,72px);}
-.product-hero-grid{display:grid; grid-template-columns:1fr 1fr; gap:54px; align-items:flex-start;}
-
-.gallery-main{
-  aspect-ratio:1/1; border-radius:var(--r-lg); overflow:hidden;
-  background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow);
-}
-.gallery-main img{width:100%; height:100%; object-fit:cover;}
-.gallery-thumbs{display:flex; gap:12px; margin-top:14px;}
-.gallery-thumbs button{
-  width:76px; height:76px; border-radius:var(--r-sm); overflow:hidden;
-  border:2px solid transparent; padding:0; cursor:pointer; background:var(--surface);
-  flex-shrink:0; transition:border-color .2s;
-}
-.gallery-thumbs button.active{border-color:var(--teal);}
-.gallery-thumbs img{width:100%; height:100%; object-fit:cover;}
-
-.product-info .eyebrow{margin-bottom:14px;}
-.product-info h1{font-size:clamp(26px,4vw,38px); line-height:1.18; margin-bottom:12px;}
-.product-info .p-sub{color:var(--ink-soft); font-size:15px; margin-bottom:18px;}
-.product-info .p-price{margin-bottom:6px;}
-.product-info .p-price .now{font-size:28px;}
-.product-info .save-note{font-size:13px; color:var(--coral); font-weight:700; margin-bottom:22px;}
-.product-info .btn-marigold{width:100%; margin-bottom:12px;}
-.product-info .btn-ghost{width:100%;}
-.product-info .chip-row{margin-top:22px;}
-
-.feature-list{list-style:none; margin:22px 0; display:flex; flex-direction:column; gap:12px;}
-.feature-list li{display:flex; align-items:flex-start; gap:10px; font-size:14.5px;}
-.feature-list li svg{width:19px; height:19px; color:var(--teal-deep); flex-shrink:0; margin-top:2px;}
-
-.spec-table{width:100%; border-collapse:collapse; font-size:14px; margin-top:8px;}
-.spec-table tr{border-bottom:1px solid var(--line);}
-.spec-table tr:last-child{border-bottom:none;}
-.spec-table td{padding:12px 4px;}
-.spec-table td:first-child{color:var(--ink-soft); width:38%;}
-.spec-table td:last-child{font-weight:600;}
-
-.detail-block{padding:0 0 clamp(40px,7vw,72px);}
-.detail-grid{display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;}
-.detail-media{border-radius:var(--r-lg); overflow:hidden; aspect-ratio:4/3; box-shadow:var(--shadow);}
-.detail-media img{width:100%; height:100%; object-fit:cover;}
-.detail-copy h2{font-size:clamp(22px,3.6vw,30px); margin-bottom:14px;}
-.detail-copy p{color:var(--ink-soft); font-size:15px; margin-bottom:14px;}
-
-@media (max-width:900px){
-  .product-hero-grid{grid-template-columns:1fr; gap:30px;}
-  .detail-grid{grid-template-columns:1fr; gap:24px;}
-  .detail-grid.reverse .detail-media{order:-1;}
-}
-
 </style>
 </head>
 <body>
@@ -401,9 +285,6 @@ footer a:hover{color:var(--teal-deep);}
     <a class="logo" href="index.html"><span class="dot"></span>हिमबुटी</a>
     <div class="nav-links" id="navLinks">
       <a href="#products">उत्पादनहरू</a>
-      <a href="#why">किन हामी</a>
-      <a href="#reviews">प्रतिक्रिया</a>
-      <a href="#faq">प्रश्नहरू</a>
       <a class="mobile-cta" href="https://wa.me/9779713309074?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87%2C%20%E0%A4%AE%E0%A4%B2%E0%A4%BE%E0%A4%88%20%E0%A4%9C%E0%A4%BE%E0%A4%A8%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%80%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%BF%E0%A4%AF%E0%A5%8B" target="_blank" rel="noopener">सोध्नुहोस् →</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="मेनु" aria-expanded="false">
@@ -515,131 +396,10 @@ footer a:hover{color:var(--teal-deep);}
   </div>
 </section>
 
-<section id="why" class="why wrap-outer">
-  <div class="wrap" style="padding:76px 24px;">
-    <div class="section-head">
-      <div class="eyebrow">किन हामी</div>
-      <h2>हिमबुटी किन रोज्ने</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-item">
-        <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C7 8 4 12 4 16a8 8 0 0 0 16 0c0-4-3-8-8-14Z"/></svg></div>
-        <h3>शुद्ध र प्राकृतिक</h3>
-        <p>हरेक उत्पादन प्राकृतिक तत्व र सामग्रीबाट, कुनै कृत्रिम रसायन बिना तयार गरिन्छ।</p>
-      </div>
-      <div class="why-item">
-        <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h13v10H3zM16 10h5l-3-4-2 0zM6 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM16 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg></div>
-        <h3>Cash on Delivery</h3>
-        <p>सामान हातमा नपाई पैसा तिर्नु पर्दैन — डेलिभरी हुँदा मात्र भुक्तानी गर्नुहोस्।</p>
-      </div>
-      <div class="why-item">
-        <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.39a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2z"/></svg></div>
-        <h3>सहज सम्पर्क</h3>
-        <p>WhatsApp मार्फत सिधै कुराकानी गरी जिज्ञासा सोध्न र अर्डर गर्न सक्नुहुन्छ।</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="reviews">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">ग्राहक अनुभव</div>
-      <h2>हाम्रा ग्राहकहरूको प्रतिक्रिया</h2>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="t-scroll">
-      <div class="t-card">
-        <span class="t-quote">"</span>
-        <div class="t-stars">★★★★★</div>
-        <p>सामानको गुणस्तर राम्रो छ र डेलिभरी पनि समयमै भयो। WhatsApp मा सोध्दा छिटो जवाफ पाइयो।</p>
-        <div class="t-name">बिनिता न्यौपाने — काठमाडौं</div>
-      </div>
-      <div class="t-card">
-        <span class="t-quote">"</span>
-        <div class="t-stars">★★★★★</div>
-        <p>नियमित प्रयोग गरेपछि सन्तुष्ट छु। प्याकेजिङ पनि राम्रो थियो।</p>
-        <div class="t-name">बिक्रम थापा — पोखरा</div>
-      </div>
-      <div class="t-card">
-        <span class="t-quote">"</span>
-        <div class="t-stars">★★★★</div>
-        <p>मूल्य किफायती छ र Cash on Delivery भएकोले भरपर्दो लाग्यो।</p>
-        <div class="t-name">स्मृति लिम्बु — धरान</div>
-      </div>
-      <div class="t-card">
-        <span class="t-quote">"</span>
-        <div class="t-stars">★★★★★</div>
-        <p>प्रयोग गर्न सजिलो र प्याकेजिङ आकर्षक छ। फेरि अर्डर गर्ने योजना छ।</p>
-        <div class="t-name">अनिल राई — विराटनगर</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">जिज्ञासा</div>
-      <h2>बारम्बार सोधिने प्रश्नहरू</h2>
-    </div>
-    <div class="faq">
-      <div class="faq-item">
-        <button class="faq-q">कसरी अर्डर गर्ने? <span class="plus">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">माथि दिइएको WhatsApp बटनमा क्लिक गरी सन्देश पठाउनुहोस्, वा उत्पादनको "See More" बटन थिच्नुहोस्। हामी छिटै जवाफ दिनेछौं।</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">भुक्तानी कसरी गर्ने? <span class="plus">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Cash on Delivery — सामान हातमा प्राप्त गरेपछि मात्र भुक्तानी गर्नुहोस्। कुनै अग्रिम रकम आवश्यक छैन।</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">डेलिभरी कति दिनमा हुन्छ? <span class="plus">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">सामान्यतया ०–५ कार्यदिन भित्र, तपाईंको स्थान अनुसार काठमाडौं उपत्यका भित्र छिटो हुन सक्छ।</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">फिर्ता वा साटफेर सम्भव छ? <span class="plus">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">तल दिइएको फिर्ता/साटफेर नीति हेर्नुहोस्, वा WhatsApp मार्फत सिधै सम्पर्क गर्नुहोस्।</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="policy" id="policies">
-  <div class="wrap" style="padding:76px 24px;">
-    <div class="section-head">
-      <div class="eyebrow">नीतिहरू</div>
-      <h2>पारदर्शिता हाम्रो प्राथमिकता</h2>
-      <p>तलका नीतिहरू पूर्ण रूपमा पढ्न सकिन्छ — कुनै पनि खण्ड "#" मा जाँदैन।</p>
-    </div>
-    <div class="policy-grid">
-      <div class="policy-card">
-        <h3>गोपनीयता नीति</h3>
-        <p>तपाईंको नाम, ठेगाना र सम्पर्क जानकारी केवल अर्डर प्रशोधन र डेलिभरीको लागि मात्र प्रयोग गरिन्छ। यो जानकारी कुनै तेस्रो पक्षलाई बेचिँदैन।</p>
-      </div>
-      <div class="policy-card">
-        <h3>ढुवानी नीति</h3>
-        <p>नेपालभर डेलिभरी उपलब्ध छ। काठमाडौं उपत्यका भित्र १–२ दिन, बाहिर ३–५ कार्यदिन लाग्न सक्छ।</p>
-      </div>
-      <div class="policy-card">
-        <h3>फिर्ता तथा साटफेर नीति</h3>
-        <p>सामान प्राप्त गरेको ३ दिन भित्र प्याकेजिङ नखोलिएको अवस्थामा साटफेर गर्न सकिन्छ।</p>
-      </div>
-      <div class="policy-card">
-        <h3>नियम तथा सर्तहरू</h3>
-        <p>मूल्य र उपलब्धता सूचना बिना परिवर्तन हुन सक्छ। कुनै विवाद भएमा नेपाल कानुन अनुसार समाधान गरिनेछ।</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="wrap">
     <div>© 2026 हिमबुटी (himbuti.store)। सर्वाधिकार सुरक्षित।</div>
     <div class="foot-links">
-      <a href="#policies">गोपनीयता</a>
-      <a href="#policies">ढुवानी</a>
-      <a href="#policies">फिर्ता नीति</a>
       <a href="https://wa.me/9779713309074" target="_blank" rel="noopener">सम्पर्क</a>
     </div>
   </div>
@@ -656,23 +416,6 @@ footer a:hover{color:var(--teal-deep);}
 </div>
 
 <script>
-  /* FAQ accordion */
-  document.querySelectorAll('.faq-item').forEach(item=>{
-    const q = item.querySelector('.faq-q');
-    const a = item.querySelector('.faq-a');
-    q.addEventListener('click', ()=>{
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(o=>{
-        o.classList.remove('open');
-        o.querySelector('.faq-a').style.maxHeight = null;
-      });
-      if(!isOpen){
-        item.classList.add('open');
-        a.style.maxHeight = a.scrollHeight + 'px';
-      }
-    });
-  });
-
   /* Mobile nav toggle */
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
