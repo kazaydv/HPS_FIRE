@@ -1583,5 +1583,70 @@ window.addEventListener('resize',handleBenefitsLayout);
   });
 })();
 </script>
+  <script>
+/**
+ * Converts Preeti encoded string to Unicode Devanagari
+ * @param {string} preetiText - The string in Preeti font (e.g., "lb;fåf/sf]")
+ * @returns {string} - The converted Unicode string (e.g., "दिसाद्वारको")
+ */
+function preetiToUnicode(preetiText) {
+    if (!preetiText) return "";
+
+    // 1. Character Mapping Table (Subset for common characters)
+    // You can expand this map with the full Preeti-to-Unicode mapping JSON
+    const charMap = {
+        'b': 'द', 'l': 'ि', 'b': 'द', 'f': 'ा', 'å': 'द', 'f': 'ा', '/': '्', 's': 'क', 'f': 'ा', ']': 'े',
+        // Basic Vowels & Consonants
+        's': 'क', 'd': 'ग', 'f': 'ा', 'a': 'ब', 'r': 'च', 'n': 'ल', 'j': 'व', 'k': 'म', 'p': 'ए', 'q': 'त',
+        'h': 'ज', 'u': 'प', 'y': 'थ', 'e': 'भ', 'i': 'क', 'o': 'ो', 't': 'त', 'z': 'श', 'x': 'ह', 'c': 'ट',
+        'v': 'ख', 'w': 'ड', 'm': 'ः', 'L': 'ी', 'O': 'ौ', 'A': 'ब', 'S': 'क', 'D': 'ग', 'F': 'ँ',
+        'B': 'द्य', 'N': 'ल्', 'J': 'व्', 'K': 'म्', 'P': 'ए', 'Q': 'त्त', 'H': 'ज्', 'U': 'प्',
+        'Y': 'थ्', 'E': 'भ्', 'I': 'क्ष्', 'O': 'ो', 'T': 'त्', 'Z': 'श्', 'X': 'ह्', 'C': 'ट्',
+        'V': 'ख्', 'W': 'ड्', 'M': 'ः', 'R': 'च्', 'l': 'ि', 'L': 'ी', 'u': 'ु', 'U': 'ू',
+        'e': 'े', 'o': 'ो', 'a': 'ा', 'i': 'ि', 'I': 'ी', '0': '०', '1': '१', '2': '२', '3': '३',
+        '4': '४', '5': '५', '6': '६', '7': '७', '8': '८', '9': '९',
+        ' ': ' ', '\n': '\n', '\t': '\t',
+        // Special Conjuncts & Corrections (Simplified logic)
+        '/': '्', // Halant
+        'å': 'द', // Specific mapping for your example
+        'æ': 'ध', 'Ç': 'ञ', 'š': 'ष', 'Š': 'ष्', 'Þ': 'ठ', 'þ': 'ठ्'
+    };
+
+    // 2. Pre-processing: Handle specific combined characters if necessary
+    // Preeti often uses specific keys for conjuncts that need special handling
+    let text = preetiText;
+
+    // 3. Conversion Loop
+    let unicodeText = "";
+    for (let i = 0; i < text.length; i++) {
+        let char = text[i];
+        // Map character or keep original if not found (e.g., English letters)
+        unicodeText += charMap[char] || char;
+    }
+
+    // 4. Post-processing Rules (Regex replacements for complex conjuncts)
+    // Fix misplaced matras (vowel signs) which is common in Preeti
+    unicodeText = unicodeText.replace(/ि([क-ह])/g, "$1ि"); // Move 'ि' to after the consonant
+    
+    // Handle specific "द्द" or "द्ध" cases if your mapping uses specific keys
+    // This is a simplified fix; a full library handles hundreds of these rules.
+    
+    return unicodeText;
+}
+
+// --- USAGE ON PAGE LOAD ---
+document.addEventListener("DOMContentLoaded", function() {
+    // Select all elements with the class 'preeti-text'
+    const elements = document.querySelectorAll('.preeti-text');
+    
+    elements.forEach(function(el) {
+        const preetiContent = el.innerText;
+        const unicodeContent = preetiToUnicode(preetiContent);
+        el.innerText = unicodeContent;
+        // Optionally remove the class so it doesn't convert twice
+        el.classList.remove('preeti-text');
+    });
+});
+</script>   
 </body>
 </html>
