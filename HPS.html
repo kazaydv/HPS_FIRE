@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="Images/favicon.png" sizes="32x32">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@600;700;800&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Meta Pixel Code -->
 <!-- Meta Pixel Code -->
@@ -46,8 +46,8 @@ src="https://www.facebook.com/tr?id=1083545343996510&ev=PageView&noscript=1"
   --c-cta:#d4550a;
   --c-cta-dark:#b84508;
   --c-white:#ffffff;
-  --ff-head:'Playfair Display',Georgia,serif;
-  --ff-body:'DM Sans',system-ui,sans-serif;
+  --ff-head:'Playfair Display','Noto Serif Devanagari',Georgia,serif;
+  --ff-body:'DM Sans','Noto Sans Devanagari',system-ui,sans-serif;
   --radius:16px;
   --shadow-sm:0 2px 12px rgba(26,74,46,.08);
   --shadow-md:0 8px 32px rgba(26,74,46,.12);
@@ -960,15 +960,13 @@ footer{background:var(--c-forest);color:rgba(250,248,244,.7);padding:40px 24px 3
     <img src="Images/hero.webp" alt="Herbal Relief Spray 60ml" class="hero__img" width="400" height="400" loading="eager" fetchpriority="high" decoding="async"/>
   </div>
   <div class="hero__content">
-    <div clsas=""preeti-text">
     <div class="hero__eyebrow reveal">🌿 प्राकृतिक आयुर्वेदिक उपाय</div>
     <h1 class="hero__title reveal reveal-d1">Herbal Relief<br><em>Spray</em></h1>
-    <p class="hero__sub reveal reveal-d2">lb;fåf/sf]<strong>जलन, सुन्निने र असहजता</strong>बाट पाउनुहोस् प्राकृतिक राहत — 60ml प्राकृतिक जडीबुटी स्प्रे।</p>
+    <p class="hero__sub reveal reveal-d2">lb;fåf/sf]<strong>hng, ;'lGgg] / c;xhtfा</strong>बाट पाउनुहोस् प्राकृतिक राहत — 60ml प्राकृतिक जडीबुटी स्प्रे।</p>
     <div class="hero__price reveal reveal-d2">
       <span class="hero__price-old">Rs 2,500</span>
       <span class="hero__price-main">Rs 1,900</span>
       <span class="hero__price-save">Save Rs 600</span>
-    </div>
     </div>
     <ul class="hero__list reveal reveal-d3">
       <li>सुन्निएको भाग बिस्तारै सामान्य हुन मद्दत गर्छ</li>
@@ -1585,70 +1583,65 @@ window.addEventListener('resize',handleBenefitsLayout);
   });
 })();
 </script>
-  <script>
+
+<script>
 /**
- * Converts Preeti encoded string to Unicode Devanagari
- * @param {string} preetiText - The string in Preeti font (e.g., "lb;fåf/sf]")
- * @returns {string} - The converted Unicode string (e.g., "दिसाद्वारको")
+ * Preeti (legacy Nepali font) -> Unicode Devanagari, for text that got
+ * pasted in raw (still keyboard-coded in Preeti instead of converted).
+ *
+ * USAGE: wrap ONLY the raw Preeti fragment itself in
+ *   <span class="preeti-text">...</span>
+ * Never wrap a whole paragraph/heading that also contains English
+ * words, a brand/product name, or numbers/prices — Preeti reuses plain
+ * Latin letters and digits as its keys, so the converter cannot tell
+ * "60ml" or "Spray" apart from actual Preeti-coded text and will
+ * corrupt it. Anything inside class="no-convert" is always skipped as
+ * an extra safeguard if you must nest English inside a converted block.
+ *
+ * This is a best-effort character-level mapping, not a full Preeti
+ * parser: it does not handle multi-key conjuncts (क्ष, त्र, ज्ञ, श्र...)
+ * beyond the few pre-built into the map below. For anything longer than
+ * a short phrase, verify the output — or better, run the source text
+ * through a dedicated Preeti->Unicode tool once and paste the verified
+ * Unicode result directly, the way the rest of this page's Nepali text
+ * already is.
  */
-function preetiToUnicode(preetiText) {
-    if (!preetiText) return "";
+(function () {
+  const charMap = {
+    's':'क','d':'ग','r':'च','n':'ल','j':'व','k':'म','p':'ए','q':'त','h':'ज',
+    'u':'ु','y':'थ','e':'े','i':'ि','o':'ो','t':'त','z':'श','x':'ह','c':'ट',
+    'v':'ख','w':'ड','m':'ः','b':'द','l':'ि','å':'द','f':'ा','a':'ा','/':'्',
+    'L':'ी','O':'ो','A':'ब','S':'क','D':'ग','F':'ँ','B':'द्य','N':'ल्',
+    'J':'व्','K':'म्','P':'ए','Q':'त्त','H':'ज्','U':'प्','Y':'थ्','E':'भ्',
+    'I':'क्ष्','T':'त्','Z':'श्','X':'ह्','C':'ट्','V':'ख्','W':'ड्','M':'ः',
+    'R':'च्','æ':'ध','Ç':'ञ','š':'ष','Š':'ष्','Þ':'ठ','þ':'ठ्'
+    // Digits are deliberately NOT mapped — on a store page numbers are
+    // almost always prices/volumes (Rs, ml, %) that must stay literal.
+  };
 
-    // 1. Character Mapping Table (Subset for common characters)
-    // You can expand this map with the full Preeti-to-Unicode mapping JSON
-    const charMap = {
-        'b': 'द', 'l': 'ि', 'b': 'द', 'f': 'ा', 'å': 'द', 'f': 'ा', '/': '्', 's': 'क', 'f': 'ा', ']': 'े',
-        // Basic Vowels & Consonants
-        's': 'क', 'd': 'ग', 'f': 'ा', 'a': 'ब', 'r': 'च', 'n': 'ल', 'j': 'व', 'k': 'म', 'p': 'ए', 'q': 'त',
-        'h': 'ज', 'u': 'प', 'y': 'थ', 'e': 'भ', 'i': 'क', 'o': 'ो', 't': 'त', 'z': 'श', 'x': 'ह', 'c': 'ट',
-        'v': 'ख', 'w': 'ड', 'm': 'ः', 'L': 'ी', 'O': 'ौ', 'A': 'ब', 'S': 'क', 'D': 'ग', 'F': 'ँ',
-        'B': 'द्य', 'N': 'ल्', 'J': 'व्', 'K': 'म्', 'P': 'ए', 'Q': 'त्त', 'H': 'ज्', 'U': 'प्',
-        'Y': 'थ्', 'E': 'भ्', 'I': 'क्ष्', 'O': 'ो', 'T': 'त्', 'Z': 'श्', 'X': 'ह्', 'C': 'ट्',
-        'V': 'ख्', 'W': 'ड्', 'M': 'ः', 'R': 'च्', 'l': 'ि', 'L': 'ी', 'u': 'ु', 'U': 'ू',
-        'e': 'े', 'o': 'ो', 'a': 'ा', 'i': 'ि', 'I': 'ी', '0': '०', '1': '१', '2': '२', '3': '३',
-        '4': '४', '5': '५', '6': '६', '7': '७', '8': '८', '9': '९',
-        ' ': ' ', '\n': '\n', '\t': '\t',
-        // Special Conjuncts & Corrections (Simplified logic)
-        '/': '्', // Halant
-        'å': 'द', // Specific mapping for your example
-        'æ': 'ध', 'Ç': 'ञ', 'š': 'ष', 'Š': 'ष्', 'Þ': 'ठ', 'þ': 'ठ्'
-    };
+  function convertText(text) {
+    let out = '';
+    for (const ch of text) out += (ch in charMap ? charMap[ch] : ch);
+    // 'l' types BEFORE the consonant in Preeti but the ि matra it
+    // produces renders AFTER the consonant in Unicode — swap it back.
+    return out.replace(/ि([क-ह])/g, '$1ि');
+  }
 
-    // 2. Pre-processing: Handle specific combined characters if necessary
-    // Preeti often uses specific keys for conjuncts that need special handling
-    let text = preetiText;
-
-    // 3. Conversion Loop
-    let unicodeText = "";
-    for (let i = 0; i < text.length; i++) {
-        let char = text[i];
-        // Map character or keep original if not found (e.g., English letters)
-        unicodeText += charMap[char] || char;
+  function walk(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      node.textContent = convertText(node.textContent);
+    } else if (node.nodeType === Node.ELEMENT_NODE && !node.classList.contains('no-convert')) {
+      node.childNodes.forEach(walk);
     }
+  }
 
-    // 4. Post-processing Rules (Regex replacements for complex conjuncts)
-    // Fix misplaced matras (vowel signs) which is common in Preeti
-    unicodeText = unicodeText.replace(/ि([क-ह])/g, "$1ि"); // Move 'ि' to after the consonant
-    
-    // Handle specific "द्द" or "द्ध" cases if your mapping uses specific keys
-    // This is a simplified fix; a full library handles hundreds of these rules.
-    
-    return unicodeText;
-}
-
-// --- USAGE ON PAGE LOAD ---
-document.addEventListener("DOMContentLoaded", function() {
-    // Select all elements with the class 'preeti-text'
-    const elements = document.querySelectorAll('.preeti-text');
-    
-    elements.forEach(function(el) {
-        const preetiContent = el.innerText;
-        const unicodeContent = preetiToUnicode(preetiContent);
-        el.innerText = unicodeContent;
-        // Optionally remove the class so it doesn't convert twice
-        el.classList.remove('preeti-text');
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.preeti-text').forEach(function (el) {
+      walk(el);              // converts text nodes only — <strong>/<em>/<br> stay intact
+      el.classList.remove('preeti-text'); // run once, don't reprocess already-fixed text
     });
-});
-</script>   
+  });
+})();
+</script>
 </body>
 </html>
